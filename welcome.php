@@ -5,7 +5,9 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
 
+$fetch_vaccineQ = "SELECT * FROM `vaccine` ";
 
+$fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 ?>
 
 <!DOCTYPE html>
@@ -131,28 +133,67 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
         <!-- card -->
         <!-- card -->
      
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 " >
+         <?php
+         
+         while($vaccine = mysqli_fetch_assoc($fetch_vaccine)){
+          $row = mysqli_num_rows($fetch_vaccine);
+
+
+            echo '
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mt-4" >
            
-            <div class="icon-box vaccine-card" data-aos="fade-up" data-aos-delay="100" style="width: 20rem;">
-              <div class="icon"><i class="fa-solid fa-syringe"></i></div>
-              <h4 class="title">Sinopharm</h4>
-              <p class="description">
-                <h5 class="title"><i class="fa-solid fa-hospital"></i> hospitals</h5>
-                <ul class="vacc_ul">
-                  <li>hospital</li>
-                  <li>hospital</li>
-                  <li>hospital</li>
-                </ul>
-              </p>
-              <a href="#"> <div class="vacc-reg-btn ">register</div></a>
-            </div>
-  
-          </div>
+             <div class="icon-box vaccine-card" data-aos="fade-up" data-aos-delay="100" style="width: 20rem;">
+              
+               <div class="icon"><i class="fa-solid fa-syringe"></i></div>
+               <h4 class="title">'.$vaccine['vaccine_name'].'</h4>
+               <p class="description">
+                 <h5 class="title"><i class="fa-solid fa-hospital"></i> hospitals</h5>
+                 <ul class="vacc_ul">
+                   <li>hospital</li>
+                   <li>hospital</li>
+                   <li>hospital</li>
+                 </ul>
+               </p>
+               <a href="pat_reg.php?vaccine_name='.$vaccine['vaccine_name'].'"> <div class="vacc-reg-btn ">register</div></a>
+             </div>
+   
+           </div>
+          ';
+          
+
+        //   if($row =8  && $row > 4){
+        //     echo "<div class='col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 ' >
+           
+        //   <div class='icon-box vaccine-card' data-aos='fade-up' data-aos-delay='100' style='width: 20rem;'>
+        //     <div class='icon'><i class='fa-solid fa-syringe'></i></div>
+        //     <h4 class='title'>Sinopharm</h4>
+        //     <p class='description'>
+        //       <h5 class='title'><i class='fa-solid fa-hospital'></i> hospitals</h5>
+        //       <ul class='vacc_ul'>
+        //         <li>hospital</li>
+        //         <li>hospital</li>
+        //         <li>hospital</li>
+        //       </ul>
+        //     </p>
+        //     <a href='#'> <div class='vacc-reg-btn '>register</div></a>
+        //   </div>
+      
+        // </div>
+        // ";
+        //   }
+
+
+
+         }
+         
+         
+         ?>
      
           <!-- card -->
         <!-- card -->
         <!-- card -->
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
               <div class="icon"><i class="fas fa-pills"></i></div>
               <h4 class="title"><a href=""> Sinovac</a></h4>
@@ -174,7 +215,7 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
               <h4 class="title"><a href="">Sputnik</a></h4>
               <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
             </div>
-          </div>
+          </div> -->
 
         </div>
 

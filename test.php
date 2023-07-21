@@ -3,18 +3,33 @@ require 'conn.php';
 session_start();
 
 
-    echo  $_SESSION['id'] . "<br>";
-    echo  $_SESSION['name'] . "<br>";
-    echo  $_SESSION['cnic']. "<br>";
-    echo  $_SESSION['email']. "<br>";
+    // echo  $_SESSION['id'] . "<br>";
+    // echo  $_SESSION['name'] . "<br>";
+    // echo  $_SESSION['cnic']. "<br>";
+    // echo  $_SESSION['email']. "<br>";
+   
 
+    $fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
+
+    $fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
+
+    while($data = mysqli_fetch_assoc($fetch_hospital)){
+      // echo $data['hospital_name']."<br>";
+    
+     
 ?>
+
 
 <a href="logout.php">logout</a>
 
 
+<script src="node_modules/jspdf/dist/jspdf.umd.js"></script>
+<script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
 
 
+<script>
+  window.jsPDF = window.jspdf.jsPDF;
+</script>
 <div class="col-lg-6">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">

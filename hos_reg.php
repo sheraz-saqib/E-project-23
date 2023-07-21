@@ -7,11 +7,50 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
 
+$hospital_name = $_POST['hospital_name'];
+$hospital_Manager_name = $_POST['hospital_Manager_name'];
+$hospital_email = $_POST['hospital_email'];
+$hospital_phone = $_POST['hospital_phone'];
+$hospital_location = $_POST['hospital_location'];
+$hopital_Manager_cnic = $_POST['hopital_Manager_cnic'];
+$hopital_open_time = $_POST['hopital_open_time'];
+$hopital_close_time = $_POST['hopital_close_time'];
+$hopital_submit = $_POST['hopital_submit'];
 
 
 
 
+if(isset($hopital_submit)){
 
+  if($hospital_name != '' && $hospital_Manager_name != '' && $hospital_email  != '' && $hospital_phone != '' && $hospital_location != '' && $hopital_Manager_cnic != '' && $hopital_open_time != '' && $hopital_close_time !=''){
+
+    $hospital_insertQ = "INSERT INTO `reg_hospital`(`hospital_name`, `hospital_manager_name`, `hospital_emial`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`)
+     VALUES ('$hospital_name','$hospital_Manager_name','$hospital_email','$hospital_phone','$hospital_location','$hopital_Manager_cnic','$hopital_open_time ','$hopital_close_time')";
+
+    $hospital_insert = mysqli_query($conn ,$hospital_insertQ);
+     
+    if($hospital_insert){
+     
+      $hospital_register= true;
+      $hospital_register_error = false;
+     
+    }
+    if(!$hospital_insert){
+      $hospital_register= false;
+      $hospital_register_error = true;
+    }
+
+
+  }
+  
+  if($hospital_name == '' || $hospital_Manager_name == ''|| $hospital_email == '' || $hospital_phone == '' || $hospital_location == '' || $hopital_Manager_cnic == '' || $hopital_open_time == '' || $hopital_close_time == '' ){
+    $fill_error = true;
+    $pat_register_error = false;
+    $pat_register = false; 
+  }
+
+
+}
 
 
 
@@ -57,7 +96,18 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-
+<style>
+  .error-message{
+    border-radius: .4rem;
+    padding: .5rem;
+    color: white;
+  }
+  .sent-message{
+    border-radius: .4rem;
+    padding: .5rem;
+    color: white;
+  }
+</style>
 </head>
 
 <body>
@@ -67,56 +117,78 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 <br><br><br><br><br>
   <!-- ======= Appointment Section ======= -->
   <section id="appointment" class="appointment section-bg">
-      <div class="container" data-aos="fade-up">
+      <div class="container" >
 
         <div class="section-title">
-          <h2>Make an Appointment</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Registeration for Hospital</h2>
+          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
+        <div class="text-center">
+            <?php
+            
+            if($hospital_register){
+              echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
+            }
+            if($fill_error){
+              echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';
 
-        <form  action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            }
+            if($hospital_register_error){
+              echo '<div style="color:white;" class="error-message bg-danger">Your appointment request has not been sent . try again!</div>';
+            }
+            ?>
+            
+            
+          </div>
+          <br><br>
+        <form  action="#" method="post"  class="php-email-form">
+        
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <label for="yourName" class="form-label">Hospital Name</label>
+              <input type="text" name="hospital_name" class="form-control" id="name" placeholder="Your Name"  >
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            <label for="yourName" class="form-label">Manager Name </label>
+              <input type="text" class="form-control" name="hospital_Manager_name" id="phone" placeholder="Your Phone" >
+           
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+            <label for="yourName" class="form-label">Offical Email</label>
+              <input type="email" class="form-control" name="hospital_email" id="email" placeholder="Your Email"  >
+            
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 form-group">
+            <label for="yourName" class="form-label">Contact</label>
+              <input type="number" class="form-control" name="hospital_phone" id="phone" placeholder="Your Phone" >
+           
+            </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+            <label for="yourName" class="form-label">Hospital location</label>
+              <input minlength="5"  type="text" name="hospital_location" class="form-control" id="name" placeholder="Your Cnic">
+                    </div>
+            <div class="col-md-4 form-group mt-3 mt-md-0">
+              <label for="yourName" class="form-label">Manager Cnic</label>
+              <input type="number"  class="form-control" name="hopital_Manager_cnic" id="phone" placeholder="Your Phone" >
             </div>
           </div>
           <div class="row">
+ 
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
-            </div>
+            <label for="yourName" class="form-label">Hospital Open Time</label>
+              <input type="time" class="form-control" name="hopital_open_time" id="phone" placeholder="Your Phone" >
+                      </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
-                <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
-              </select>
-            </div>
-            <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
-                <option value="">Select Doctor</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
-              </select>
+            <label for="yourName" class="form-label">Hospital Close Time</label>
+              <input type="time" class="form-control" name="hopital_close_time" id="phone" placeholder="Your Phone" >
             </div>
           </div>
-
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Make an Appointment</button></div>
+          <br>
+          <div class="text-center"><input class="btn w-100" name="hopital_submit" type="submit" value="Regiter"></div>
+          <!-- <button class="w-100" type="submit" value="Regiter">Regiter</button> -->
         </form>
 
       </div>
@@ -125,7 +197,7 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 
 
 
-
+  
 
     <?php require './component/_footer.php';?>
 <!-- ======================== -->
@@ -135,7 +207,6 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
     </body>

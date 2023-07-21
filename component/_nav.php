@@ -92,8 +92,8 @@ color: white;
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
-         <div><a href="pat_reg.php"> <div class="vacc-reg-btn "><i class="fa-solid fa-bed"></i>Register for parient</div></a></div>
-         <div><a href="hos_reg.php"> <div class="vacc-reg-btn "><i class="fa-regular fa-hospital"></i> Register for hospital</div></a></div>
+         <div><a href="pat_reg.php"> <div class="vacc-reg-btn "><i class="fa-solid fa-bed"></i>Registeration for parient</div></a></div>
+         <div><a href="hos_reg.php"> <div class="vacc-reg-btn "><i class="fa-regular fa-hospital"></i> Registeration for hospital</div></a></div>
         </div>
         <!-- <div class="modal-footer">
         <button class="vacc-reg-btn "> cancel</button>
@@ -120,12 +120,12 @@ color: white;
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto " href="welcome.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="#vaccine">vaccines</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="#doctors">status</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#vaccine">vaccines</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#departments">Departments</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#doctors">status</a></li>
           
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               

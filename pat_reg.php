@@ -7,15 +7,65 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
 
+$pat_name = $_POST['pat_name'];
+$pat_email = $_POST['pat_email'];
+$pat_phone = $_POST['pat_phone'];
+$pat_age = $_POST['pat_age'];
+$pat_cnic = $_POST['pat_cnic'];
+$pat_gender = $_POST['pat_gender'];
+$pat_day_name = $_POST['pat_day_name'];
+$pat_hospital_name = $_POST['pat_hospital_name'];
+$pat_vaccine_name = $_POST['pat_vaccine_name'];
+$pat_submit = $_POST['pat_submit'];
 
 
 
+if(isset($pat_submit)){
+
+  if($pat_name != '' && $pat_email != '' && $pat_phone != '' && $pat_age != '' && $pat_cnic != '' && $pat_gender != '' && $pat_day_name != '' && $pat_hospital_name != '' && $pat_vaccine_name != ''){
+
+    $pat_insertQ = "INSERT INTO `reg_patient`(`patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES ('$pat_name','$pat_email','$pat_phone','$pat_cnic','$pat_age','$pat_hospital_name','$pat_gender','$pat_vaccine_name','$pat_day_name')";
+
+    $pat_insert = mysqli_query($conn ,$pat_insertQ);
+     
+    if($pat_insert){
+     
+      $pat_register= true;
+      $pat_register_error = false;
+     
+    }
+    if(!$pat_insert){
+      $pat_register= false;
+      $pat_register_error = true;
+    }
+
+
+  }
+  
+  if($pat_name == '' || $pat_email == ''|| $pat_phone == '' || $pat_age == '' || $pat_cnic == '' || $pat_gender == '' || $pat_day_name == '' || $pat_hospital_name == '' || $pat_vaccine_name == ''){
+    $fill_error = true;
+    $pat_register_error = false;
+    $pat_register = false; 
+  }
+
+
+}
+
+$fetch_hospitalQ = "SELECT * FROM `reg_hospital` ";
+
+$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
 
 
 
-
-
-
+$fetch_hospitalQ = "SELECT * FROM `reg_hospital` ";
+$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
+$hospital_row = mysqli_num_rows($fetch_hospital);
+// =============
+// =============
+// =============
+$fetch_vaccineQ = "SELECT * FROM `vaccine` ";
+$fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
+$vaccine_row = mysqli_num_rows($fetch_vaccine);
 
 
 
@@ -57,7 +107,18 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-
+<style>
+  .error-message{
+    border-radius: .4rem;
+    padding: .5rem;
+    color: white;
+  }
+  .sent-message{
+    border-radius: .4rem;
+    padding: .5rem;
+    color: white;
+  }
+</style>
 </head>
 
 <body>
@@ -67,68 +128,122 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 <br><br><br><br><br>
   <!-- ======= Appointment Section ======= -->
   <section id="appointment" class="appointment section-bg">
-      <div class="container" data-aos="fade-up">
+      <div class="container" >
 
         <div class="section-title">
           <h2>Registeration for Patients</h2>
           <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
         </div>
+        <div class="text-center">
+            <?php
+            
+            if($pat_register){
+              echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
+            }
+            if($fill_error){
+              echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';
 
-        <form  action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
+            }
+            if($pat_register_error){
+              echo '<div style="color:white;" class="error-message bg-danger">Your appointment request has not been sent . try again!</div>';
+            }
+            ?>
+            
+            
+          </div>
+          <br><br>
+        <form  action="pat_reg.php" method="post"  class="php-email-form">
+        
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required value="<?=$_SESSION['name']?>">
+            <label for="yourName" class="form-label">Your Name</label>
+              <input type="text" name="pat_name" class="form-control" id="name" placeholder="Your Name"  value="<?=$_SESSION['name']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required value="<?=$_SESSION['email']?>">
+            <label for="yourName" class="form-label">Your Email</label>
+              <input type="email" class="form-control" name="pat_email" id="email" placeholder="Your Email"  value="<?=$_SESSION['email']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="number" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+            <label for="yourName" class="form-label">Your Phone</label>
+              <input   mask="0000-000000000" type="number" class="form-control" name="pat_phone" id="phone" placeholder="Your Phone" >
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-md-4 form-group">
-              <input max="13" type="number" name="name" class="form-control" id="name" placeholder="Your Cnic" required value="<?=$_SESSION['cnic']?>">
+            <label for="yourName" class="form-label">Your Cnic</label>
+              <input minlength="13" maxlength="13" type="number" name="pat_cnic" class="form-control" id="name" placeholder="Your Cnic"  value="<?=$_SESSION['cnic']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="number" class="form-control" name="email" id="email" placeholder="Your Age" required>
+            <label for="yourName" class="form-label">Your Age</label>
+              <input type="number" class="form-control" name="pat_age" id="email" placeholder="Your Age" >
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-            <select name="department" id="department" class="form-select">
+            <label for="yourName" class="form-label">Your Gender</label>
+            <select name="pat_gender" id="pat_gender" class="form-select">
                 <option value="">Select Your Gender</option>
-                <option value="Department 1" >Male</option>
-                <option value="Department 2" >Femail</option>
+                <option value="Male" >Male</option>
+                <option value="Femail" >Femail</option>
               </select>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
-            </div>
+            <label for="yourName" class="form-label">Appointment Day</label>
+            <select name="pat_day_name" id="pat_day" class="form-select">
+                <option value="">Select Day</option>
+                <option  value="monday">monday</option>
+                <option value="tuesday">tuesday</option>
+                <option value="thusday">thusday</option>
+                <option value="friday">friday</option>
+                <option value="saturday">saturday</option>
+              </select>            </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
+            <label for="yourName" class="form-label">Hospital</label>
+              <select name="pat_hospital_name" id="department" class="form-select">
                 <option value="">Select Hopital</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
+                <?php
+                if($hospital_row > 0){
+                  while($data = mysqli_fetch_assoc($fetch_hospital)){
+
+                    ?>
+                
+               <option value="<?=$data['hospital_name']?>"><?=$data['hospital_name']?></option>
+               <?php
+                }
+              }?>
               </select>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
-                <option value="">Select Vaccine</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
+            <label for="yourName" class="form-label">Vaccine</label>
+              <select name="pat_vaccine_name" id="doctor" class="form-select">
+              <option value="Doctor 1">Select vaccine</option>
+              <?php
+                  $get_vaccine_name = $_GET['vaccine_name'];
+                  if($get_vaccine_name != ''){
+                    echo ' <option selected value="'.$get_vaccine_name .'">'.$get_vaccine_name .'</option>';
+                  }
+                if($hospital_row > 0){
+                  while($vaccine = mysqli_fetch_assoc($fetch_vaccine)){
+                    echo ' <option value="'.$vaccine['vaccine_name'].'">'.$vaccine['vaccine_name'].'</option>';
+                  }
+                }
+               
+
+                
+
+
+              ?>
+               
+            
+                <!-- <option value="Doctor 2">Doctor 2</option> -->
+             
               </select>
             </div>
           </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><input class="btn  w-100" name="submit" type="submit" value="Regiter"></div>
+          <br>
+          <div class="text-center"><input class="btn w-100" name="pat_submit" type="submit" value="Regiter"></div>
+          <!-- <button class="w-100" type="submit" value="Regiter">Regiter</button> -->
         </form>
 
       </div>
@@ -137,7 +252,7 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 
 
 
-
+  
 
     <?php require './component/_footer.php';?>
 <!-- ======================== -->
@@ -147,7 +262,6 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
     </body>
