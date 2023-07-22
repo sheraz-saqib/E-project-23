@@ -43,10 +43,7 @@ if($email == ''  && $pass == '')
 
 if($email !== $Get_email &&  $varifyPass != 1  ){
   $loginError = true;
-  
 }
-
-
 if($notification){
   $loginError = false;
 }

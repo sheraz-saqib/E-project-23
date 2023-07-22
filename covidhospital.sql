@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2023 at 07:35 PM
+-- Generation Time: Jul 22, 2023 at 05:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -44,9 +44,9 @@ CREATE TABLE `reg_hospital` (
 --
 
 INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_emial`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`) VALUES
-(1, 'jinnah', 'sheraz', 'sheraz@gmail.com', '232434343434', 'karachi ', '232323', '14:22 ', '17:44'),
-(2, 'indus', 'subhan', 'subhan@gmail.com', '232372973', 'lahore', '2382388238', '03:33 ', '19:33'),
-(3, 'nmc', 'umair', 'umair@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07');
+(1, 'jinnah', 'sheraz', 'jinnah@gmail.com', '232434343434', 'karachi ', '232323', '14:22 ', '17:44'),
+(2, 'indus', 'subhan', 'indus@gmail.com', '232372973', 'lahore', '2382388238', '03:33 ', '19:33'),
+(3, 'nmc', 'umair', 'nmc@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07');
 
 -- --------------------------------------------------------
 
@@ -64,29 +64,30 @@ CREATE TABLE `reg_patient` (
   `patient_select_hos` varchar(222) NOT NULL,
   `patient_gender` varchar(222) NOT NULL,
   `patient_vacc` varchar(222) NOT NULL,
-  `patient_app_day` varchar(222) NOT NULL
+  `patient_app_day` varchar(222) NOT NULL,
+  `patient_status` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reg_patient`
 --
 
-INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES
-(1, 'subhan', 'subhan@gamil.com', '222222', '4444444444', '22', 'Department 2', 'Department 1', 'Doctor 2', 'monday'),
-(2, 'subhan', 'subhan@gamil.com', '333333333', '4444444444', '33', 'Department 1', 'Department 1', 'Doctor 1', 'monday'),
-(3, 'maria', 'maria@gmail.com', '22222222222', '565655655665', '22', 'Department 3', 'Department 2', 'Doctor 3', 'friday'),
-(4, 'ali', 'ali@gmail.com', '03283238283', '444447237233232', '20', 'Department 1', 'Department 1', 'Doctor 2', 'saturday'),
-(5, 'umair', 'umair@gamil.com', '882773273273', '5544668833', '18', 'Department 2', 'Department 1', 'Doctor 1', 'monday'),
-(6, 'umer', 'umer@gmail.com', '232342423', '565655655665', '19', 'Department 1', 'Department 1', 'Doctor 1', 'thusday'),
-(7, 'sheraz', 'bhanakop@gmial.com', '3232323', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'thusday'),
-(8, 'sheraz', 'bhanakop@gmial.com', '232323', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'friday'),
-(9, 'sheraz', 'bhanakop@gmial.com', '2343', '565655655665', '34', 'Department 1', 'Department 1', 'Doctor 1', 'thusday'),
-(10, 'sheraz', 'bhanakop@gmial.com', '2322323', '5656556556652', '22', 'Department 1', 'Department 1', 'Doctor 3', 'thusday'),
-(11, 'sheraz', 'bhanakop@gmial.com', '2322323', '5656556556652', '22', 'Department 1', 'Department 1', 'Doctor 3', 'thusday'),
-(12, 'sheraz', 'bhanakop@gmial.com', '232323', '565655655665', '22', 'Department 2', 'Department 1', 'Doctor 1', 'friday'),
-(13, 'sheraz2', 'bhana2kop@gmial.com', '2222222', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'monday'),
-(14, 'sheraz3', 'bhan3akop@gmial.com', '3333333', '565655655665', '33', 'Department 1', 'Department 1', 'Doctor 2', 'monday'),
-(15, 'umair', 'umair@gamil.com', '42343434', '565655655665', '18', 'jinnah', 'Department 1', 'Doctor 1', 'thusday');
+INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `patient_status`) VALUES
+(1, 'subhan', 'subhan@gamil.com', '222222', '4444444444', '22', 'Department 2', 'Department 1', 'Doctor 2', 'monday', 'approved'),
+(2, 'subhan', 'subhan@gamil.com', '333333333', '4444444444', '33', 'Department 1', 'Department 1', 'Doctor 1', 'monday', 'approved'),
+(3, 'maria', 'maria@gmail.com', '22222222222', '565655655665', '22', 'Department 3', 'Department 2', 'Doctor 3', 'friday', 'approved'),
+(4, 'ali', 'ali@gmail.com', '03283238283', '444447237233232', '20', 'Department 1', 'Department 1', 'Doctor 2', 'saturday', 'approved'),
+(5, 'umair', 'umair@gamil.com', '882773273273', '5544668833', '18', 'Department 2', 'Department 1', 'Doctor 1', 'monday', 'approved'),
+(6, 'umer', 'umer@gmail.com', '232342423', '565655655665', '19', 'Department 1', 'Department 1', 'Doctor 1', 'thusday', 'approved'),
+(7, 'sheraz', 'bhanakop@gmial.com', '3232323', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'thusday', 'approved'),
+(8, 'sheraz', 'bhanakop@gmial.com', '232323', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'friday', 'approved'),
+(9, 'sheraz', 'bhanakop@gmial.com', '2343', '565655655665', '34', 'Department 1', 'Department 1', 'Doctor 1', 'thusday', 'approved'),
+(10, 'sheraz', 'bhanakop@gmial.com', '2322323', '5656556556652', '22', 'Department 1', 'Department 1', 'Doctor 3', 'thusday', 'approved'),
+(11, 'sheraz', 'bhanakop@gmial.com', '2322323', '5656556556652', '22', 'Department 1', 'Department 1', 'Doctor 3', 'thusday', 'approved'),
+(12, 'sheraz', 'bhanakop@gmial.com', '232323', '565655655665', '22', 'Department 2', 'Department 1', 'Doctor 1', 'friday', 'approved'),
+(13, 'sheraz2', 'bhana2kop@gmial.com', '2222222', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'monday', 'reject'),
+(14, 'sheraz3', 'bhan3akop@gmial.com', '3333333', '565655655665', '33', 'Department 1', 'Department 1', 'Doctor 2', 'monday', 'reject'),
+(15, 'umair', 'umair@gamil.com', '42343434', '565655655665', '18', 'jinnah', 'Department 1', 'Doctor 1', 'thusday', 'reject');
 
 -- --------------------------------------------------------
 
