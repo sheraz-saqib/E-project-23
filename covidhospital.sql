@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2023 at 05:00 AM
+-- Generation Time: Jul 23, 2023 at 08:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `covidhospital`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(222) NOT NULL,
+  `admin_email` varchar(222) NOT NULL,
+  `admin_cnic` varchar(222) NOT NULL,
+  `admin_password` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_cnic`, `admin_password`) VALUES
+(1, 'sherazAdmin', 'admin@gmail.com', '112233445566', '$2y$10$ADB4totvDxKV0XshKd1vX.XWqus0PB0u929/gr5jpuQlCqNyBO.U6');
 
 -- --------------------------------------------------------
 
@@ -73,7 +94,6 @@ CREATE TABLE `reg_patient` (
 --
 
 INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `patient_status`) VALUES
-(1, 'subhan', 'subhan@gamil.com', '222222', '4444444444', '22', 'Department 2', 'Department 1', 'Doctor 2', 'monday', 'approved'),
 (2, 'subhan', 'subhan@gamil.com', '333333333', '4444444444', '33', 'Department 1', 'Department 1', 'Doctor 1', 'monday', 'approved'),
 (3, 'maria', 'maria@gmail.com', '22222222222', '565655655665', '22', 'Department 3', 'Department 2', 'Doctor 3', 'friday', 'approved'),
 (4, 'ali', 'ali@gmail.com', '03283238283', '444447237233232', '20', 'Department 1', 'Department 1', 'Doctor 2', 'saturday', 'approved'),
@@ -87,7 +107,10 @@ INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patie
 (12, 'sheraz', 'bhanakop@gmial.com', '232323', '565655655665', '22', 'Department 2', 'Department 1', 'Doctor 1', 'friday', 'approved'),
 (13, 'sheraz2', 'bhana2kop@gmial.com', '2222222', '565655655665', '22', 'Department 1', 'Department 1', 'Doctor 2', 'monday', 'reject'),
 (14, 'sheraz3', 'bhan3akop@gmial.com', '3333333', '565655655665', '33', 'Department 1', 'Department 1', 'Doctor 2', 'monday', 'reject'),
-(15, 'umair', 'umair@gamil.com', '42343434', '565655655665', '18', 'jinnah', 'Department 1', 'Doctor 1', 'thusday', 'reject');
+(15, 'umair', 'umair@gamil.com', '42343434', '565655655665', '18', 'jinnah', 'Department 1', 'Doctor 1', 'thusday', 'reject'),
+(16, 'sheraz', 'bhanakop@gmial.com', '32343434343', '565655655665', '18', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
+(17, 'ali ', 'aliop@gmial.com', '43454545', '565655655665', '33', 'nmc', 'Male', 'Sinovac', 'thusday', ''),
+(18, 'shahzaib', 'shahzaib@gmai.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', '\r\nCanSino-Bio', 'tuesday', '');
 
 -- --------------------------------------------------------
 
@@ -111,8 +134,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 (1, 'sherazedit', 'sheraz@gmail.com', '12121212121212', '$2y$10$Mwak25yCwrTPjRYy6xtUru4e937ASR/u6v9jzSoJOAny5iv140SR6', '2023-07-19 01:27:06'),
 (2, 'sheraz', 'bhanakop@gmial.com', '565655655665', '$2y$10$yGP6HFqkCOI75fTEVTvx8.n.Csx6i.53z1vpn6ACUnv44YrgeyMTG', '2023-07-19 22:04:21'),
-(3, 'umer', 'bhanakop@gmial.com', '565655655665', '$2y$10$kPq1yVfCw4KUyFphZGI7r.9w5Z18D/79W2SF800jI6/CfSUogfUQu', '2023-07-19 22:06:33'),
-(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11');
+(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11'),
+(6, 'sheraz', 'sheraz1@gmail.com', '565655655665', '$2y$10$.tnSGojF3F/FieAll7lUou/h8zE2pEuB.a8pONqsPnWzPSR1r8tyW', '2023-07-22 22:40:18');
 
 -- --------------------------------------------------------
 
@@ -138,6 +161,12 @@ INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `reg_hospital`
@@ -168,6 +197,12 @@ ALTER TABLE `vaccine`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
@@ -177,13 +212,13 @@ ALTER TABLE `reg_hospital`
 -- AUTO_INCREMENT for table `reg_patient`
 --
 ALTER TABLE `reg_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vaccine`
