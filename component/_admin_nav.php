@@ -6,7 +6,24 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
 }
 ?>
  
- 
+ <style>
+  .text-center input{
+  background-color: #4154f1 !important;
+  border-radius: .3rem !important;
+  color: white;
+}
+.text-center input:hover{
+  background-color: #4153f1d8;
+color: white;
+}
+input{
+  box-shadow:none !important;
+}
+input:focus{
+  border: 1px solid #4153f19c !important;
+
+}
+ </style>
  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -355,7 +372,7 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.php">
+        <a class="nav-link collapsed" href="admin-profile.php">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>

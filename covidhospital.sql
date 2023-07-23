@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 08:59 AM
+-- Generation Time: Jul 23, 2023 at 11:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -32,15 +32,16 @@ CREATE TABLE `admin` (
   `admin_name` varchar(222) NOT NULL,
   `admin_email` varchar(222) NOT NULL,
   `admin_cnic` varchar(222) NOT NULL,
-  `admin_password` varchar(222) NOT NULL
+  `admin_password` varchar(222) NOT NULL,
+  `admin_phone` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_cnic`, `admin_password`) VALUES
-(1, 'sherazAdmin', 'admin@gmail.com', '112233445566', '$2y$10$ADB4totvDxKV0XshKd1vX.XWqus0PB0u929/gr5jpuQlCqNyBO.U6');
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_cnic`, `admin_password`, `admin_phone`) VALUES
+(1, 'sherazAdmin', 'admin@gmail.com', '112233445566', '$2y$10$ADB4totvDxKV0XshKd1vX.XWqus0PB0u929/gr5jpuQlCqNyBO.U6', '33003232323');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 (1, 'sherazedit', 'sheraz@gmail.com', '12121212121212', '$2y$10$Mwak25yCwrTPjRYy6xtUru4e937ASR/u6v9jzSoJOAny5iv140SR6', '2023-07-19 01:27:06'),
-(2, 'sheraz', 'bhanakop@gmial.com', '565655655665', '$2y$10$yGP6HFqkCOI75fTEVTvx8.n.Csx6i.53z1vpn6ACUnv44YrgeyMTG', '2023-07-19 22:04:21'),
+(2, 'sheraz222', 'bhanakop@gmail.com', '565655655665', '$2y$10$yGP6HFqkCOI75fTEVTvx8.n.Csx6i.53z1vpn6ACUnv44YrgeyMTG', '2023-07-19 22:04:21'),
 (4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11'),
 (6, 'sheraz', 'sheraz1@gmail.com', '565655655665', '$2y$10$.tnSGojF3F/FieAll7lUou/h8zE2pEuB.a8pONqsPnWzPSR1r8tyW', '2023-07-22 22:40:18');
 
@@ -200,7 +201,7 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `reg_hospital`

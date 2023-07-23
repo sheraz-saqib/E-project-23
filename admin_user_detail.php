@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'conn.php';
-if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
+if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
     header('location:login.php');
 }
 

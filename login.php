@@ -49,6 +49,8 @@ if(isset($submit)){
       $_SESSION['admin_id'] = $admin_data['admin_id'];
       $_SESSION['admin_name'] = $admin_data['admin_name'];
       $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
+      $_SESSION['admin_email'] = $admin_data['admin_email'];
+      $_SESSION['admin_phone'] = $admin_data['admin_phone'];
       header('location:admin-index.php');
     }
 
