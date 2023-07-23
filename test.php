@@ -73,3 +73,14 @@ session_start();
 
 
                           </script>
+
+
+<?php
+
+$pass = "admin@123";
+
+$str_pass = password_hash($pass,PASSWORD_BCRYPT);
+
+echo $str_pass;
+
+?>

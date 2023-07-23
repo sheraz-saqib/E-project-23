@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'conn.php';
-if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
+if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
     header('location:login.php');
 }
 
@@ -34,7 +34,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>HS Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -314,6 +314,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>
                       <tr>
+                        <th scope="col">s.no</th>
                         <th scope="col">#</th>
                         <th scope="col">Patient Name</th>
                         <th scope="col">Pateint Hospital</th>
@@ -327,9 +328,10 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
 
                     if($totalPatient > 0){
                       while($patient_data = mysqli_fetch_assoc($fetch_Patient)){ 
-                   
+                        $i+=1;
                         if($patient_data['patient_status'] == 'Approved' || $patient_data['patient_status'] == 'approved'){
                           echo '<tr>
+                          <th scope="row"><a href="#">'.$i.'</a></th>
                           <th scope="row"><a href="#">'.$patient_data['patient_id'].'</a></th>
                           <td>'.$patient_data['patient_name'].'</td>
                           <td>'.$patient_data['patient_select_hos'].'</td>
@@ -339,6 +341,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                         }
                         if($patient_data['patient_status'] == 'Reject' || $patient_data['patient_status'] == 'reject'){
                           echo '<tr>
+                          <th scope="row"><a href="#">'.$i.'</a></th>
                           <th scope="row"><a href="#">'.$patient_data['patient_id'].'</a></th>
                           <td>'.$patient_data['patient_name'].'</td>
                           <td>'.$patient_data['patient_select_hos'].'</td>
@@ -348,6 +351,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                         }
                         if($patient_data['patient_status'] == ''){
                           echo '<tr>
+                          <th scope="row"><a href="#">'.$i.'</a></th>
                           <th scope="row"><a href="#">'.$patient_data['patient_id'].'</a></th>
                           <td>'.$patient_data['patient_name'].'</td>
                           <td>'.$patient_data['patient_select_hos'].'</td>

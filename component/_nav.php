@@ -80,6 +80,12 @@ button{
   background-color: #4153f1d8;
 color: white;
 }
+.col-lg-4:hover{
+color: #4154f1 !important;
+}
+.col-lg-4:hover .icon{
+  box-shadow: 0 0 1rem #4153f169 !important;
+}
 </style>
  <!-- navbar -->
 <!-- Modal -->

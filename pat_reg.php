@@ -87,7 +87,7 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <?php require './component/_links.php'?>
+  <?php require './component/_links.php';?>
 
 <style>
   .error-message{
@@ -104,7 +104,7 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
 </head>
 
 <body>
-    <?php require './component/_nav.php';?>
+<?php require './component/_nav.php';?>
 
 
 <br><br><br><br><br>
@@ -239,13 +239,7 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
     <?php require './component/_footer.php';?>
 <!-- ======================== -->
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <?php require './component/_user_script.php';?>
     </body>
     
 </html>

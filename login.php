@@ -14,36 +14,56 @@ $submit = $_POST['submit'];
 
 
 if(isset($submit)){
-
+  
 
   if($email != '' && $pass !=''){
-    $selectQ = "SELECT * FROM `user` WHERE `email` = '$email'";
-    $select = mysqli_query($conn,$selectQ);
-    $data = mysqli_fetch_assoc($select);
-    $Get_email = $data['email'];
-    $Get_pass = $data['password'];
-    $varifyPass = password_verify($pass,$Get_pass);
 
+    $user_selectQ = "SELECT * FROM `user` WHERE `email` = '$email'";
+    $user_select = mysqli_query($conn,$user_selectQ);
+    $user_data = mysqli_fetch_assoc($user_select);
+    $user_Get_email = $user_data['email'];
+    $user_Get_pass = $user_data['password'];
+    $user_varifyPass = password_verify($pass,$user_Get_pass);
+
+    // ===========================================================
+    $admin_selectQ = "SELECT * FROM `admin` WHERE admin_email = '$email'";
+    $admin_select = mysqli_query($conn,$admin_selectQ);
+    $admin_data = mysqli_fetch_assoc($admin_select);
+    $admin_Get_email = $admin_data['admin_email'];
+    $admin_Get_pass = $admin_data['admin_password'];
+    $admin_varifyPass = password_verify($pass,$admin_Get_pass);
+
+
+    
     // echo var_dump($varifyPass);
-    if($email === $Get_email && $varifyPass == 1){
+    if($email === $user_Get_email && $user_varifyPass == 1){
       session_start();
-      $_SESSION['id'] = $data['id'];
-      $_SESSION['name'] = $data['name'];
-      $_SESSION['cnic'] = $data['cnic'];
-      $_SESSION['email'] = $data['email'];
+      $_SESSION['id'] = $user_data['id'];
+      $_SESSION['name'] = $user_data['name'];
+      $_SESSION['cnic'] = $user_data['cnic'];
+      $_SESSION['email'] = $user_data['email'];
       header('location:welcome.php');
+    }
+    if($email === $admin_Get_email && $admin_varifyPass == 1){
+      session_start();
+      $_SESSION['admin_id'] = $admin_data['admin_id'];
+      $_SESSION['admin_name'] = $admin_data['admin_name'];
+      $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
+      header('location:admin-index.php');
     }
 
   }
+  
 
 if($email == ''  && $pass == '')
 {
   $notification = true;
 }
-
-if($email !== $Get_email &&  $varifyPass != 1  ){
+if($email !== $admin_Get_email &&  $admin_varifyPass != 1 ){
   $loginError = true;
+
 }
+
 if($notification){
   $loginError = false;
 }
@@ -226,17 +246,7 @@ text-transform: lowercase;
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <?php require './component/_user_script.php';?>
 
 </body>
 

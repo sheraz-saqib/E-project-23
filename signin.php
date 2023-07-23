@@ -15,7 +15,7 @@ $passNotComfirm = false;
 if(isset($submit)){
 
 if($name != '' && $cnic != '' && $email != '' && $pass != '' && $confirmPass != '' && $pass === $confirmPass){
-  $insertQ = "INSERT INTO `user`(`name`, `email`, `cnic`, `password`, `time`) VALUES ('$name','$email','$cnic','$pass',	current_timestamp())";
+  $insertQ = "INSERT INTO `user`(`name`, `email`, `cnic`, `password`, `time`) VALUES ('$name','$email','$cnic','$str_pass',	current_timestamp())";
   $insert= mysqli_query($conn,$insertQ);
 
   if($insert){
@@ -206,17 +206,7 @@ text-transform: lowercase;
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <?php require './component/_user_script.php';?>
 
 </body>
 
