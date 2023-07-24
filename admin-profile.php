@@ -5,48 +5,8 @@ require 'conn.php';
 if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
     header('location:login.php');}
 
-$admin_id = $_SESSION['admin_id'];
-$admin_name_edit = $_POST['$admin_name_edit'];
-$admin_cnic_edit = $_POST['$admin_cnic_edit'];
-$admin_email_edit = $_POST['$admin_email_edit'];
-$admin_phone_edit = $_POST['$admin_phoneedit'];
-$admin_edit_submit = $_POST['$admin_edit_submit'];
 
-    // if(isset($admin_edit_submit)){
-    //   // session_unset();
-    //   if($admin_name_edit !='' && $admin_email_edit !='' &&  $admin_cnic_edit !='' && $admin_phone_edit !=''){
-    //     $admin_updateQ = "UPDATE `admin` SET `admin_name`='$admin_name_edit',`admin_email`='$admin_email_edit',`admin_cnic`='$admin_cnic_edit',`admin_phone`='$admin_phone_edit' WHERE id=$admin_id";
-    //     $admin_update = mysqli_query($conn,$admin_updateQ);
 
-    //     if($admin_update){
-    //       $admin_update_succ= true;
-    //       session_start();
-    //       $_SESSION['admin_id'] = $admin_data['admin_id'];
-    //       $_SESSION['admin_name'] = $admin_data['admin_name'];
-    //       $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-    //       $_SESSION['admin_email'] = $admin_data['admin_email'];
-    //       $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-    //     }
-    //   }
-    // }
-    // if($admin_name_edit =='' && $admin_email_edit =='' && $admin_cnic_edit =='' && $admin_phone_edit ==''){
-    //   $fill_error = true;
-    //   session_start();
-    //   $_SESSION['admin_id'] = $admin_data['admin_id'];
-    //   $_SESSION['admin_name'] = $admin_data['admin_name'];
-    //   $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-    //   $_SESSION['admin_email'] = $admin_data['admin_email'];
-    //   $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-    // }
-    // if(!$admin_update){
-    //   $admin_update_error = true; 
-    //   session_start();
-    //   $_SESSION['admin_id'] = $admin_data['admin_id'];
-    //   $_SESSION['admin_name'] = $admin_data['admin_name'];
-    //   $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-    //   $_SESSION['admin_email'] = $admin_data['admin_email'];
-    //   $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-    // }
 
 
 
@@ -145,7 +105,6 @@ $admin_edit_submit = $_POST['$admin_edit_submit'];
                   <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
 
                   <h5 class="card-title">Profile Details</h5>
-
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
                     <div class="col-lg-9 col-md-8"><?=$_SESSION['admin_name']?></div>
@@ -171,11 +130,12 @@ $admin_edit_submit = $_POST['$admin_edit_submit'];
                   </div>
 
                 </div>
+                
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form action="admin-profile.php" method="post" >
+                  <form action="admin_update.php"  method="GET">
                   <?php
        if($admin_update_succ){
         echo "<div class='notification'>
@@ -210,7 +170,7 @@ $admin_edit_submit = $_POST['$admin_edit_submit'];
       </div>
     </div>";
   }
-  ?>
+  // ?>
                     <!-- <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
@@ -221,6 +181,9 @@ $admin_edit_submit = $_POST['$admin_edit_submit'];
                         </div>
                       </div>
                     </div> -->
+
+                        <input hidden value="<?=$_SESSION['admin_id']?>" name="admin_id" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input hidden value="<?=$_SESSION['admin_email']?>" name="admin_old_email" type="text" class="form-control" id="fullName" value="Kevin Anderson">
 
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
@@ -312,6 +275,7 @@ $admin_edit_submit = $_POST['$admin_edit_submit'];
                   </form><!-- End Profile Edit Form -->
 
                 </div>
+         
 
                 <div class="tab-pane fade pt-3" id="profile-settings">
 
