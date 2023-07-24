@@ -32,6 +32,7 @@ $GetOldData = mysqli_fetch_array($select);
     rel="stylesheet">
 
     <?php require './component/_links.php'?>
+    
   <style>
     * {
       box-shadow: none !important;

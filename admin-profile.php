@@ -12,41 +12,41 @@ $admin_email_edit = $_POST['$admin_email_edit'];
 $admin_phone_edit = $_POST['$admin_phoneedit'];
 $admin_edit_submit = $_POST['$admin_edit_submit'];
 
-    if(isset($admin_edit_submit)){
-      // session_unset();
-      if($admin_name_edit !='' && $admin_email_edit !='' &&  $admin_cnic_edit !='' && $admin_phone_edit !=''){
-        $admin_updateQ = "UPDATE `admin` SET `admin_name`='$admin_name_edit',`admin_email`='$admin_email_edit',`admin_cnic`='$admin_cnic_edit',`admin_phone`='$admin_phone_edit' WHERE id=$admin_id";
-        $admin_update = mysqli_query($conn,$admin_updateQ);
+    // if(isset($admin_edit_submit)){
+    //   // session_unset();
+    //   if($admin_name_edit !='' && $admin_email_edit !='' &&  $admin_cnic_edit !='' && $admin_phone_edit !=''){
+    //     $admin_updateQ = "UPDATE `admin` SET `admin_name`='$admin_name_edit',`admin_email`='$admin_email_edit',`admin_cnic`='$admin_cnic_edit',`admin_phone`='$admin_phone_edit' WHERE id=$admin_id";
+    //     $admin_update = mysqli_query($conn,$admin_updateQ);
 
-        if($admin_update){
-          $admin_update_succ= true;
-          session_start();
-          $_SESSION['admin_id'] = $admin_data['admin_id'];
-          $_SESSION['admin_name'] = $admin_data['admin_name'];
-          $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-          $_SESSION['admin_email'] = $admin_data['admin_email'];
-          $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-        }
-      }
-    }
-    if($admin_name_edit =='' && $admin_email_edit =='' && $admin_cnic_edit =='' && $admin_phone_edit ==''){
-      $fill_error = true;
-      session_start();
-      $_SESSION['admin_id'] = $admin_data['admin_id'];
-      $_SESSION['admin_name'] = $admin_data['admin_name'];
-      $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-      $_SESSION['admin_email'] = $admin_data['admin_email'];
-      $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-    }
-    if(!$admin_update){
-      $admin_update_error = true; 
-      session_start();
-      $_SESSION['admin_id'] = $admin_data['admin_id'];
-      $_SESSION['admin_name'] = $admin_data['admin_name'];
-      $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
-      $_SESSION['admin_email'] = $admin_data['admin_email'];
-      $_SESSION['admin_phone'] = $admin_data['admin_phone'];
-    }
+    //     if($admin_update){
+    //       $admin_update_succ= true;
+    //       session_start();
+    //       $_SESSION['admin_id'] = $admin_data['admin_id'];
+    //       $_SESSION['admin_name'] = $admin_data['admin_name'];
+    //       $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
+    //       $_SESSION['admin_email'] = $admin_data['admin_email'];
+    //       $_SESSION['admin_phone'] = $admin_data['admin_phone'];
+    //     }
+    //   }
+    // }
+    // if($admin_name_edit =='' && $admin_email_edit =='' && $admin_cnic_edit =='' && $admin_phone_edit ==''){
+    //   $fill_error = true;
+    //   session_start();
+    //   $_SESSION['admin_id'] = $admin_data['admin_id'];
+    //   $_SESSION['admin_name'] = $admin_data['admin_name'];
+    //   $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
+    //   $_SESSION['admin_email'] = $admin_data['admin_email'];
+    //   $_SESSION['admin_phone'] = $admin_data['admin_phone'];
+    // }
+    // if(!$admin_update){
+    //   $admin_update_error = true; 
+    //   session_start();
+    //   $_SESSION['admin_id'] = $admin_data['admin_id'];
+    //   $_SESSION['admin_name'] = $admin_data['admin_name'];
+    //   $_SESSION['admin_cnic'] = $admin_data['admin_cnic'];
+    //   $_SESSION['admin_email'] = $admin_data['admin_email'];
+    //   $_SESSION['admin_phone'] = $admin_data['admin_phone'];
+    // }
 
 
 
