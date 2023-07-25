@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2023 at 11:07 AM
+-- Generation Time: Jul 25, 2023 at 07:15 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -20,6 +20,44 @@ SET time_zone = "+00:00";
 --
 -- Database: `covidhospital`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accept_hospital`
+--
+
+CREATE TABLE `accept_hospital` (
+  `hospital_id` int(11) NOT NULL,
+  `hospital_name` varchar(200) NOT NULL,
+  `hospital_manager_name` varchar(200) NOT NULL,
+  `hospital_emial` varchar(255) NOT NULL,
+  `hospital_contact` varchar(255) NOT NULL,
+  `hospital_location` varchar(222) NOT NULL,
+  `hospital_Avail_vaccine` varchar(222) NOT NULL,
+  `hospital_manager_cnic` varchar(222) NOT NULL,
+  `hospital_open_time` varchar(222) NOT NULL,
+  `hospital_close_time` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accept_patient`
+--
+
+CREATE TABLE `accept_patient` (
+  `patient_id` int(11) NOT NULL,
+  `patient_name` varchar(200) NOT NULL,
+  `patient_email` varchar(200) NOT NULL,
+  `patient_phone` varchar(255) NOT NULL,
+  `patient_cnic` varchar(255) NOT NULL,
+  `patient_age` varchar(222) NOT NULL,
+  `patient_select_hos` varchar(222) NOT NULL,
+  `patient_gender` varchar(222) NOT NULL,
+  `patient_vacc` varchar(222) NOT NULL,
+  `patient_app_day` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -41,7 +79,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_cnic`, `admin_password`, `admin_phone`) VALUES
-(1, 'sherazAdmin', 'admin@gmail.com', '112233445566', '$2y$10$ADB4totvDxKV0XshKd1vX.XWqus0PB0u929/gr5jpuQlCqNyBO.U6', '33003232323');
+(1, 'sherazAdmin1', 'admin@gmail.com', '112233445566', '$2y$10$ADB4totvDxKV0XshKd1vX.XWqus0PB0u929/gr5jpuQlCqNyBO.U6', '33003232323'),
+(3, 'subhanedit', 'admin22@gmail.com', '43443434', '23232', '344343434');
 
 -- --------------------------------------------------------
 
@@ -68,7 +107,8 @@ CREATE TABLE `reg_hospital` (
 INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_emial`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`) VALUES
 (1, 'jinnah', 'sheraz', 'jinnah@gmail.com', '232434343434', 'karachi ', '232323', '14:22 ', '17:44'),
 (2, 'indus', 'subhan', 'indus@gmail.com', '232372973', 'lahore', '2382388238', '03:33 ', '19:33'),
-(3, 'nmc', 'umair', 'nmc@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07');
+(3, 'nmc', 'umair', 'nmc@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07'),
+(4, 'nationl', 'JAVEED', 'national@gmail.com', '232323232', 'karachi ', '7277277272', '23:59 ', '12:59');
 
 -- --------------------------------------------------------
 
@@ -111,7 +151,9 @@ INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patie
 (15, 'umair', 'umair@gamil.com', '42343434', '565655655665', '18', 'jinnah', 'Department 1', 'Doctor 1', 'thusday', 'reject'),
 (16, 'sheraz', 'bhanakop@gmial.com', '32343434343', '565655655665', '18', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
 (17, 'ali ', 'aliop@gmial.com', '43454545', '565655655665', '33', 'nmc', 'Male', 'Sinovac', 'thusday', ''),
-(18, 'shahzaib', 'shahzaib@gmai.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', '\r\nCanSino-Bio', 'tuesday', '');
+(18, 'shahzaib', 'shahzaib@gmai.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', '\r\nCanSino-Bio', 'tuesday', ''),
+(19, 'sheraz test', 'sheraz@gmail.com', '5454545', '12121212121212', '18', 'nationl', 'Male', '\r\nSinopharm', 'thusday', ''),
+(20, 'javeed', 'javeed@gmail.com', '4343434', '4343434', '22', 'jinnah', 'Male', 'Sputnik', 'tuesday', 'approved');
 
 -- --------------------------------------------------------
 
@@ -133,10 +175,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
-(1, 'sherazedit', 'sheraz@gmail.com', '12121212121212', '$2y$10$Mwak25yCwrTPjRYy6xtUru4e937ASR/u6v9jzSoJOAny5iv140SR6', '2023-07-19 01:27:06'),
-(2, 'sheraz222', 'bhanakop@gmail.com', '565655655665', '$2y$10$yGP6HFqkCOI75fTEVTvx8.n.Csx6i.53z1vpn6ACUnv44YrgeyMTG', '2023-07-19 22:04:21'),
-(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11'),
-(6, 'sheraz', 'sheraz1@gmail.com', '565655655665', '$2y$10$.tnSGojF3F/FieAll7lUou/h8zE2pEuB.a8pONqsPnWzPSR1r8tyW', '2023-07-22 22:40:18');
+(1, 'sheraz', 'sheraz@gmail.com', '12121212121212', '$2y$10$Mwak25yCwrTPjRYy6xtUru4e937ASR/u6v9jzSoJOAny5iv140SR6', '2023-07-19 01:27:06'),
+(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11');
 
 -- --------------------------------------------------------
 
@@ -162,6 +202,12 @@ INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `accept_patient`
+--
+ALTER TABLE `accept_patient`
+  ADD PRIMARY KEY (`patient_id`);
 
 --
 -- Indexes for table `admin`
@@ -201,25 +247,25 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reg_patient`
 --
 ALTER TABLE `reg_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `vaccine`

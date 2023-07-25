@@ -15,9 +15,15 @@
 
 
 <style>
+  *{
+        box-shadow:none !important;
+    }
     button{
   border: transparent;
   
+}
+a{
+  cursor: pointer;
 }
 .modal-header{
     display: flex;
@@ -108,6 +114,25 @@ color: #4154f1 !important;
     </div>
   </div> 
  <!-- modal -->
+ <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Status</h5>
+       
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+         <div><a href="patient_status.php"> <div class="vacc-reg-btn "><i class="fa-solid fa-bed"></i>Status Check for parient</div></a></div>
+         <div><a href="hospital_status.php"> <div class="vacc-reg-btn "><i class="fa-regular fa-hospital"></i>Status Check for hospital</div></a></div>
+        </div>
+        <!-- <div class="modal-footer">
+        <button class="vacc-reg-btn "> cancel</button>
+        </div> -->
+      </div>
+    </div>
+  </div> 
+ <!-- modal -->
  <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
       <div class="align-items-center d-none d-md-flex">
@@ -129,7 +154,7 @@ color: #4154f1 !important;
           <li><a class="nav-link scrollto" href="welcome.php#vaccine">vaccines</a></li>
           <li><a class="nav-link scrollto" href="welcome.php#services">Services</a></li>
           <li><a class="nav-link scrollto" href="welcome.php#departments">Departments</a></li>
-          <li><a class="nav-link scrollto" href="welcome.php#doctors">status</a></li>
+          <li><a class="nav-link scrollto"data-bs-toggle="modal" data-bs-target="#statusModal" class="appointment-btn scrollto" >status</a></li>
           
           <li><a class="nav-link scrollto" href="welcome.php#contact">Contact</a></li>
           <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
