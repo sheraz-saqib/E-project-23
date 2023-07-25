@@ -10,3 +10,22 @@
 
  <!-- Template Main JS File -->
  <script src="assets_admin/js/main.js"></script>
+
+
+ <script>
+  const user_delete = document.querySelectorAll('.user_delete');
+
+
+user_delete.forEach(crr=>{
+  crr.addEventListener('click',()=>{
+    if(confirm('Delete this user')){
+      crr.href
+    }
+    else{
+      crr.href = '#';
+    }
+  })
+})
+
+  
+ </script>

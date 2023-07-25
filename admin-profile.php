@@ -137,39 +137,39 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
                   <!-- Profile Edit Form -->
                   <form action="admin_update.php"  method="GET">
                   <?php
-       if($admin_update_succ){
-        echo "<div class='notification'>
-        <div class='message success'>
-          <h2>Success!</h2>
-          <p>Your profile has edit</p>
-        </div>
-        <div class='cross_icon'>
-          <i class='fa-solid fa-xmark'></i>
-        </div>
-      </div>";
-    }
-    if($fillError){
-      echo "<div class='notification'>
-      <div class='message danger'>
-        <h2>Failed!</h2>
-        <p>Your data not submitted or please fill out this fields</p>
-      </div>
-      <div class='cross_icon'>
-        <i class='fa-solid fa-xmark'></i>
-      </div>
-    </div>";
-  }
-    if($admin_update_error){
-      echo "<div class='notification'>
-      <div class='message danger'>
-        <h2>Failed!</h2>
-        <p>please try again </p>
-      </div>
-      <div class='cross_icon'>
-        <i class='fa-solid fa-xmark'></i>
-      </div>
-    </div>";
-  }
+  //      if($admin_update_succ){
+  //       echo "<div class='notification'>
+  //       <div class='message success'>
+  //         <h2>Success!</h2>
+  //         <p>Your profile has edit</p>
+  //       </div>
+  //       <div class='cross_icon'>
+  //         <i class='fa-solid fa-xmark'></i>
+  //       </div>
+  //     </div>";
+  //   }
+  //   if($fillError){
+  //     echo "<div class='notification'>
+  //     <div class='message danger'>
+  //       <h2>Failed!</h2>
+  //       <p>Your data not submitted or please fill out this fields</p>
+  //     </div>
+  //     <div class='cross_icon'>
+  //       <i class='fa-solid fa-xmark'></i>
+  //     </div>
+  //   </div>";
+  // }
+  //   if($admin_update_error){
+  //     echo "<div class='notification'>
+  //     <div class='message danger'>
+  //       <h2>Failed!</h2>
+  //       <p>please try again </p>
+  //     </div>
+  //     <div class='cross_icon'>
+  //       <i class='fa-solid fa-xmark'></i>
+  //     </div>
+  //   </div>";
+  // }
   // ?>
                     <!-- <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>

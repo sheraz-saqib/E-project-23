@@ -82,5 +82,8 @@ $pass = "admin@123";
 $str_pass = password_hash($pass,PASSWORD_BCRYPT);
 
 echo $str_pass;
-
+$fetch_userPatientQ = "SELECT user.id,reg_patient.patient_id,user.name,user.email,reg_patient.patient_gender,reg_patient.patient_select_hos,reg_patient.patient_app_day,reg_patient.patient_vacc,reg_patient.patient_status FROM user JOIN reg_patient WHERE user.name = reg_patient.patient_name AND user.email = reg_patient.patient_email;
+";
+$fetch_userPatient = mysqli_query($conn,$fetch_userQ);
+echo var_dump($fetch_userPatient);
 ?>

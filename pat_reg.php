@@ -139,11 +139,11 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
           <div class="row">
             <div class="col-md-4 form-group">
             <label for="yourName" class="form-label">Your Name</label>
-              <input type="text" name="pat_name" class="form-control" id="name" placeholder="Your Name"  value="<?=$_SESSION['name']?>">
+              <input readonly type="text" name="pat_name" class="form-control" id="name" placeholder="Your Name"  value="<?=$_SESSION['name']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Your Email</label>
-              <input type="email" class="form-control" name="pat_email" id="email" placeholder="Your Email"  value="<?=$_SESSION['email']?>">
+              <input readonly type="email" class="form-control" name="pat_email" id="email" placeholder="Your Email"  value="<?=$_SESSION['email']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Your Phone</label>
@@ -154,7 +154,7 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
           <div class="row">
             <div class="col-md-4 form-group">
             <label for="yourName" class="form-label">Your Cnic</label>
-              <input minlength="13" maxlength="13" type="number" name="pat_cnic" class="form-control" id="name" placeholder="Your Cnic"  value="<?=$_SESSION['cnic']?>">
+              <input readonly minlength="13" maxlength="13" type="number" name="pat_cnic" class="form-control" id="name" placeholder="Your Cnic"  value="<?=$_SESSION['cnic']?>">
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Your Age</label>

@@ -10,7 +10,11 @@ $fetch_userQ = "SELECT * FROM `user`";
 $fetch_user = mysqli_query($conn,$fetch_userQ);
 $totalUser = mysqli_num_rows($fetch_user);
 // ==============
-
+$fetch_userPatientQ = "SELECT user.id,reg_patient.patient_id,user.name,user.email,reg_patient.patient_gender,reg_patient.patient_select_hos,reg_patient.patient_app_day,reg_patient.patient_vacc,reg_patient.patient_status FROM user JOIN reg_patient WHERE user.name = reg_patient.patient_name AND user.email = reg_patient.patient_email;
+";
+$fetch_userPatient = mysqli_query($conn,$fetch_userPatientQ);
+$totalUserPatient = mysqli_num_rows($fetch_userPatient); 
+// =================
 $fetch_HospitalQ = "SELECT * FROM `reg_hospital`";
 $fetch_Hospital = mysqli_query($conn,$fetch_HospitalQ);
 $totalHospital = mysqli_num_rows($fetch_Hospital);
@@ -133,6 +137,149 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                         <th scope="col">user email</th>
                         <th scope="col">user cnic</th>
                         <th scope="col">Create Acc Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    
+                    <?php
+
+                    if($totalUser > 0){
+                      while($user_data = mysqli_fetch_assoc($fetch_user)){ 
+                        $i+=1;
+
+                          echo '<tr>
+                          <th scope="row"><a href="#">'.$i.'</a></th>
+                          <th scope="row"><a href="#">'.$user_data['id'].'</a></th>
+                          <td>'.$user_data['name'].'</td>
+                          <td><a  class="text-primary">'.$user_data['email'].'</a></td>
+                          <td>'.$user_data['cnic'].'</td>
+                          <td><a  class="text-primary">'.$user_data['time'].'</a></td>
+                          <td><a  href="user_del.php?DelId='.$user_data['id'].'" class="badge bg-danger user_delete">Delete</a></td>
+                        </tr>';
+                        }
+                        
+                    }
+                    ?>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+<!-- Recent Sales -->
+<div class="col-12" >
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>option</h6>
+                    </li>
+
+                    <li><button class="dropdown-item" href="#" onclick="htmlToPdf()">Download Pdf</button></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Users Register Patients</h5>
+
+                  <table class="table table-borderless datatable" id="dowload_pdf">
+                    <thead>
+                      <tr>
+                  
+                        <th scope="col">User ID</th>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Patient email</th>
+                        <th scope="col">Patient Gender</th>
+                        <th scope="col">Patient Hospital</th>
+                        <th scope="col">Appointment Day</th>
+                        <th scope="col">Vaccine</th>
+                        <th scope="col">Patient status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    
+                    <?php
+
+                    if($totalUserPatient > 0){
+                      while($userPatient_data = mysqli_fetch_array($fetch_userPatient)){ 
+                     
+                        if($userPatient_data['patient_status'] !== ''){
+                          echo '<tr>
+        
+                          <th scope="row"><a href="#">'.$userPatient_data['id'].'</a></th>
+                          <th scope="row"><a href="#">'.$userPatient_data['patient_id'].'</a></th>
+                          <td>'.$userPatient_data['name'].'</td>
+                          <td><a  class="text-primary">'.$userPatient_data['email'].'</a></td>
+                          <td>'.$userPatient_data['patient_gender'].'</td>
+                          <td>'.$userPatient_data['patient_select_hos'].'</td>
+                          <td>'.$userPatient_data['patient_app_day'].'</td>
+                          <td>'.$userPatient_data['patient_vacc'].'</td>
+                          
+                          <td>'.$userPatient_data['patient_status'].'</td>
+                        </tr>';
+                        }
+
+                        if($userPatient_data['patient_status'] == ''){
+                          echo '<tr>
+        
+                          <th scope="row"><a href="#">'.$userPatient_data['id'].'</a></th>
+                          <th scope="row"><a href="#">'.$userPatient_data['patient_id'].'</a></th>
+                          <td>'.$userPatient_data['name'].'</td>
+                          <td><a  class="text-primary">'.$userPatient_data['email'].'</a></td>
+                          <td>'.$userPatient_data['patient_gender'].'</td>
+                          <td>'.$userPatient_data['patient_select_hos'].'</td>
+                          <td>'.$userPatient_data['patient_app_day'].'</td>
+                          <td>'.$userPatient_data['patient_vacc'].'</td>
+                          
+                          <td>Pending</td>
+                        </tr>';
+                        }
+                        }
+                       
+                        
+                    }
+                    ?>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+            <div class="col-12" >
+              <div class="card recent-sales overflow-auto">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>option</h6>
+                    </li>
+
+                    <li><button class="dropdown-item" href="#" onclick="htmlToPdf()">Download Pdf</button></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Users Register for Hospital</h5>
+
+                  <table class="table table-borderless datatable" id="dowload_pdf">
+                    <thead>
+                      <tr>
+                        <th scope="col">s.no</th>
+                        <th scope="col">#</th>
+                        <th scope="col">user Name</th>
+                        <th scope="col">user email</th>
+                        <th scope="col">user cnic</th>
+                        <th scope="col">Create Acc Date</th>
+                        <th scope="col">Create Acc Date</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -163,7 +310,6 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
 
               </div>
             </div><!-- End Recent Sales -->
-
             <!-- Top Selling -->
             <div class="col-12 ">
               <div class="card top-selling overflow-auto">

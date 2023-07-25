@@ -131,13 +131,13 @@ if(isset($hopital_submit)){
               <input type="text" name="hospital_name" class="form-control" id="name" placeholder="Your Name"  >
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-            <label for="yourName" class="form-label">Manager Name </label>
-              <input type="text" class="form-control" name="hospital_Manager_name" id="phone" placeholder="Your Phone" >
+            <label for="yourName" class="form-label"> Manager Name </label>
+              <input readonly value="<?=$_SESSION['name']?>" type="text" class="form-control" name="hospital_Manager_name" id="phone" placeholder="Your Phone" >
            
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Offical Email</label>
-              <input type="email" class="form-control" name="hospital_email" id="email" placeholder="Your Email"  >
+              <input readonly value="<?=$_SESSION['email']?>" type="email" class="form-control" name="hospital_email" id="email" placeholder="Your Email"  >
             
             </div>
           </div>
@@ -154,7 +154,7 @@ if(isset($hopital_submit)){
                     </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
               <label for="yourName" class="form-label">Manager Cnic</label>
-              <input type="number"  class="form-control" name="hopital_Manager_cnic" id="phone" placeholder="Your Phone" >
+              <input readonly value="<?=$_SESSION['cnic']?>" type="number"  class="form-control" name="hopital_Manager_cnic" id="phone" placeholder="Your Phone" >
             </div>
           </div>
           <div class="row">
