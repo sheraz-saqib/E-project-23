@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 08:50 AM
+-- Generation Time: Jul 27, 2023 at 10:44 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -59,15 +59,17 @@ CREATE TABLE `accept_patient` (
   `patient_vacc` varchar(222) NOT NULL,
   `patient_app_day` varchar(222) NOT NULL,
   `pateint_dos_1` varchar(222) NOT NULL,
-  `pateint_dos_2` varchar(222) NOT NULL
+  `pateint_dos_2` varchar(222) NOT NULL,
+  `pateint_dos_1_date` varchar(111) NOT NULL,
+  `pateint_dos_2_date` varchar(111) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accept_patient`
 --
 
-INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `pateint_dos_1`, `pateint_dos_2`) VALUES
-(1, 18, 'shahzaib', 'shahzaib@gmail.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', 'CanSino-Bio', '	\r\ntuesday', 'vaccinated', 'vaccinated');
+INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `pateint_dos_1`, `pateint_dos_2`, `pateint_dos_1_date`, `pateint_dos_2_date`) VALUES
+(1, 18, 'shahzaib', 'shahzaib@gmail.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', 'CanSino-Bio', '	\r\ntuesday', 'vaccinated', 'vaccinated', '10-5-23', '12-9-23');
 
 -- --------------------------------------------------------
 
