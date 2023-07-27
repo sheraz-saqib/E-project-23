@@ -276,9 +276,10 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                         <th scope="col">s.no</th>
                         <th scope="col">#</th>
                         <th scope="col">user Name</th>
-                        <th scope="col">user email</th>
-                        <th scope="col">user cnic</th>
-                        <th scope="col">Create Acc Date</th>
+                        <th scope="col">hospital email</th>
+                        <th scope="col">hospital manager cnic</th>
+                        <th scope="col">hospital location</th>
+                        <th scope="col">hospital contact</th>
                         <th scope="col">Create Acc Date</th>
                       </tr>
                     </thead>
@@ -287,17 +288,19 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                     
                     <?php
 
-                    if($totalUser > 0){
-                      while($user_data = mysqli_fetch_assoc($fetch_user)){ 
-                        $i+=1;
+                    if($totalHospital > 0){
+                      while($user_apply_hospital = mysqli_fetch_assoc($fetch_Hospital)){ 
+                        $j+=1;
 
                           echo '<tr>
-                          <th scope="row"><a href="#">'.$i.'</a></th>
-                          <th scope="row"><a href="#">'.$user_data['id'].'</a></th>
-                          <td>'.$user_data['name'].'</td>
-                          <td><a  class="text-primary">'.$user_data['email'].'</a></td>
-                          <td>'.$user_data['cnic'].'</td>
-                          <td><a  class="text-primary">'.$user_data['time'].'</a></td>
+                          <th scope="row"><a href="#">'.$j.'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['hospital_id'].'</a></th>
+                          <td>'.$user_apply_hospital['hospital_manager_name'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_email'].'</a></td>
+                          <td>'.$user_apply_hospital['hospital_manager_cnic'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_location'].'</a></td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_contact'].'</a></td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['time'].'</a></td>
                         </tr>';
                         }
                         

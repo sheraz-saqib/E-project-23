@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 10:44 AM
+-- Generation Time: Jul 27, 2023 at 07:17 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -104,23 +104,29 @@ CREATE TABLE `reg_hospital` (
   `hospital_id` int(11) NOT NULL,
   `hospital_name` varchar(200) NOT NULL,
   `hospital_manager_name` varchar(200) NOT NULL,
-  `hospital_emial` varchar(200) NOT NULL,
+  `hospital_email` varchar(200) NOT NULL,
   `hospital_contact` varchar(255) NOT NULL,
   `hospital_location` varchar(222) NOT NULL,
   `hospital_manager_cnic` varchar(222) NOT NULL,
   `hospital_open_time` varchar(222) NOT NULL,
-  `hospital_close_time` varchar(222) NOT NULL
+  `hospital_close_time` varchar(222) NOT NULL,
+  `user_id` varchar(222) NOT NULL,
+  `hospital status` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reg_hospital`
 --
 
-INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_emial`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`) VALUES
-(1, 'jinnah', 'sheraz', 'jinnah@gmail.com', '232434343434', 'karachi ', '232323', '14:22 ', '17:44'),
-(2, 'indus', 'subhan', 'indus@gmail.com', '232372973', 'lahore', '2382388238', '03:33 ', '19:33'),
-(3, 'nmc', 'umair', 'nmc@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07'),
-(4, 'nationl', 'JAVEED', 'national@gmail.com', '232323232', 'karachi ', '7277277272', '23:59 ', '12:59');
+INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `user_id`, `hospital status`) VALUES
+(1, 'jinnah', 'sheraz', 'jinnah@gmail.com', '232434343434', 'karachi ', '232323', '14:22 ', '17:44', '', ''),
+(2, 'indus', 'subhan', 'indus@gmail.com', '232372973', 'lahore', '2382388238', '03:33 ', '19:33', '', ''),
+(3, 'nmc', 'umair', 'nmc@gmial.com', '2382382382', 'karachi ', '344343434', '03:33 ', '08:07', '', ''),
+(4, 'nationl', 'JAVEED', 'national@gmail.com', '232323232', 'karachi ', '7277277272', '23:59 ', '12:59', '', ''),
+(5, 'Agha Khan', 'humaira', 'aghakhan@gmail.com', '32123434', 'lahore', '1111111111111', '03:34 ', '22:59', '', ''),
+(7, 'nationl pak', 'humaira', 'pak@gmail.com', '323232323', 'karachi ', '1111111111111', '14:22 ', '14:03', '8 ', ''),
+(8, 'nationl pak', 'humaira', 'humaira@gmail.com', '2222222222222', 'karachi ', '1111111111111', '14:22 ', '14:22', '8 ', ''),
+(9, 'nationl pak', 'humaira', 'humaira@gmail.com', '222222', 'karachi ', '1111111111111', '14:22 ', '14:22', '8 ', '');
 
 -- --------------------------------------------------------
 
@@ -215,7 +221,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 (1, 'sheraz', 'sheraz@gmail.com', '12121212121212', '$2y$10$Mwak25yCwrTPjRYy6xtUru4e937ASR/u6v9jzSoJOAny5iv140SR6', '2023-07-19 01:27:06'),
-(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11');
+(4, 'subhan', 'subhan@gamil.com', '4444444444', '$2y$10$X/aZSD1fV2N2/nTFhx7HxeekRpXSgicHoZJi0FsUAGeoAfXKEJUs.', '2023-07-19 22:41:11'),
+(8, 'humaira', 'humaira@gmail.com', '1111111111111', '$2y$10$D0SuYHTj9jggIbWyfMLS6uKiSQlMFownVTCmrRx4bQuIR2bVKUI6y', '2023-07-27 09:23:05');
 
 -- --------------------------------------------------------
 
@@ -304,7 +311,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reg_patient`
@@ -322,7 +329,7 @@ ALTER TABLE `reject_patient`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `vaccine`

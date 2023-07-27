@@ -8,6 +8,7 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 }
 
 $hospital_name = $_POST['hospital_name'];
+$user_id = $_POST['user_id'];
 $hospital_Manager_name = $_POST['hospital_Manager_name'];
 $hospital_email = $_POST['hospital_email'];
 $hospital_phone = $_POST['hospital_phone'];
@@ -22,10 +23,17 @@ $hopital_submit = $_POST['hopital_submit'];
 
 if(isset($hopital_submit)){
 
+$checkEmailExistQ = "SELECT * FROM `reg_hospital` WHERE `user_id`=$user_id";
+$checkEmailExist = mysqli_query($conn,$checkEmailExistQ );
+$checkEmail_row = mysqli_num_rows($checkEmailExist);
+
+if($checkEmailExist_row < 0){
+
+
   if($hospital_name != '' && $hospital_Manager_name != '' && $hospital_email  != '' && $hospital_phone != '' && $hospital_location != '' && $hopital_Manager_cnic != '' && $hopital_open_time != '' && $hopital_close_time !=''){
 
-    $hospital_insertQ = "INSERT INTO `reg_hospital`(`hospital_name`, `hospital_manager_name`, `hospital_emial`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`)
-     VALUES ('$hospital_name','$hospital_Manager_name','$hospital_email','$hospital_phone','$hospital_location','$hopital_Manager_cnic','$hopital_open_time ','$hopital_close_time')";
+    $hospital_insertQ = "INSERT INTO `reg_hospital`( `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `user_id`)
+     VALUES ('$hospital_name','$hospital_Manager_name','$hospital_email','$hospital_phone','$hospital_location','$hopital_Manager_cnic','$hopital_open_time ','$hopital_close_time','$user_id')";
 
     $hospital_insert = mysqli_query($conn ,$hospital_insertQ);
      
@@ -39,10 +47,14 @@ if(isset($hopital_submit)){
       $hospital_register= false;
       $hospital_register_error = true;
     }
-
+    if($checkEmailExist_row >= 1){
+      $hospital_exist = true;
+    }
 
   }
-  
+}
+
+
   if($hospital_name == '' || $hospital_Manager_name == ''|| $hospital_email == '' || $hospital_phone == '' || $hospital_location == '' || $hopital_Manager_cnic == '' || $hopital_open_time == '' || $hopital_close_time == '' ){
     $fill_error = true;
     $pat_register_error = false;
@@ -115,6 +127,10 @@ if(isset($hopital_submit)){
               echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';
 
             }
+            if($hospital_exist){
+              echo '<div class="error-message bg-danger">Hospital are already Exixt</div>';
+
+            }
             if($hospital_register_error){
               echo '<div style="color:white;" class="error-message bg-danger">Your appointment request has not been sent . try again!</div>';
             }
@@ -124,7 +140,7 @@ if(isset($hopital_submit)){
           </div>
           <br><br>
         <form  action="#" method="post"  class="php-email-form">
-        
+        <input type="text" name="user_id" class="form-control" id="name" value="<?=$_SESSION['id']?> " readonly hidden >
           <div class="row">
             <div class="col-md-4 form-group">
             <label for="yourName" class="form-label">Hospital Name</label>
@@ -137,7 +153,7 @@ if(isset($hopital_submit)){
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Offical Email</label>
-              <input readonly value="<?=$_SESSION['email']?>" type="email" class="form-control" name="hospital_email" id="email" placeholder="Your Email"  >
+              <input value="<?=$_SESSION['email']?>" type="email" class="form-control" name="hospital_email" id="email" placeholder="Your Email"  >
             
             </div>
           </div>
@@ -150,7 +166,7 @@ if(isset($hopital_submit)){
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
             <label for="yourName" class="form-label">Hospital location</label>
-              <input minlength="5"  type="text" name="hospital_location" class="form-control" id="name" placeholder="Your Cnic">
+              <input minlength="5"  type="text" name="hospital_location" class="form-control" id="name" placeholder="Your location">
                     </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
               <label for="yourName" class="form-label">Manager Cnic</label>

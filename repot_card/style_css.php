@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 *{
     padding: 0;
@@ -29,6 +30,7 @@ body{
     border-radius: 1rem;
     text-transform: uppercase;
 color:var(--primary_color);
+user-select: none;
 }
 .report_top_section{
     width: inherit;
@@ -67,12 +69,16 @@ align-items: center;
 }
 .pateint_img_and_detail .pat_img{
     margin-top: 4rem;
-    background-image: url(./img/blank-profile-picture-973460_640.webp);
-    width: 9rem;
-    height: 9rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    max-width: 9rem;
+    max-height: 9rem;
+    overflow: hidden;
+}
+.pat_img img{
+width: 9rem;
+height: 9rem;
+aspect-ratio: 1/1;
+object-fit: contain;
+
 }
 .pateint_detail{
     margin-left: 1rem;
@@ -142,3 +148,5 @@ padding: 2rem;
   border: none;
   cursor: pointer;
 }
+
+</style>
