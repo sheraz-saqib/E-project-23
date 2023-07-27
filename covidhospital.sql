@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 07:15 PM
+-- Generation Time: Jul 27, 2023 at 08:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -47,7 +47,8 @@ CREATE TABLE `accept_hospital` (
 --
 
 CREATE TABLE `accept_patient` (
-  `patient_id` int(11) NOT NULL,
+  `pateint_id` int(11) NOT NULL,
+  `reg_pateint_id` int(11) NOT NULL,
   `patient_name` varchar(200) NOT NULL,
   `patient_email` varchar(200) NOT NULL,
   `patient_phone` varchar(255) NOT NULL,
@@ -56,8 +57,17 @@ CREATE TABLE `accept_patient` (
   `patient_select_hos` varchar(222) NOT NULL,
   `patient_gender` varchar(222) NOT NULL,
   `patient_vacc` varchar(222) NOT NULL,
-  `patient_app_day` varchar(222) NOT NULL
+  `patient_app_day` varchar(222) NOT NULL,
+  `pateint_dos_1` varchar(222) NOT NULL,
+  `pateint_dos_2` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `accept_patient`
+--
+
+INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `pateint_dos_1`, `pateint_dos_2`) VALUES
+(1, 18, 'shahzaib', 'shahzaib@gmail.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', 'CanSino-Bio', '	\r\ntuesday', 'vaccinated', 'vaccinated');
 
 -- --------------------------------------------------------
 
@@ -158,6 +168,33 @@ INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patie
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reject_patient`
+--
+
+CREATE TABLE `reject_patient` (
+  `patient_id` int(11) NOT NULL,
+  `reg_pateint_id` int(11) NOT NULL,
+  `patient_name` varchar(200) NOT NULL,
+  `patient_email` varchar(200) NOT NULL,
+  `patient_phone` varchar(255) NOT NULL,
+  `patient_cnic` varchar(255) NOT NULL,
+  `patient_age` varchar(222) NOT NULL,
+  `patient_select_hos` varchar(222) NOT NULL,
+  `patient_gender` varchar(222) NOT NULL,
+  `patient_vacc` varchar(222) NOT NULL,
+  `patient_app_day` varchar(232) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reject_patient`
+--
+
+INSERT INTO `reject_patient` (`patient_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES
+(1, 2, 'subhan', 'subhan@gmail.com', '333333333', '4444444444', '33', 'Department 1', 'Department 1', 'Doctor 1', '	\r\nmonday');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -207,7 +244,7 @@ INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`) VALUES
 -- Indexes for table `accept_patient`
 --
 ALTER TABLE `accept_patient`
-  ADD PRIMARY KEY (`patient_id`);
+  ADD PRIMARY KEY (`pateint_id`);
 
 --
 -- Indexes for table `admin`
@@ -228,6 +265,12 @@ ALTER TABLE `reg_patient`
   ADD PRIMARY KEY (`patient_id`);
 
 --
+-- Indexes for table `reject_patient`
+--
+ALTER TABLE `reject_patient`
+  ADD PRIMARY KEY (`patient_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -242,6 +285,12 @@ ALTER TABLE `vaccine`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `accept_patient`
+--
+ALTER TABLE `accept_patient`
+  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -260,6 +309,12 @@ ALTER TABLE `reg_hospital`
 --
 ALTER TABLE `reg_patient`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `reject_patient`
+--
+ALTER TABLE `reject_patient`
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
