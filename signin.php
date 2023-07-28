@@ -13,15 +13,24 @@ $fillError = false;
 $passNotComfirm = false;
 
 if(isset($submit)){
-
-if($name != '' && $cnic != '' && $email != '' && $pass != '' && $confirmPass != '' && $pass === $confirmPass){
-  $insertQ = "INSERT INTO `user`(`name`, `email`, `cnic`, `password`, `time`) VALUES ('$name','$email','$cnic','$str_pass',	current_timestamp())";
-  $insert= mysqli_query($conn,$insertQ);
-
-  if($insert){
-    $result = true;
+  $checkEmailExistQ = "SELECT * FROM `user` WHERE `email`='$email'";
+  $checkEmailExist = mysqli_query($conn,$checkEmailExistQ );
+  $checkEmail_row = mysqli_num_rows($checkEmailExist);
+  if($checkEmail_row == 0){
+    if($name != '' && $cnic != '' && $email != '' && $pass != '' && $confirmPass != '' && $pass === $confirmPass){
+      $insertQ = "INSERT INTO `user`(`name`, `email`, `cnic`, `password`, `time`) VALUES ('$name','$email','$cnic','$str_pass',	current_timestamp())";
+      $insert= mysqli_query($conn,$insertQ);
+    
+      if($insert){
+        $result = true;
+        header('location:login.php');
+      }
+    }
   }
+if($checkEmail_row > 0){
+  $email_exist = true;
 }
+
 if($name == '' && $cnic == '' && $email == '' && $pass == '' && $confirmPass == '' && $pass == $confirmPass)
 $fillError = true;
 $passNotComfirm = false;
@@ -126,7 +135,7 @@ text-transform: lowercase;
         </div>
       </div>";
     }
-    if($fillError ){
+    if($fillError){
       echo "<div class='notification'>
       <div class='message danger'>
         <h2>Failed!</h2>
@@ -137,6 +146,17 @@ text-transform: lowercase;
       </div>
     </div>";
   }
+  if($email_exist){
+    echo "<div class='notification'>
+    <div class='message danger'>
+      <h2>Failed!</h2>
+      <p>Please fill out the currect email</p>
+    </div>
+    <div class='cross_icon'>
+      <i class='fa-solid fa-xmark'></i>
+    </div>
+  </div>";
+}
     if($passNotComfirm){
       echo "<div class='notification'>
       <div class='message danger'>

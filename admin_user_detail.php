@@ -210,7 +210,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                     if($totalUserPatient > 0){
                       while($userPatient_data = mysqli_fetch_array($fetch_userPatient)){ 
                      
-                        if($userPatient_data['patient_status'] !== ''){
+                        if($userPatient_data['patient_status'] == 'approved'){
                           echo '<tr>
         
                           <th scope="row"><a href="#">'.$userPatient_data['id'].'</a></th>
@@ -221,8 +221,23 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                           <td>'.$userPatient_data['patient_select_hos'].'</td>
                           <td>'.$userPatient_data['patient_app_day'].'</td>
                           <td>'.$userPatient_data['patient_vacc'].'</td>
-                          
-                          <td>'.$userPatient_data['patient_status'].'</td>
+                          <td><span class="badge bg-success">'.$userPatient_data['patient_status'].'</span></td>
+                        
+                        </tr>';
+                        }
+                        if($userPatient_data['patient_status'] == 'reject'){
+                          echo '<tr>
+        
+                          <th scope="row"><a href="#">'.$userPatient_data['id'].'</a></th>
+                          <th scope="row"><a href="#">'.$userPatient_data['patient_id'].'</a></th>
+                          <td>'.$userPatient_data['name'].'</td>
+                          <td><a  class="text-primary">'.$userPatient_data['email'].'</a></td>
+                          <td>'.$userPatient_data['patient_gender'].'</td>
+                          <td>'.$userPatient_data['patient_select_hos'].'</td>
+                          <td>'.$userPatient_data['patient_app_day'].'</td>
+                          <td>'.$userPatient_data['patient_vacc'].'</td>
+                          <td><span class="badge bg-danger">'.$userPatient_data['patient_status'].'</span></td>
+                        
                         </tr>';
                         }
 
@@ -238,7 +253,7 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                           <td>'.$userPatient_data['patient_app_day'].'</td>
                           <td>'.$userPatient_data['patient_vacc'].'</td>
                           
-                          <td>Pending</td>
+                          <td><span class="badge bg-warning">pending</span></td>
                         </tr>';
                         }
                         }
@@ -274,13 +289,14 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                     <thead>
                       <tr>
                         <th scope="col">s.no</th>
-                        <th scope="col">#</th>
+                        <th scope="col">hospital id</th>
+                        <th scope="col">user id</th>
                         <th scope="col">user Name</th>
                         <th scope="col">hospital email</th>
                         <th scope="col">hospital manager cnic</th>
                         <th scope="col">hospital location</th>
                         <th scope="col">hospital contact</th>
-                        <th scope="col">Create Acc Date</th>
+                        <th scope="col">hospital status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -292,17 +308,48 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                       while($user_apply_hospital = mysqli_fetch_assoc($fetch_Hospital)){ 
                         $j+=1;
 
+                        if($user_apply_hospital['hospital_status'] == 'approved'){
                           echo '<tr>
                           <th scope="row"><a href="#">'.$j.'</a></th>
                           <th scope="row"><a href="#">'.$user_apply_hospital['hospital_id'].'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['user_id'].'</a></th>
                           <td>'.$user_apply_hospital['hospital_manager_name'].'</td>
                           <td><a  class="text-primary">'.$user_apply_hospital['hospital_email'].'</a></td>
                           <td>'.$user_apply_hospital['hospital_manager_cnic'].'</td>
                           <td><a  class="text-primary">'.$user_apply_hospital['hospital_location'].'</a></td>
                           <td><a  class="text-primary">'.$user_apply_hospital['hospital_contact'].'</a></td>
-                          <td><a  class="text-primary">'.$user_apply_hospital['time'].'</a></td>
+                          <td><span class="badge bg-success">'.$user_apply_hospital['hospital_status'].'</span></td>
                         </tr>';
                         }
+                        if($user_apply_hospital['hospital_status'] == 'reject'){
+                          echo '<tr>
+                          <th scope="row"><a href="#">'.$j.'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['hospital_id'].'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['user_id'].'</a></th>
+                          <td>'.$user_apply_hospital['hospital_manager_name'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_email'].'</a></td>
+                          <td>'.$user_apply_hospital['hospital_manager_cnic'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_location'].'</a></td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_contact'].'</a></td>
+                          <td><span class="badge bg-danger">'.$user_apply_hospital['hospital_status'].'</span></td>
+                        </tr>';
+                        }
+                        if($user_apply_hospital['hospital_status'] === ''){
+                          echo '<tr>
+                          <th scope="row"><a href="#">'.$j.'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['hospital_id'].'</a></th>
+                          <th scope="row"><a href="#">'.$user_apply_hospital['user_id'].'</a></th>
+                          <td>'.$user_apply_hospital['hospital_manager_name'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_email'].'</a></td>
+                          <td>'.$user_apply_hospital['hospital_manager_cnic'].'</td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_location'].'</a></td>
+                          <td><a  class="text-primary">'.$user_apply_hospital['hospital_contact'].'</a></td>
+                          <td><span class="badge bg-warning">pending</span></td>
+                        </tr>';
+                        }
+                        }
+                       
+                          
                         
                     }
                     ?>
@@ -313,79 +360,6 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
 
               </div>
             </div><!-- End Recent Sales -->
-            <!-- Top Selling -->
-            <div class="col-12 ">
-              <div class="card top-selling overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Top Selling -->
 
           </div>
         </div><!-- End Left side columns -->
