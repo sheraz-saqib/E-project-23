@@ -6,7 +6,7 @@ require 'conn.php';
 if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
-
+$user_email = $_SESSION['email'];
 $pat_name = $_POST['pat_name'];
 $pat_email = $_POST['pat_email'];
 $pat_phone = $_POST['pat_phone'];
@@ -20,32 +20,48 @@ $pat_submit = $_POST['pat_submit'];
 
 
 
+
+
 if(isset($pat_submit)){
 
-  if($pat_name != '' && $pat_email != '' && $pat_phone != '' && $pat_age != '' && $pat_cnic != '' && $pat_gender != '' && $pat_day_name != '' && $pat_hospital_name != '' && $pat_vaccine_name != ''){
+  $check_patQ ="SELECT * FROM `reg_patient` WHERE `patient_email` = '$user_email'";
+  $check_pat = mysqli_query($conn,$check_patQ);
+  $fetch_check_pat = mysqli_fetch_assoc($check_pat);
+  if( $fetch_check_pat['patient_email'] != $user_email){
+    if($pat_name != '' && $pat_email != '' && $pat_phone != '' && $pat_age != '' && $pat_cnic != '' && $pat_gender != '' && $pat_day_name != '' && $pat_hospital_name != '' && $pat_vaccine_name != ''){
 
-    $pat_insertQ = "INSERT INTO `reg_patient`(`patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES ('$pat_name','$pat_email','$pat_phone','$pat_cnic','$pat_age','$pat_hospital_name','$pat_gender','$pat_vaccine_name','$pat_day_name')";
-
-    $pat_insert = mysqli_query($conn ,$pat_insertQ);
-     
-    if($pat_insert){
-     
-      $pat_register= true;
-      $pat_register_error = false;
-     
+      $pat_insertQ = "INSERT INTO `reg_patient`(`patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES ('$pat_name','$pat_email','$pat_phone','$pat_cnic','$pat_age','$pat_hospital_name','$pat_gender','$pat_vaccine_name','$pat_day_name')";
+  
+      $pat_insert = mysqli_query($conn ,$pat_insertQ);
+       
+      if($pat_insert){
+       
+        $pat_register= true;
+        $pat_register_error = false;
+       
+      }
+      if(!$pat_insert){
+        $pat_register= false;
+        $pat_register_error = true;
+      }
+  
+  
     }
-    if(!$pat_insert){
-      $pat_register= false;
-      $pat_register_error = true;
-    }
-
-
   }
+if($fetch_check_pat['patient_email'] == $user_email){
+  $already_pat_reg = true;
+}
+
+
+
+
+ 
   
   if($pat_name == '' || $pat_email == ''|| $pat_phone == '' || $pat_age == '' || $pat_cnic == '' || $pat_gender == '' || $pat_day_name == '' || $pat_hospital_name == '' || $pat_vaccine_name == ''){
     $fill_error = true;
     $pat_register_error = false;
     $pat_register = false; 
+    $already_pat_reg = false;
   }
 
 
@@ -121,6 +137,9 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
             
             if($pat_register){
               echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
+            }
+            if($already_pat_reg){
+              echo '<div class="sent-message bg-success">You already Register you inform in 12 hours. Thank you! </div>';
             }
             if($fill_error){
               echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';

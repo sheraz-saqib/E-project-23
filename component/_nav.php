@@ -92,6 +92,12 @@ color: #4154f1 !important;
 .col-lg-4:hover .icon{
   box-shadow: 0 0 1rem #4153f169 !important;
 }
+.bg-success{
+  background-color:  rgb(11, 156, 156) !important;
+}
+.bg-danger{
+  background-color:  rgb(175, 17, 51) !important;
+}
 </style>
  <!-- navbar -->
 <!-- Modal -->

@@ -33,7 +33,15 @@ $insert_acc_tableQ  = "INSERT INTO `accept_patient`(`reg_pateint_id`, `patient_n
 
 $insert_acc_table  = mysqli_query($conn,$insert_acc_tableQ);
 
-$delete_pateint_
+$delete_pateint_From_reject_patQ = "DELETE FROM `reject_patient` WHERE `reg_pateint_id` = $patient_ID"; 
+$delete_pateint_From_reject_pat = mysqli_query($conn,$delete_pateint_From_reject_patQ );
+// $fetch_rejct_pat_data = mysqli_fetch_assoc($delete_pateint_From_reject_pat);
+
+
+
+// if($fetch_select_pat_data[''])
+
+
 if($insert_acc_table){
     header('location:admin_pat_detail.php');
 }

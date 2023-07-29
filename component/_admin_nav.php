@@ -287,6 +287,21 @@ input:focus{
             <i class="bi bi-circle"></i><span>Patients</span>
             </a>
           </li>
+          <li>
+            <a href="admin_app_pat.php">
+            <i class="bi bi-circle"></i><span>Approved Patients</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_rej_pat.php">
+            <i class="bi bi-circle"></i><span>Reject Patients</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_pat_detail.php">
+            <i style="font-size:.8rem;" class="fa-regular fa-square-plus"></i><span>Add Patients</span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Components Nav -->
 

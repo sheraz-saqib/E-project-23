@@ -8,12 +8,7 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 }
 
 
-$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
-$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
 
-$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
-$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
-$hospital_row = mysqli_num_rows($fetch_hospital);
 // =============
 // =============
 // =============
@@ -170,7 +165,7 @@ if($totalAcc ==0 && $totalreject == 0 && $totalpending == 0){
           </div>
          
           <br><br>
-          <form action="#" method="POST" class=" row g-3  "  >
+          <form action="patient_status.php" method="POST" class=" row g-3  "  >
           
                   <div class="col-12">
                       <label for="yourEmail" class="form-label"><b>Your Email</b></label>

@@ -7,55 +7,45 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
 
+
+
+// =============
+// =============
+// =============
+
+
 $status_email = $_POST['status_email'];
 $status_submit = $_POST['status_submit'];
 
-
-
 if(isset($status_submit)){
-
-  if($status_email != '' ){
-
-    $pat_insertQ = "";
-
-    $pat_insert = mysqli_query($conn ,$pat_insertQ);
-     
-    if($pat_insert){
-     
-      $pat_register= true;
-      $pat_register_error = false;
-     
-    }
-    if(!$pat_insert){
-      $pat_register= false;
-      $pat_register_error = true;
-    }
-
-
-  }
-  
-  if($pat_name == '' || $pat_email == ''|| $pat_phone == '' || $pat_age == '' || $pat_cnic == '' || $pat_gender == '' || $pat_day_name == '' || $pat_hospital_name == '' || $pat_vaccine_name == ''){
-    $fill_error = true;
-    $pat_register_error = false;
-    $pat_register = false; 
-  }
-
-
+  if($status_email !=''){
+$acc_hos_selectQ = "SELECT * FROM `accept_hospital` WHERE `hospital_email` = '$status_email'";
+$acc_hos_select = mysqli_query($conn,$acc_hos_selectQ);
+$acc_hos_select_data = mysqli_fetch_assoc($acc_hos_select);
+$totalAcc = mysqli_num_rows($acc_hos_select);
+$reject_hos_selectQ = "SELECT * FROM `reject_hospital` WHERE `hospital_email` = '$status_email'";
+$reject_hos_select = mysqli_query($conn,$reject_hos_selectQ);
+$totalreject = mysqli_num_rows($reject_hos_select);
+$pending_hos_selectQ = "SELECT * FROM `reg_hospital` WHERE `hospital_email` = '$status_email'";
+$pending_hos_select = mysqli_query($conn,$pending_hos_selectQ);
+$totalpending = mysqli_num_rows($pending_hos_select);
+if($totalAcc == 1){
+  $hos_status_approved = true;
 }
-
-$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
-$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
-
-
-
-$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
-$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
-$hospital_row = mysqli_num_rows($fetch_hospital);
-// =============
-// =============
-// =============
-
-
+if($totalreject == 1){
+  $hos_status_reject = true;
+}
+if($totalpending == 1){
+  $hos_status_pending = true;
+}
+if($totalAcc ==0 && $totalreject == 0 && $totalpending == 0){
+  $hos_not_reg = true;
+}
+  }
+  if($status_email == ''){
+    $fill_error = true;
+  }
+}
 
 
 ?>
@@ -98,6 +88,27 @@ $hospital_row = mysqli_num_rows($fetch_hospital);
         width: 80vw;
     }
   }
+  .approved_message{
+    background-color: rgb(11, 156, 156) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 1rem;
+  }
+  .approved_message_a a{
+    background: rgb(14, 180, 180);
+  color: #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: .7rem;
+  display: inline-block;
+  margin-right: 0.3rem;
+  }
+  .approved_message_a a:hover {
+  background: #097381;
+  color: #fff;
+}
 </style>
 </head>
 
@@ -111,67 +122,54 @@ $hospital_row = mysqli_num_rows($fetch_hospital);
       <div class="container status_container" >
 
         <div class="section-title">
-          <h2>Status Check for Hospital</h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
+          <h2>Status Check for Patients</h2>
         </div>
         <div class="text-center ">
-            <?php
+          
+        <?php
             
-            if($pat_register){
-              echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
+            if($hos_status_approved){
+              echo '<div class="sent-message bg-success approved_message">
+             Approved 
+             <div class="row justify-content-center approved_message_a">
+             <a class="btn  w-100 " target="_blank" href="download_user_card.php?download_user_card_id='.$acc_pat_select_data['pateint_id'].'">Download repot card</a>
+             </div>
+              </div> ';
             }
-            if($fill_error){
-              echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';
-
+         
+            if($hos_status_reject ){
+              echo '<div style="color:white;" class="error-message bg-danger">
+              Rejected !
+              </div>';
+           
             }
-            if($pat_register_error){
-              echo '<div style="color:white;" class="error-message bg-danger">Your appointment request has not been sent . try again!</div>';
+            if($hos_not_reg  ){
+              echo '<div style="color:white;" class="error-message bg-danger">
+              Patient not Register
+              </div>';
+           
+            }
+            if($hos_status_pending){
+              echo '<div style="color:white;" class="error-message bg-warning">
+              Pending !
+              </div>';
+            }
+            if($fill_error ){
+              echo '<div style="color:white;" class="error-message bg-danger">
+              please fill out this feild
+              </div>';
+           
             }
             ?>
             
-            
           </div>
+         
           <br><br>
-          <form class=" row g-3 needs-validation " novalidate action="user_status.php" method="POST">
-                  <?php
-    if(!$conn){
-        echo "<div class='notification'>
-        <div class='message danger'>
-          <h2>connection failed!</h2>
-          <p>Your connection problem please try again.</p>
-        </div>
-        <div class='cross_icon'>
-          <i class='fa-solid fa-xmark'></i>
-        </div>
-      </div>";
-    }
-
-    if($loginError){
-        echo "<div class='notification'>
-        <div class='message danger'>
-          <h2>failed!</h2>
-          <p>Login failed incorrect email or password </p>
-        </div>
-        <div class='cross_icon'>
-          <i class='fa-solid fa-xmark'></i>
-        </div>
-      </div>";
-    }
-    if($notification){
-      echo "<div class='notification'>
-      <div class='message danger'>
-        <h2>failed!</h2>
-        <p>Please fill out all feilds</p>
-      </div>
-      <div class='cross_icon'>
-        <i class='fa-solid fa-xmark'></i>
-      </div>
-    </div>";
-  }
-    ?>
+          <form action="hospital_status.php" method="POST" class=" row g-3  "  >
+          
                   <div class="col-12">
-                      <label for="yourEmail" class="form-label "><b>Email</b></label>
-                      <input type="email" name="status_email" class="form-control" id="yourEmail"  value="<?=$_SESSION['email']?>">
+                      <label for="yourEmail" class="form-label"><b>Your Email</b></label>
+                      <input type="text" name="status_email" class="form-control" id="yourEmail" value="">
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
@@ -179,7 +177,6 @@ $hospital_row = mysqli_num_rows($fetch_hospital);
                     <input class="btn appointment-btn  w-100" name="status_submit" type="submit" value="Check the status">
                     </div>
                   </form>
-
       </div>
     </section><!-- End Appointment Section -->
 

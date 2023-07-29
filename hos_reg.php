@@ -6,7 +6,7 @@ require 'conn.php';
 if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
     header('location:login.php');
 }
-
+$user_email = $_SESSION['email'];
 $hospital_name = $_POST['hospital_name'];
 $user_id = $_POST['user_id'];
 $hospital_Manager_name = $_POST['hospital_Manager_name'];
@@ -23,13 +23,10 @@ $hopital_submit = $_POST['hopital_submit'];
 
 if(isset($hopital_submit)){
 
-$checkEmailExistQ = "SELECT * FROM `reg_hospital` WHERE `user_id`=$user_id";
-$checkEmailExist = mysqli_query($conn,$checkEmailExistQ );
-$checkEmail_row = mysqli_num_rows($checkEmailExist);
-
-if($checkEmailExist_row < 0){
-
-
+  $check_hosQ ="SELECT * FROM `reg_hospital` WHERE `hospital_email` = '$user_email'";
+  $check_hos = mysqli_query($conn,$check_hosQ);
+  $fetch_check_hos = mysqli_fetch_assoc($check_hos);
+  if( $fetch_check_hos['hospital_email'] != $user_email){
   if($hospital_name != '' && $hospital_Manager_name != '' && $hospital_email  != '' && $hospital_phone != '' && $hospital_location != '' && $hopital_Manager_cnic != '' && $hopital_open_time != '' && $hopital_close_time !=''){
 
     $hospital_insertQ = "INSERT INTO `reg_hospital`( `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `user_id`)
@@ -47,18 +44,20 @@ if($checkEmailExist_row < 0){
       $hospital_register= false;
       $hospital_register_error = true;
     }
-    if($checkEmailExist_row >= 1){
-      $hospital_exist = true;
-    }
+  
 
   }
 }
+if( $fetch_check_hos['hospital_email'] == $user_email){
+  $already_hos_reg = true;
 
+}
 
   if($hospital_name == '' || $hospital_Manager_name == ''|| $hospital_email == '' || $hospital_phone == '' || $hospital_location == '' || $hopital_Manager_cnic == '' || $hopital_open_time == '' || $hopital_close_time == '' ){
     $fill_error = true;
     $pat_register_error = false;
     $pat_register = false; 
+    $already_hos_reg = false;
   }
 
 
@@ -123,13 +122,15 @@ if($checkEmailExist_row < 0){
             if($hospital_register){
               echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
             }
+            if($already_hos_reg){
+              echo '<div class="sent-message bg-success">You already Register you inform in 24 hours. Thank you! </div>';
+            }
             if($fill_error){
               echo '<div class="error-message bg-danger">Please fill out All feilds . try again!</div>';
 
             }
             if($hospital_exist){
               echo '<div class="error-message bg-danger">Hospital are already Exixt</div>';
-
             }
             if($hospital_register_error){
               echo '<div style="color:white;" class="error-message bg-danger">Your appointment request has not been sent . try again!</div>';
