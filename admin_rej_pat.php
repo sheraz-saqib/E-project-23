@@ -89,7 +89,7 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Appproved Patient</h5>
+                  <h5 class="card-title">Reject Patient</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -122,7 +122,7 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Approved Patient</h5>
+                  <h5 class="card-title">Reject Patient</h5>
 
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>
@@ -134,12 +134,12 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                         <th scope="col">patient phone</th>
                         <th scope="col">patient cnic</th>
                         <th scope="col">patient age</th>
-                        <th scope="col">patient age</th>
                         <th scope="col">patient gender</th>
                         <th scope="col">patient vaccine</th>
                         <th scope="col">day</th>
                         <th scope="col">hospital name</th>
-                        <th scope="col">action</th>
+                     
+                       
              
                       </tr>
                     </thead>
@@ -158,14 +158,14 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
   <td>'.$app_patient_data['patient_name'].'</td>
   <td><a  class="text-primary">'.$app_patient_data['patient_email'].'</a></td>
   <td>'.$app_patient_data['patient_phone'].'</td>
+  <td>'.$app_patient_data['patient_cnic'].'</td>
   <td>'.$app_patient_data['patient_age'].'</td>
-  <td>'.$app_patient_data['patient_select_hos'].'</td>
-  <td>'.$app_patient_data['patient_gender'].'</td>
-  <td>'.$app_patient_data['patient_gender'].'</td>
   <td>'.$app_patient_data['patient_gender'].'</td>
   <td>'.$app_patient_data['patient_vacc'].'</td>
   <td>'.$app_patient_data['patient_app_day'].'</td>
-  <td><a  href="admin_accept_pateint.php?patient_ID='.$app_patient_data['patient_id'].'" class="badge bg-success ">approved</a></td>
+  <td>'.$app_patient_data['patient_select_hos'].'</td>
+
+  <td><a  href="admin_accept_pateint.php?patient_ID='.$app_patient_data['reg_pateint_id'].'&pageUrl=admin_rej_pat.php" class="badge bg-success ">approved</a></td>
 </tr>';
 
 }

@@ -9,6 +9,7 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
 
 
 $patient_ID = $_GET['patient_ID'];
+$page_url = $_GET['pageUrl'];
 $approvedQ= "UPDATE `reg_patient` SET `patient_status` = 'reject' WHERE `reg_patient`.`patient_id` = $patient_ID";
 $approved = mysqli_query($conn,$approvedQ);
 $select_pat_dataQ = "SELECT * FROM `reg_patient` WHERE `patient_id`= $patient_ID "; 
@@ -43,7 +44,7 @@ $delete_pateint_From_reject_pat = mysqli_query($conn,$delete_pateint_From_reject
 
 
 if($insert_acc_table){
-    header('location:admin_pat_detail.php');
+    header('location:'.$page_url .'');
 }
 
 

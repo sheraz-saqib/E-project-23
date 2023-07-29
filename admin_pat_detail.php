@@ -220,7 +220,7 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                         <th scope="col">patient phone</th>
                         <th scope="col">patient cnic</th>
                         <th scope="col">patient age</th>
-                        <th scope="col">patient age</th>
+                      
                         <th scope="col">patient gender</th>
                         <th scope="col">patient vaccine</th>
                         <th scope="col">day</th>
@@ -246,34 +246,32 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                           <td>'.$patient_data['patient_name'].'</td>
                           <td><a  class="text-primary">'.$patient_data['patient_email'].'</a></td>
                           <td>'.$patient_data['patient_phone'].'</td>
+                          <td>'.$patient_data['patient_cnic'].'</td>
                           <td>'.$patient_data['patient_age'].'</td>
-                          <td>'.$patient_data['patient_select_hos'].'</td>
-                          <td>'.$patient_data['patient_gender'].'</td>
-                          <td>'.$patient_data['patient_gender'].'</td>
                           <td>'.$patient_data['patient_gender'].'</td>
                           <td>'.$patient_data['patient_vacc'].'</td>
                           <td>'.$patient_data['patient_app_day'].'</td>
+                          <td>'.$patient_data['patient_select_hos'].'</td>
                           <td>'.$patient_data['patient_status'].'</td>
                           
                         </tr>';
                           }
                           if($patient_data['patient_status'] ==''){
                             echo '<tr>
-                          <td scope="row"><a href="#">'.$i.'</a></td>
-                          <td scope="row"><a href="#">'.$patient_data['patient_id'].'</a></td>
-                          <td>'.$patient_data['patient_name'].'</td>
-                          <td><a  class="text-primary">'.$patient_data['patient_email'].'</a></td>
-                          <td>'.$patient_data['patient_phone'].'</td>
-                          <td>'.$patient_data['patient_age'].'</td>
-                          <td>'.$patient_data['patient_select_hos'].'</td>
-                          <td>'.$patient_data['patient_gender'].'</td>
-                          <td>'.$patient_data['patient_gender'].'</td>
-                          <td>'.$patient_data['patient_gender'].'</td>
-                          <td>'.$patient_data['patient_vacc'].'</td>
-                          <td>'.$patient_data['patient_app_day'].'</td>
-                          <td>pending</td>
-                          
-                        </tr>';
+                            <td scope="row"><a href="#">'.$i.'</a></td>
+                            <td scope="row"><a href="#">'.$patient_data['patient_id'].'</a></td>
+                            <td>'.$patient_data['patient_name'].'</td>
+                            <td><a  class="text-primary">'.$patient_data['patient_email'].'</a></td>
+                            <td>'.$patient_data['patient_phone'].'</td>
+                            <td>'.$patient_data['patient_cnic'].'</td>
+                            <td>'.$patient_data['patient_age'].'</td>
+                            <td>'.$patient_data['patient_gender'].'</td>
+                            <td>'.$patient_data['patient_vacc'].'</td>
+                            <td>'.$patient_data['patient_app_day'].'</td>
+                            <td>'.$patient_data['patient_select_hos'].'</td>
+                            <td>pending</td>
+                            
+                          </tr>';
                           }
                         }
                         
@@ -315,7 +313,6 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                         <th scope="col">patient phone</th>
                         <th scope="col">patient cnic</th>
                         <th scope="col">patient age</th>
-                        <th scope="col">patient age</th>
                         <th scope="col">patient gender</th>
                         <th scope="col">patient vaccine</th>
                         <th scope="col">day</th>
@@ -326,8 +323,6 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                       </tr>
                     </thead>
                     <tbody>
-
-                    
                     <?php
 
                     if($total_approved_Patient  > 0){
@@ -340,15 +335,14 @@ if($app_patient_data['patient_status'] == 'approved'){
   <td>'.$app_patient_data['patient_name'].'</td>
   <td><a  class="text-primary">'.$app_patient_data['patient_email'].'</a></td>
   <td>'.$app_patient_data['patient_phone'].'</td>
+  <td>'.$app_patient_data['patient_cnic'].'</td>
   <td>'.$app_patient_data['patient_age'].'</td>
-  <td>'.$app_patient_data['patient_select_hos'].'</td>
-  <td>'.$app_patient_data['patient_gender'].'</td>
-  <td>'.$app_patient_data['patient_gender'].'</td>
   <td>'.$app_patient_data['patient_gender'].'</td>
   <td>'.$app_patient_data['patient_vacc'].'</td>
   <td>'.$app_patient_data['patient_app_day'].'</td>
+  <td>'.$app_patient_data['patient_select_hos'].'</td>
   <td>'.$app_patient_data['patient_status'].'</td>
-  <td><a  href="admin_reject_pateint.php?patient_ID='.$app_patient_data['patient_id'].'" class="badge bg-danger ">reject</a></td>
+  <td><a  href="admin_reject_pateint.php?patient_ID='.$app_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-danger ">reject</a></td>
 </tr>';
 }
 }
@@ -391,7 +385,6 @@ if($app_patient_data['patient_status'] == 'approved'){
                         <th scope="col">patient phone</th>
                         <th scope="col">patient cnic</th>
                         <th scope="col">patient age</th>
-                        <th scope="col">patient age</th>
                         <th scope="col">patient gender</th>
                         <th scope="col">patient vaccine</th>
                         <th scope="col">day</th>
@@ -416,15 +409,15 @@ if($app_patient_data['patient_status'] == 'approved'){
                           <td>'.$reg_patient_data['patient_name'].'</td>
                           <td><a  class="text-primary">'.$reg_patient_data['patient_email'].'</a></td>
                           <td>'.$reg_patient_data['patient_phone'].'</td>
+                          <td>'.$reg_patient_data['patient_cnic'].'</td>
                           <td>'.$reg_patient_data['patient_age'].'</td>
-                          <td>'.$reg_patient_data['patient_select_hos'].'</td>
-                          <td>'.$reg_patient_data['patient_gender'].'</td>
-                          <td>'.$reg_patient_data['patient_gender'].'</td>
                           <td>'.$reg_patient_data['patient_gender'].'</td>
                           <td>'.$reg_patient_data['patient_vacc'].'</td>
                           <td>'.$reg_patient_data['patient_app_day'].'</td>
+                          <td>'.$reg_patient_data['patient_select_hos'].'</td>
+                      
                           <td>'.$reg_patient_data['patient_status'].'</td>
-                          <td><a  href="admin_accept_pateint.php?patient_ID='.$reg_patient_data['patient_id'].'" class="badge bg-success ">approved</a></td>
+                          <td><a  href="admin_accept_pateint.php?patient_ID='.$reg_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-success ">approved</a></td>
                         
                         </tr>';
                         }
@@ -466,7 +459,6 @@ if($app_patient_data['patient_status'] == 'approved'){
                         <th scope="col">patient phone</th>
                         <th scope="col">patient cnic</th>
                         <th scope="col">patient age</th>
-                        <th scope="col">patient age</th>
                         <th scope="col">patient gender</th>
                         <th scope="col">patient vaccine</th>
                         <th scope="col">day</th>
@@ -491,16 +483,16 @@ if($app_patient_data['patient_status'] == 'approved'){
                           <td>'.$pending_patient_data['patient_name'].'</td>
                           <td><a  class="text-primary">'.$pending_patient_data['patient_email'].'</a></td>
                           <td>'.$pending_patient_data['patient_phone'].'</td>
+                          <td>'.$pending_patient_data['patient_cnic'].'</td>
                           <td>'.$pending_patient_data['patient_age'].'</td>
-                          <td>'.$pending_patient_data['patient_select_hos'].'</td>
-                          <td>'.$pending_patient_data['patient_gender'].'</td>
-                          <td>'.$pending_patient_data['patient_gender'].'</td>
                           <td>'.$pending_patient_data['patient_gender'].'</td>
                           <td>'.$pending_patient_data['patient_vacc'].'</td>
                           <td>'.$pending_patient_data['patient_app_day'].'</td>
+                          <td>'.$pending_patient_data['patient_select_hos'].'</td>
+                      
                           <td>pending</td>
-                          <td><a  href="admin_accept_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'" class="badge bg-success ">approved</a></td>
-                          <td><a  href="admin_reject_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'" class="badge bg-danger ">reject</a></td>
+                          <td><a  href="admin_accept_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-success ">approved</a></td>
+                          <td><a  href="admin_reject_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-danger ">reject</a></td>
                         </tr>';
                         }
                         

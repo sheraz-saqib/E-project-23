@@ -12,10 +12,11 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
 
 
 // ==============
-$fetch_app_PatientQ = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`='not vaccinated' AND `pateint_dos_2`='not vaccinated' OR `pateint_dos_1`='vaccinated' AND `pateint_dos_2`='not vaccinated'";
-$fetch_app_Patient = mysqli_query($conn,$fetch_app_PatientQ);
-$total_app_Patient = mysqli_num_rows($fetch_app_Patient);
+
 // ==============
+$fetch_vacc_PatientQ = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`='vaccinated' AND `pateint_dos_2`='vaccinated'";
+$fetch_vacc_Patient = mysqli_query($conn,$fetch_vacc_PatientQ);
+$total_vacc_Patient = mysqli_num_rows($fetch_vacc_Patient);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,14 +90,14 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Approved Patient</h5>
+                  <h5 class="card-title">Fully Vaccinated Patient</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$total_app_Patient?></h6>
+                      <h6><?=$total_vacc_Patient?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -122,7 +123,7 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Approved Patient</h5>
+                  <h5 class="card-title">Fully Vaccinated Patient</h5>
 
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>
@@ -142,7 +143,7 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                         <th scope="col">pateint_dos_1_date</th>
                         <th scope="col">pateint_dos_2</th>
                         <th scope="col">pateint_dos_1_date</th>
-                        <th scope="col">action</th>
+                        <th scope="col">status</th>
              
                       </tr>
                     </thead>
@@ -151,32 +152,11 @@ $total_app_Patient = mysqli_num_rows($fetch_app_Patient);
                     
                     <?php
 
-                    if($total_app_Patient  > 0){
-                      while($app_patient_data = mysqli_fetch_assoc($fetch_app_Patient)){ 
+                    if($total_vacc_Patient  > 0){
+                      while($app_patient_data = mysqli_fetch_assoc($fetch_vacc_Patient)){ 
                         $j+=1;
 
-if($app_patient_data['pateint_dos_1'] == 'vaccinated'){
-    echo '<tr>
-    <td scope="row"><a href="#">'.$j.'</a></td>
-    <td scope="row"><a href="#">'.$app_patient_data['reg_pateint_id'].'</a></td>
-    <td>'.$app_patient_data['patient_name'].'</td>
-    <td><a  class="text-primary">'.$app_patient_data['patient_email'].'</a></td>
-    <td>'.$app_patient_data['patient_phone'].'</td>
-    <td>'.$app_patient_data['patient_cnic'].'</td>
-    <td>'.$app_patient_data['patient_age'].'</td>
-    <td>'.$app_patient_data['patient_gender'].'</td>
-    <td>'.$app_patient_data['patient_vacc'].'</td>
-    <td>'.$app_patient_data['patient_app_day'].'</td>
-    <td>'.$app_patient_data['patient_select_hos'].'</td>
-    <td>'.$app_patient_data['pateint_dos_1'].'</td>
-    <td>'.$app_patient_data['pateint_dos_1_date'].'</td>
-    <td>'.$app_patient_data['pateint_dos_2'].'</td>
-    <td>'.$app_patient_data['pateint_dos_2_date'].'</td>
-    
-    <td><a  href="admin_pat_update.php?patient_ID='.$app_patient_data['pateint_id'].'" class="badge bg-success ">Update</a></td>  </tr>';
-}
 
-if($app_patient_data['pateint_dos_1'] == 'not vaccinated'){
     echo '<tr>
     <td scope="row"><a href="#">'.$j.'</a></td>
     <td scope="row"><a href="#">'.$app_patient_data['reg_pateint_id'].'</a></td>
@@ -192,11 +172,12 @@ if($app_patient_data['pateint_dos_1'] == 'not vaccinated'){
     <td>'.$app_patient_data['pateint_dos_1'].'</td>
     <td>'.$app_patient_data['pateint_dos_1_date'].'</td>
     <td>'.$app_patient_data['pateint_dos_2'].'</td>
-    <td>'.$app_patient_data['pateint_dos_2_date'].'</td>
-    <td><a  href="admin_reject_pateint.php?patient_ID='.$app_patient_data['reg_pateint_id'].'&pageUrl=admin_app_pat.php" class="badge bg-danger ">reject</a></td>
-    <td><a  href="admin_pat_update.php?patient_ID='.$app_patient_data['pateint_id'].'" class="badge bg-success ">Update</a></td>
-  </tr>';  
-}
+    <td>'.$app_patient_data['pateint_dos_1_date'].'</td>
+    
+    <td><a class="badge bg-success ">vaccinated</a></td>
+  </tr>';
+
+
 
  
 

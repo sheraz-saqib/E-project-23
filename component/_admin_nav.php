@@ -298,6 +298,11 @@ input:focus{
             </a>
           </li>
           <li>
+            <a href="admin_vaccinated_pat.php">
+            <i class="bi bi-circle"></i><span>Fully vaccinated Patients</span>
+            </a>
+          </li>
+          <li>
             <a href="admin_pat_detail.php">
             <i style="font-size:.8rem;" class="fa-regular fa-square-plus"></i><span>Add Patients</span>
             </a>

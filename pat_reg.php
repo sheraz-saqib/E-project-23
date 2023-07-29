@@ -184,7 +184,7 @@ $vaccine_row = mysqli_num_rows($fetch_vaccine);
             <select name="pat_gender" id="pat_gender" class="form-select">
                 <option value="">Select Your Gender</option>
                 <option value="Male" >Male</option>
-                <option value="Femail" >Femail</option>
+                <option value="Femail" >Female</option>
               </select>
             </div>
           </div>

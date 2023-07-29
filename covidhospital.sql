@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2023 at 11:22 AM
+-- Generation Time: Jul 29, 2023 at 03:30 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -70,10 +70,13 @@ CREATE TABLE `accept_patient` (
 
 INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `pateint_dos_1`, `pateint_dos_2`, `pateint_dos_1_date`, `pateint_dos_2_date`) VALUES
 (1, 18, 'shahzaib', 'shahzaib@gmail.com', '2382382388', '565655655665', '22', 'jinnah', 'Male', 'CanSino-Bio', '	\r\ntuesday', 'vaccinated', 'vaccinated', '10-5-23', '12-9-23'),
-(4, 2, ' sheraz', 'sheraz@gmail.com', '22222222222', '12121212121212', ' 22', 'nmc', 'Male', '\r\nSinopharm', 'tuesday', '', '', '', ''),
-(5, 2, ' sheraz', 'sheraz@gmail.com', '22222222222', '12121212121212', ' 22', 'nmc', 'Male', '\r\nSinopharm', 'tuesday', '', '', '', ''),
-(10, 1, ' sheraz', 'sheraz@gmail.com', '23243434', '12121212121212', ' 18', 'indus', 'Male', '\r\nSinopharm', 'tuesday', '', '', '', ''),
-(11, 7, ' ', '', '', '', ' ', '', '', '', '', '', '', '', '');
+(34, 1, ' sheraz', 'sheraz@gmail.com', '23243434', '12121212121212', ' 18', 'indus', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '2023-02-22', '2023-05-05'),
+(35, 5, ' umer', 'umer@gmail.com', '5454', '232323232', ' 44', 'indus', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '12-9-23', '2023-02-22'),
+(36, 6, ' umer', 'umer@gmail.com', '33', '232323232', ' 33', 'jinnah', 'Male', 'Doctor 1', 'monday', 'vaccinated', '', '2023-02-22', ''),
+(37, 4, ' umer', 'umer@gmail.com', '54545454', '232323232', ' 18', 'nmc', 'Male', 'Sinovac', 'thusday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-07-06'),
+(38, 3, ' areeba', 'areeba@gmail.com', '43434343', '1111111111', ' 20', 'nmc', 'Femail', '\r\nSinopharm', 'friday', 'vaccinated', 'vaccinated', '2023-02-22', '2023-02-22'),
+(39, 2, ' sheraz', 'sheraz@gmail.com', '22222222222', '12121212121212', ' 22', 'nmc', 'Male', '\r\nSinopharm', 'tuesday', 'not vaccinated', 'not vaccinated', '00-00-00', '00-00-00'),
+(40, 7, ' bhanak', 'bhanak1op@gmial.com', '5454545453', '565655655665', ' 20', 'jinnah', 'Male', 'Sinovac', 'tuesday', 'vaccinated', 'vaccinated', '2023-04-22', '2024-05-31');
 
 -- --------------------------------------------------------
 
@@ -152,10 +155,12 @@ CREATE TABLE `reg_patient` (
 INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `patient_status`) VALUES
 (1, 'sheraz', 'sheraz@gmail.com', '23243434', '12121212121212', '18', 'indus', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
 (2, 'sheraz', 'sheraz@gmail.com', '22222222222', '12121212121212', '22', 'nmc', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
-(3, 'areeba', 'areeba@gmail.com', '43434343', '1111111111', '20', 'nmc', 'Femail', '\r\nSinopharm', 'friday', 'reject'),
-(4, 'umer', 'umer@gmail.com', '54545454', '232323232', '18', 'nmc', 'Male', 'Sinovac', 'thusday', 'reject'),
-(5, 'umer', 'umer@gmail.com', '5454', '232323232', '44', 'indus', 'Male', '\r\nSinopharm', 'monday', ''),
-(6, 'umer', 'umer@gmail.com', '33', '232323232', '33', 'jinnah', 'Male', 'Doctor 1', 'monday', '');
+(3, 'areeba', 'areeba@gmail.com', '43434343', '1111111111', '20', 'nmc', 'Femail', '\r\nSinopharm', 'friday', 'approved'),
+(4, 'umer', 'umer@gmail.com', '54545454', '232323232', '18', 'nmc', 'Male', 'Sinovac', 'thusday', 'approved'),
+(5, 'umer', 'umer@gmail.com', '5454', '232323232', '44', 'indus', 'Male', '\r\nSinopharm', 'monday', 'approved'),
+(6, 'umer', 'umer@gmail.com', '33', '232323232', '33', 'jinnah', 'Male', 'Doctor 1', 'monday', 'approved'),
+(7, 'bhanak', 'bhanak1op@gmial.com', '5454545453', '565655655665', '20', 'jinnah', 'Male', 'Sinovac', 'tuesday', 'approved'),
+(8, 'khan', 'khan@gmail.com', '345454545', '565655655665', '44', 'jinnah', 'Male', 'Sinovac', 'thusday', '');
 
 -- --------------------------------------------------------
 
@@ -196,16 +201,6 @@ CREATE TABLE `reject_patient` (
   `patient_app_day` varchar(232) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `reject_patient`
---
-
-INSERT INTO `reject_patient` (`patient_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES
-(1, 2, 'subhan', 'subhan@gmail.com', '333333333', '4444444444', '33', 'Department 1', 'Department 1', 'Doctor 1', '	\r\nmonday'),
-(2, 2, ' sheraz', 'sheraz@gmail.com', '22222222222', '12121212121212', ' 22', 'nmc', 'Male', '\r\nSinopharm', 'tuesday'),
-(6, 4, ' umer', 'umer@gmail.com', '54545454', '232323232', ' 18', 'nmc', 'Male', 'Sinovac', 'thusday'),
-(7, 3, ' areeba', 'areeba@gmail.com', '43434343', '1111111111', ' 20', 'nmc', 'Femail', '\r\nSinopharm', 'friday');
-
 -- --------------------------------------------------------
 
 --
@@ -233,7 +228,9 @@ INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 (10, 'ali', 'ali@gmail.com', '565655655665', '$2y$10$jkTaBreTJTmOR.wqFRapzuoBlGa.Bj5epMfLdKScUjE16QbrOpQBu', '2023-07-28 00:43:01'),
 (11, 'sheraz', 'bhanakop@gmial.com', '565655655665', '$2y$10$T/V4iGPjOmp3MVl7/uRZCu3JQWFMFt0vz8w7USVkItu.2iTqG5QUi', '2023-07-28 00:51:39'),
 (13, 'areeba', 'areeba@gmail.com', '1111111111', '$2y$10$Amv4fb3JXcTqaCmxaUeh2Ophz2ieYmHHGjLEwiLlD4BJhBWwW/4GG', '2023-07-29 00:40:43'),
-(14, 'umer', 'umer@gmail.com', '232323232', '$2y$10$kWnlkHJNfsdm1aaTvsSPH.rX4pxdkbmnewheJzqssPbXFiyNfaqgu', '2023-07-29 00:43:28');
+(14, 'umer', 'umer@gmail.com', '232323232', '$2y$10$kWnlkHJNfsdm1aaTvsSPH.rX4pxdkbmnewheJzqssPbXFiyNfaqgu', '2023-07-29 00:43:28'),
+(15, 'bhanak', 'bhanak1op@gmial.com', '565655655665', '$2y$10$s.bWbgRyLsSWVjqwsKYs9eMMeOdV9eejOPXBcgeQC.k/WWkJ181ay', '2023-07-29 06:16:59'),
+(16, 'khan', 'khan@gmail.com', '565655655665', '$2y$10$p6hUeZlUcOihOUEcF87jHOp5Qhbc9KgiZqLmet84O5wszHqq0rx1y', '2023-07-29 06:28:24');
 
 -- --------------------------------------------------------
 
@@ -316,7 +313,7 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `accept_patient`
 --
 ALTER TABLE `accept_patient`
-  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -334,7 +331,7 @@ ALTER TABLE `reg_hospital`
 -- AUTO_INCREMENT for table `reg_patient`
 --
 ALTER TABLE `reg_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reject_hospital`
@@ -346,13 +343,13 @@ ALTER TABLE `reject_hospital`
 -- AUTO_INCREMENT for table `reject_patient`
 --
 ALTER TABLE `reject_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vaccine`

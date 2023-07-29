@@ -31,12 +31,14 @@ $pending_pat_select = mysqli_query($conn,$pending_pat_selectQ);
 $totalpending = mysqli_num_rows($pending_pat_select);
 if($totalAcc == 1){
   $pat_status_approved = true;
+  $totalpending = 0;
 }
 if($totalreject == 1){
   $pat_status_reject = true;
 }
 if($totalpending == 1){
   $pat_status_pending = true;
+  
 }
 if($totalAcc ==0 && $totalreject == 0 && $totalpending == 0){
   $pat_not_reg = true;
