@@ -16,13 +16,35 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
   background-color: #4153f1d8;
 color: white;
 }
-input{
+input,select{
   box-shadow:none !important;
 }
-input:focus{
+input:focus,select:focus{
   border: 1px solid #4153f19c !important;
 
 }
+.text-center input{
+  background-color: #4154f1;
+  border-radius: .3rem !important;
+  color: white;
+}
+.text-center input:hover{
+  background-color: #4153f1d8;
+color: white;
+}
+.col-lg-4:hover{
+color: #4154f1 !important;
+}
+.col-lg-4:hover .icon{
+  box-shadow: 0 0 1rem #4153f169 !important;
+}
+.bg-success{
+  background-color:  rgb(11, 156, 156) !important;
+}
+.bg-danger{
+  background-color:  rgb(175, 17, 51) !important;
+}
+
  </style>
  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -238,7 +260,7 @@ input:focus{
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="logout.php">
+              <a class="dropdown-item d-flex align-items-center" href="admin-logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -289,7 +311,7 @@ input:focus{
           </li>
           <li>
             <a href="admin_app_pat.php">
-            <i class="bi bi-circle"></i><span>Approved Patients</span>
+            <i class="bi bi-circle"></i><span>Approved And Vaccinated Patient </span>
             </a>
           </li>
           <li>
@@ -298,12 +320,17 @@ input:focus{
             </a>
           </li>
           <li>
+            <a href="admin_pending_pat.php">
+            <i class="bi bi-circle"></i><span>Pending Patients</span>
+            </a>
+          </li>
+          <li>
             <a href="admin_vaccinated_pat.php">
             <i class="bi bi-circle"></i><span>Fully vaccinated Patients</span>
             </a>
           </li>
           <li>
-            <a href="admin_pat_detail.php">
+            <a href="admin_add_pat.php">
             <i style="font-size:.8rem;" class="fa-regular fa-square-plus"></i><span>Add Patients</span>
             </a>
           </li>

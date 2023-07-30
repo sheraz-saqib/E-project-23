@@ -22,7 +22,7 @@ $fetch_reject_PatientQ = "SELECT * FROM `reject_patient`";
 $fetch_reject_Patient = mysqli_query($conn,$fetch_reject_PatientQ);
 $total_reject_Patient = mysqli_num_rows($fetch_reject_Patient);
 // =================
-$fetch_approved_PatientQ = "SELECT * FROM `reg_patient` WHERE `patient_status` ='approved'";
+$fetch_approved_PatientQ = "SELECT * FROM `reg_patient` INNER JOIN `accept_patient` ON `reg_patient`.`patient_id` = `accept_patient`.`reg_pateint_id` WHERE `reg_patient`.`patient_status` = 'approved' AND `accept_patient`.`pateint_dos_1` = 'not vaccinated';";
 $fetch_approved_Patient = mysqli_query($conn,$fetch_approved_PatientQ);
 $total_approved_Patient = mysqli_num_rows($fetch_approved_Patient);
 // =================
@@ -89,7 +89,7 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
           <div class="row ">
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6  w-100">
+            <div class="col-xxl-4 col-md-6  w-50">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -122,6 +122,41 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
 
               </div>
             </div><!-- End Sales Card -->
+             <!-- Sales Card -->
+             <div class="col-xxl-4 col-md-6  w-50">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Pending Patient</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?=$total_pending_Patient?></h6>
+                      <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
+            
 <!-- Sales Card -->
 <div class="col-xxl-4 col-md-6  w-50">
               <div class="card info-card sales-card">
@@ -147,7 +182,7 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$total_app_Patient?></h6>
+                      <h6><?=$total_approved_Patient?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>

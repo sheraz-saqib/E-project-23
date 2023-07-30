@@ -1,8 +1,9 @@
+
 <?php
 session_start();
 
-if($_SESSION['name'] && $_SESSION['name'] == true){
-    unset($_SESSION['name']);
+if($_SESSION['admin_name'] && $_SESSION['admin_name'] == true){
+    unset($_SESSION['admin_name']);
     session_destroy();
 } 
 ?>

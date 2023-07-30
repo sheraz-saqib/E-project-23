@@ -256,9 +256,8 @@ if($fetch_pat_data['pateint_dos_2'] == 'not vaccinated' && $fetch_pat_data['pate
  
 <!-- row -->
                    
-                    <div class="col-12 from_btn">
-                      <input class="btn btn-primary w-100" name="admin_update_submit" type="submit" value="Submit">
-                    </div>
+<div class="text-center mb-3"><input class="btn w-100" name="admin_update_submit" type="submit" value="Submit"></div>
+                 <br><br>
             
                   </form>
 
