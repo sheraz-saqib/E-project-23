@@ -296,6 +296,11 @@ color: #4154f1 !important;
             <i class="bi bi-circle"></i><span>users</span>
             </a>
           </li>
+          <li>
+            <a href="admin_add_user.php">
+            <i style="font-size:.8rem;" class="fa-regular fa-square-plus"></i><span>Add user </span>
+            </a>
+          </li>
         </ul>
       </li><!-- End Components Nav -->
 
@@ -336,7 +341,43 @@ color: #4154f1 !important;
           </li>
         </ul>
       </li><!-- End Components Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#hos-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-solid fa-hospital"></i></i><span>Hospital Details</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="hos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="admin_hos_detail.php">
+            <i class="bi bi-circle"></i><span>Hospital</span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_app_pat.php">
+            <i class="bi bi-circle"></i><span>Approved And Verified Hospital </span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_rej_pat.php">
+            <i class="bi bi-circle"></i><span>Reject  Hospital </span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_pending_pat.php">
+            <i class="bi bi-circle"></i><span>Pending  Hospital </span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_vaccinated_pat.php">
+            <i class="bi bi-circle"></i><span>verified  Hospital </span>
+            </a>
+          </li>
+          <li>
+            <a href="admin_add_hos.php">
+            <i style="font-size:.8rem;" class="fa-regular fa-square-plus"></i><span>Add  Hospital </span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="admin-profile.php">
         <i class="fa-solid fa-user"></i>

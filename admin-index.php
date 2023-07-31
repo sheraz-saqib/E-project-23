@@ -24,7 +24,6 @@ $totalPatient = mysqli_num_rows($fetch_Patient);
 
 $fetch_vaccineQ = "SELECT * FROM `vaccine`";
 $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
-
 $totalvaccine = mysqli_num_rows($fetch_vaccine);
 ?>
 <!DOCTYPE html>
@@ -292,7 +291,63 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
 
               </div>
             </div><!-- End Reports -->
+            <div class="col-12" >
+              <div class="card recent-sales overflow-auto">
 
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>option</h6>
+                    </li>
+
+                    <li><button class="dropdown-item" href="#" onclick="htmlToPdf ()">Download Pdf</button></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Users</h5>
+
+                  <table class="table table-borderless datatable" id="dowload_pdf">
+                    <thead>
+                      <tr>
+                        <th scope="col">s.no</th>
+                        <th scope="col">#</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">User Email</th>
+                        <th scope="col">User Create Acc time</th>
+                     
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+
+                    if($totalUser > 0){
+                      while($User_data = mysqli_fetch_assoc($fetch_user)){ 
+                        $i+=1;
+                      
+                          echo '<tr>
+                          <th scope="row"><a href="#">'.$i.'</a></th>
+                          <th scope="row"><a href="#">'.$User_data['id'].'</a></th>
+                          <td>'.$User_data['name'].'</td>
+                          <td>'.$User_data['email'].'</td>
+                          <td><a href="#" class="text-primary">'.$User_data['time'].'</a></td>
+                       
+                        </tr>';
+                        
+                        
+                        }
+                    }
+                    ?>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+<!-- =============================================== -->
             <!-- Recent Sales -->
             <div class="col-12" >
               <div class="card recent-sales overflow-auto">
@@ -369,7 +424,63 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
 
               </div>
             </div><!-- End Recent Sales -->
+            <div class="col-12" >
+              <div class="card recent-sales overflow-auto">
 
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>option</h6>
+                    </li>
+
+                    <li><button class="dropdown-item" href="#" onclick="htmlToPdf ()">Download Pdf</button></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Hospitals</h5>
+
+                  <table class="table table-borderless datatable" id="dowload_pdf">
+                    <thead>
+                      <tr>
+                        <th scope="col">s.no</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Pateint Hospital</th>
+                        <th scope="col">Patient Vaccine</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+
+                    if($totalHospital > 0){
+                      // while($hospital_data = mysqli_fetch_assoc($fetch_Hospital )){ 
+                      //   $i+=1;
+                      
+                      //     echo '<tr>
+                      //     <th scope="row"><a href="#">'.$i.'</a></th>
+                      //     <th scope="row"><a href="#">'.$hospital_data['hospital_id'].'</a></th>
+                      //     <td>'.$hospital_data['hospital_name'].'</td>
+                      //     <td>'.$hospital_data[''].'</td>
+                      //     <td><a href="#" class="text-primary">'.$hospital_data['patient_vacc'].'</a></td>
+                      //     <td><span class="badge bg-success">'.$hospital_data['patient_status'].'</span></td>
+                      //   </tr>';
+                        
+                      
+                      //   }
+                    }
+                    ?>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
+<!-- ==================================================== -->
             <!-- Top Selling -->
             <div class="col-12 ">
               <div class="card top-selling overflow-auto">
