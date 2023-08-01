@@ -1,15 +1,33 @@
  <?php
-//   $login= false;
-//  if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
-  
-// }
-// $login = true;
-//  $name = $_SESSION['name'];
-// $selectQ = "SELECT * FROM `user` WHERE `name`= '$name'";
+session_start();
+require 'conn.php';
 
-// $select = mysqli_query($conn,$selectQ);
-// $data = mysqli_fetch_assoc($select);
+$email = $_SESSION['email'];
 
+
+$reg_patQ  = "SELECT * FROM `reg_patient` WHERE `patient_email`= '$email'"; 
+$reg_pat = mysqli_query($conn,$reg_patQ);
+$check_reg_pat = mysqli_num_rows($reg_pat);
+
+$reg_appQ  = "SELECT * FROM `accept_patient` WHERE `patient_email`= '$email'"; 
+$reg_app = mysqli_query($conn,$reg_appQ);
+$check_reg_app = mysqli_num_rows($reg_app);
+
+$reg_rejQ  = "SELECT * FROM `reject_patient` WHERE `patient_email`= '$email'"; 
+$reg_rej = mysqli_query($conn,$reg_rejQ);
+$check_reg_rej = mysqli_num_rows($reg_rej);
+
+$reg_pat_vaccQ = "SELECT * FROM `accept_patient` WHERE `patient_email`= '$email' AND `pateint_dos_1`= 'vaccinated'"; 
+$reg_pat_vacc =  mysqli_query($conn,$reg_pat_vaccQ);
+$reg_pat_vacc_check =  mysqli_num_rows($reg_pat_vacc);
+if($check_reg_app ==1){
+  $check_reg_pat = 0;
+}
+if($reg_pat_vacc_check == 1){
+  $check_reg_pat = 0;
+  $check_reg_app = 0;
+  $check_reg_rej = 0;
+}
  ?>
 
 
@@ -17,6 +35,7 @@
 <style>
   *{
         box-shadow:none !important;
+        outline:none;
     }
     button{
   border: transparent;
@@ -98,6 +117,36 @@ color: #4154f1 !important;
 .bg-danger{
   background-color:  rgb(175, 17, 51) !important;
 }
+ /* .notifications {
+  inset: 8px -15px auto auto !important;
+} */
+
+ .notifications .notification-item {
+  display: flex;
+  align-items: center;
+  /* padding: .8rem .3rem; */
+  transition: 0.3s;
+}
+
+.notifications .notification-item i {
+  margin: 0 10px 0 10px;
+  font-size: .8rem;
+}
+
+ .notifications .notification-item h4 {
+  font-size: .8rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+ .notifications .notification-item p {
+  font-size: .6rem;
+  margin-bottom: 3px;
+  color: #919191;
+}
+.nav-link i,.dropdown i{
+  margin-right: .3rem !important;
+}
 </style>
  <!-- navbar -->
 <!-- Modal -->
@@ -105,7 +154,7 @@ color: #4154f1 !important;
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Registeration For </h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registeration For</h5>
        
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
@@ -161,9 +210,86 @@ color: #4154f1 !important;
           <li><a class="nav-link scrollto" href="welcome.php#services">Services</a></li>
           <li><a class="nav-link scrollto" href="welcome.php#departments">Departments</a></li>
           <li><a class="nav-link scrollto"data-bs-toggle="modal" data-bs-target="#statusModal" class="appointment-btn scrollto" >status</a></li>
-          
+       
+        
+
+<!-- End Notification Icon -->
+
+
+
+</li><!-- End Notification Nav -->
           <li><a class="nav-link scrollto" href="welcome.php#contact">Contact</a></li>
-          <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell "></i> Notification
+          <?php
+          if($check_reg_pat == 1 || $check_reg_app == 1 || $check_reg_rej== 1){
+            echo '<span class="badge bg-primary badge-number m-1">1</span>';
+          }
+          ?>
+</a>
+<ul class="dropdown-menu  dropdown-menu-arrow notifications">
+
+       <?php
+       if($check_reg_pat ==0 && $check_reg_app ==0 && $check_reg_rej ==0 && $reg_pat_vacc_check == 0){
+        echo ' <li class="notification-item">
+        <i class="bi bi-bell text-warning"></i>
+          <div>
+            <p>NO NOtification</p>
+            
+          
+          </div>
+        </li>';
+       }
+       if($check_reg_pat == 1){
+        echo ' <li class="notification-item">
+        <i class="bi bi-bell text-warning"></i>
+          <div>
+            <h4>Dear Pateint</h4>
+            <p>your request has been send you infrom in 12 hours as soon as possible</p>
+          
+          </div>
+        </li>';
+       }
+       if($reg_pat_vacc_check == 1){
+        echo ' <li class="notification-item">
+        <i class="bi bi-bell text-warning"></i>
+          <div>
+            <h4>Dear Pateint</h4>
+            <p>your first dos complete , check the status</p>
+          
+          </div>
+        </li>';
+       }
+       if($check_reg_app == 1){
+        echo ' <li class="notification-item">
+        <i class="bi bi-bell text-warning"></i>
+          <div>
+            <h4>Dear Pateint</h4>
+            <p>your status has been Approved check the status</p>
+           
+          </div>
+        </li>';
+       }
+       if($check_reg_rej== 1){
+        echo ' <li class="notification-item">
+        <i class="bi bi-bell text-warning"></i>
+          <div>
+            <h4>Dear Pateint</h4>
+            <p>your status has been reject sorry</p>
+           
+          </div>
+        </li>';
+       }
+      
+       
+       
+       ?>
+           
+            
+          
+          </ul>
+          </li>
+          <li class="dropdown"><a href="#"><i class="fa-solid fa-user"></i><span>Profile</span></a>
             <ul>
               
               <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -175,16 +301,16 @@ color: #4154f1 !important;
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> -->
-              <li><a href="#"><?php echo  $_SESSION['name'] ?><i class="fa-solid fa-user"></i> </a></li>
-              <li><a href="#"><?php echo  $_SESSION['email'] ?><i class="fa-solid fa-at"></i> </a></li>
-              <li><a href="#"><?php echo  $_SESSION['cnic'] ?><i class="fa-regular fa-id-card"></i></a></li>
-              <li><a href="edit.php?id=<?=$_SESSION['id'] ?>"> Update profile<i class="fa-regular fa-pen-to-square"></i></a></li>
-              <li><a href="logout.php">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
-              
+              <li><a href="#"><?php echo $_SESSION['name']?><i class="fa-solid fa-user"></i></a></li>
+              <li><a href="#"><?php echo $_SESSION['email']?><i class="fa-solid fa-at"></i></a></li>
+              <li><a href="#"><?php echo $_SESSION['cnic']?><i class="fa-regular fa-id-card"></i></a></li>
+              <li><a href="edit.php?id=<?=$_SESSION['id']?>"> Update profile<i class="fa-regular fa-pen-to-square"></i></a></li>
+              <li><a href="logout.php">Logout<i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+        
       </nav><!-- .navbar -->
 
       <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="appointment-btn scrollto"><span class="d-none d-md-inline"></span> Registeration</button>

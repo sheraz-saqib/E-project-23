@@ -17,7 +17,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Medicio Bootstrap Template - Index</title>
+  <title>Welcome to HS-centre </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -62,7 +62,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
         <!-- Slide 1 -->
         <div class="carousel-item active" style="background-image: url(assets_user/img/slide/slide-1.jpg)">
           <div class="container">
-            <h2>Welcome to <span>Medicio</span></h2>
+            <h2>Welcome to <span>HS centre</span></h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
@@ -71,7 +71,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
         <!-- Slide 2 -->
         <div class="carousel-item" style="background-image: url(assets_user/img/slide/slide-2.jpg)">
           <div class="container">
-            <h2>Lorem Ipsum Dolor</h2>
+            <h2>About</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
@@ -80,7 +80,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
         <!-- Slide 3 -->
         <div class="carousel-item" style="background-image: url(assets_user/img/slide/slide-3.jpg)">
           <div class="container">
-            <h2>Sequi ea ut et est quaerat</h2>
+            <h2>servive</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
@@ -144,27 +144,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
           ';
           
 
-        //   if($row =8  && $row > 4){
-        //     echo "<div class='col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 ' >
-           
-        //   <div class='icon-box vaccine-card' data-aos='fade-up' data-aos-delay='100' style='width: 20rem;'>
-        //     <div class='icon'><i class='fa-solid fa-syringe'></i></div>
-        //     <h4 class='title'>Sinopharm</h4>
-        //     <p class='description'>
-        //       <h5 class='title'><i class='fa-solid fa-hospital'></i> hospitals</h5>
-        //       <ul class='vacc_ul'>
-        //         <li>hospital</li>
-        //         <li>hospital</li>
-        //         <li>hospital</li>
-        //       </ul>
-        //     </p>
-        //     <a href='#'> <div class='vacc-reg-btn '>register</div></a>
-        //   </div>
-      
-        // </div>
-        // ";
-        //   }
-
+       
 
 
          }
@@ -172,32 +152,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
          
          ?>
      
-          <!-- card -->
-        <!-- card -->
-        <!-- card -->
-          <!-- <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4 class="title"><a href=""> Sinovac</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="fas fa-thermometer"></i></div>
-              <h4 class="title"><a href="">CanSino-Bio</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="fa-solid fa-vial-circle-check"></i></div>
-              <h4 class="title"><a href="">Sputnik</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div> -->
+         
 
         </div>
 
@@ -214,28 +169,25 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 
         <div class="section-title">
           <h2>About Us</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>In the wake of the unprecedented COVID-19 pandemic, healthcare institutions worldwide have been facing immense challenges, but also displaying remarkable resilience in their efforts to combat the virus</p>
         </div>
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right">
-            <img src="assets_user/img/about.jpg" class="img-fluid" alt="">
+            <img src="https://www.idap.pk/updata/products/38/w1024/38_20171202134724.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>At the heart of our COVID-19 Hospital are the healthcare workers   </h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            Our COVID-19 Hospital stands as a beacon of hope, unity, and dedication, serving as a front-line facility in the battle against this formidable adversary. This article aims to shed light on the extraordinary work carried out within the walls of our hospital and the profound impact it has on patients, healthcare professionals, and the community at large.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> The hospital's leadership has ensured that every frontline worker has access to proper personal protective equipment (PPE)</li>
+              <li><i class="bi bi-check-circle"></i>Our COVID-19 Hospital has embraced innovation and collaboration to effectively respond to the evolving pandemic. </li>
+              <li><i class="bi bi-check-circle"></i> The establishment of specialized COVID-19 units and treatment centers has enabled us to efficiently manage patient flow while minimizing the risk of cross-contamination.</li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+            The collaboration between our medical experts and researchers has been instrumental in identifying and implementing evidence-based treatment approaches. Cutting-edge medical technologies have been employed to enhance diagnostics, track the spread of the virus, and monitor patients' conditions closely.
             </p>
           </div>
         </div>
@@ -247,6 +199,9 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
     <section id="counts" class="counts">
       <div class="container" data-aos="fade-up">
 
+      <div class="section-title">
+          <h2>Achievement</h2>
+        </div>
         <div class="row no-gutters">
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
@@ -291,38 +246,6 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
       </div>
     </section><!-- End Counts Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-            <div class="icon-box mt-5 mt-lg-0">
-              <i class="bx bx-receipt"></i>
-              <h4>Est labore ad</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("assets/img/features.jpg");' data-aos="zoom-in"></div>
-        </div>
-
-      </div>
-    </section><!-- End Features Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services services">
@@ -330,39 +253,39 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 
         <div class="section-title">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Our COVID-19 Hospital is at the forefront of combating the pandemic with comprehensive care. We have specialized units equipped with cutting-edge facilities to treat COVID-19 patients, alongside advanced diagnostics and testing capabilities.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon"><i class="fas fa-heartbeat"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <h4 class="title"><a href="">Specialized COVID-19 Units</a></h4>
+            <p class="description">Our hospital has dedicated units exclusively designed to treat COVID-19 patients. These units are equipped with state-of-the-art facilities, including negative pressure rooms, to prevent the spread of the virus within the facility.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon"><i class="fas fa-pills"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            <h4 class="title"><a href="">Advanced Diagnostics and Testing</a></h4>
+            <p class="description">We employ cutting-edge diagnostic technologies for swift and accurate COVID-19 testing. Our laboratory services ensure prompt results, enabling timely patient care and effective isolation measures.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon"><i class="fas fa-hospital-user"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            <h4 class="title"><a href="">Compassionate Patient Care</a></h4>
+            <p class="description">At our COVID-19 hospital, compassionate care is at the forefront of our approach. Our healthcare professionals are committed to providing personalized attention, emotional support, and tailored treatment plans for each patient.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon"><i class="fas fa-dna"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <h4 class="title"><a href="">Collaborative Treatment Approaches</a></h4>
+            <p class="description">Our medical experts collaborate closely to develop evidence-based treatment protocols. Interdisciplinary teamwork ensures that patients receive the best possible care, benefiting from the collective expertise of various specialties.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon"><i class="fas fa-wheelchair"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            <h4 class="title"><a href="">Telemedicine and Virtual Consultations</a></h4>
+            <p class="description">To minimize exposure and ensure the safety of both patients and healthcare workers, we offer telemedicine services for non-emergency consultations and follow-ups. This enables patients to receive medical advice and care from the comfort of their homes.</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon"><i class="fas fa-notes-medical"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <h4 class="title"><a href="">Community Education and Outreach</a></h4>
+            <p class="description">We actively engage with the community through educational programs and awareness campaigns. By disseminating accurate information about COVID-19 prevention, symptoms, and vaccination, we empower the community to protect themselves and others.</p>
           </div>
         </div>
 
@@ -380,64 +303,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                  <h4>Cardiology</h4>
-                  <p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-                  <h4>Neurology</h4>
-                  <p>Voluptas vel esse repudiandae quo excepturi.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-                  <h4>Hepatology</h4>
-                  <p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-                  <h4>Pediatrics</h4>
-                  <p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-8">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <h3>Cardiology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <h3>Neurology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <h3>Hepatology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <h3>Pediatrics</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-            </div>
-          </div>
-        </div>
+     
 
       </div>
     </section><!-- End Departments Section -->
@@ -448,7 +314,7 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 
         <div class="section-title">
           <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>During these trying times of the COVID-19 pandemic, fear and uncertainty loomed large over our lives. But amidst the darkness, there emerged a ray of hope - my experience at the COVID-19 Hospital. In this testimonial, I share my journey through illness, recovery, and the exceptional care provided by the healthcare heroes at this hospital. Their unwavering dedication and compassion transformed my battle against the virus into a testament of human resilience.</p>
         </div>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -526,181 +392,8 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
       </div>
     </section><!-- End Testimonials Section -->
 
-    <!-- ======= Doctors Section ======= -->
-    <section id="doctors" class="doctors section-bg">
-      <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Doctors</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Doctors Section -->
-
-    <!-- ======= Gallery Section ======= -->
    
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Pricing</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="box" data-aos="fade-up" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="300">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="400">
-              <span class="advanced">Advanced</span>
-              <h3>Ultimate</h3>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
 
     <!-- ======= Frequently Asked Questioins Section ======= -->
     <section id="faq" class="faq section-bg">
@@ -708,61 +401,61 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 
         <div class="section-title">
           <h2>Frequently Asked Questioins</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>The Frequently Asked Questions (FAQs) about COVID-19 Hospital Services provide a clear overview of the hospital's offerings. The hospital has specialized units for COVID-19 patients, advanced diagnostic technologies for testing, and compassionate patient care. </p>
         </div>
 
         <ul class="faq-list">
 
           <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What services does the COVID-19 Hospital provide? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              The COVID-19 Hospital offers specialized units for COVID-19 patients, advanced diagnostics and testing, compassionate patient care, collaborative treatment approaches, telemedicine services, and community education and outreach programs.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Are there separate units for COVID-19 patients? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              Yes, the hospital has dedicated units specifically designed to treat COVID-19 patients, equipped with state-of-the-art facilities to prevent virus transmission.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What diagnostic technologies are used for COVID-19 testing?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+              The hospital employs cutting-edge diagnostic technologies to provide swift and accurate COVID-19 testing, ensuring timely patient care and effective isolation measures.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">How does the hospital ensure compassionate patient care <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq4" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              Healthcare professionals at the COVID-19 Hospital prioritize compassionate care, providing personalized attention, emotional support, and tailored treatment plans for each patient.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Do different medical specialties collaborate on patient treatment?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq5" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+              Yes, our COVID-19 Hospital promotes collaborative treatment approaches, with medical experts from various specialties working together to develop evidence-based treatment protocols.
               </p>
             </div>
           </li>
 
           <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Does the hospital offer telemedicine services? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
             <div id="faq6" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+              Yes, telemedicine services are available for non-emergency consultations and follow-ups, allowing patients to receive medical advice and care from the safety and comfort of their homes.
               </p>
             </div>
           </li>
@@ -778,13 +471,13 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+   
         </div>
 
       </div>
 
       <div>
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+    
       </div>
 
       <div class="container">
