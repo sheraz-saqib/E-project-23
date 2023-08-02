@@ -20,6 +20,10 @@ $check_reg_rej = mysqli_num_rows($reg_rej);
 $reg_pat_vaccQ = "SELECT * FROM `accept_patient` WHERE `patient_email`= '$email' AND `pateint_dos_1`= 'vaccinated'"; 
 $reg_pat_vacc =  mysqli_query($conn,$reg_pat_vaccQ);
 $reg_pat_vacc_check =  mysqli_num_rows($reg_pat_vacc);
+
+$reg_pat_vacc_dox_2Q = "SELECT * FROM `accept_patient` WHERE `patient_email`= '$email' AND `pateint_dos_2`= 'vaccinated'"; 
+$reg_pat_vacc_dox_2 =  mysqli_query($conn,$reg_pat_vacc_dox_2Q);
+$reg_pat_vacc_dox_2_check =  mysqli_num_rows($reg_pat_vacc_dox_2);
 if($check_reg_app ==1){
   $check_reg_pat = 0;
 }
@@ -27,6 +31,15 @@ if($reg_pat_vacc_check == 1){
   $check_reg_pat = 0;
   $check_reg_app = 0;
   $check_reg_rej = 0;
+}
+if($reg_pat_vacc_dox_2_check == 1){
+  $check_reg_pat = 0;
+  $check_reg_app = 0;
+  $check_reg_rej = 0;
+  $reg_pat_vacc_check = 0;
+}
+if($check_reg_rej == 1){
+  $check_reg_pat = 0;
 }
  ?>
 
@@ -120,7 +133,12 @@ color: #4154f1 !important;
  /* .notifications {
   inset: 8px -15px auto auto !important;
 } */
-
+.notifications {
+  margin-top: .5rem !important;
+  margin-left: -3rem !important;
+  width: 25rem !important;
+  width: 200% !important;
+}
  .notifications .notification-item {
   display: flex;
   align-items: center;
@@ -129,8 +147,11 @@ color: #4154f1 !important;
 }
 
 .notifications .notification-item i {
-  margin: 0 10px 0 10px;
-  font-size: .8rem;
+  padding: .5rem;
+  font-size: 1rem;
+}
+.notifications  a{
+  padding: .5rem 1rem !important;
 }
 
  .notifications .notification-item h4 {
@@ -143,9 +164,12 @@ color: #4154f1 !important;
   font-size: .6rem;
   margin-bottom: 3px;
   color: #919191;
+  white-space: nowrap;
+
 }
 .nav-link i,.dropdown i{
   margin-right: .3rem !important;
+  font-size: .9rem !important;
 }
 </style>
  <!-- navbar -->
@@ -230,7 +254,7 @@ color: #4154f1 !important;
 <ul class="dropdown-menu  dropdown-menu-arrow notifications">
 
        <?php
-       if($check_reg_pat ==0 && $check_reg_app ==0 && $check_reg_rej ==0 && $reg_pat_vacc_check == 0){
+       if($check_reg_pat ==0 && $check_reg_app ==0 && $check_reg_rej ==0 && $reg_pat_vacc_check == 0 && $reg_pat_vacc_dox_2_check == 0){
         echo ' <li class="notification-item">
         <i class="bi bi-bell text-warning"></i>
           <div>
@@ -242,7 +266,7 @@ color: #4154f1 !important;
        }
        if($check_reg_pat == 1){
         echo ' <li class="notification-item">
-        <i class="bi bi-bell text-warning"></i>
+        <i class="fa-regular fa-paper-plane text-success "></i>
           <div>
             <h4>Dear Pateint</h4>
             <p>your request has been send you infrom in 12 hours as soon as possible</p>
@@ -251,40 +275,49 @@ color: #4154f1 !important;
         </li>';
        }
        if($reg_pat_vacc_check == 1){
-        echo ' <li class="notification-item">
+        echo '<a href="patient_status.php">  <li class="notification-item">
         <i class="bi bi-bell text-warning"></i>
           <div>
             <h4>Dear Pateint</h4>
             <p>your first dos complete , check the status</p>
           
           </div>
-        </li>';
+        </li></a>';
+       }
+       if($reg_pat_vacc_dox_2_check == 1){
+        echo ' <a href="patient_status.php"> <li class="notification-item">
+        <i class="bi bi-check text-success "></i>
+          <div>
+            <h4>Dear Pateint</h4>
+            <p>your are Fully vaccinated , check the status</p>
+          
+          </div>
+        </li></a>';
        }
        if($check_reg_app == 1){
-        echo ' <li class="notification-item">
-        <i class="bi bi-bell text-warning"></i>
+        echo '   <a href="patient_status.php"><li class="notification-item">
+        <i class="fa-solid fa-circle-check text-info"></i>
           <div>
             <h4>Dear Pateint</h4>
             <p>your status has been Approved check the status</p>
-           
           </div>
-        </li>';
+        </li> </a> ';
        }
        if($check_reg_rej== 1){
-        echo ' <li class="notification-item">
-        <i class="bi bi-bell text-warning"></i>
+        echo '<a> <li class="notification-item">
+        <i class="fa-solid fa-circle-cross text-danger"></i>
           <div>
             <h4>Dear Pateint</h4>
-            <p>your status has been reject sorry</p>
+            <p>your request has been reject sorry</p>
            
           </div>
-        </li>';
+        </li></a>';
        }
       
        
        
        ?>
-           
+       
             
           
           </ul>

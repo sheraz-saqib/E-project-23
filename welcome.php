@@ -8,6 +8,23 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 $fetch_vaccineQ = "SELECT * FROM `vaccine` ";
 
 $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
+
+
+$cont_reg_patQ  = "SELECT * FROM `reg_patient`"; 
+$cont_reg_pat = mysqli_query($conn,$cont_reg_patQ);
+$cont_check_reg_pat = mysqli_num_rows($cont_reg_pat);
+
+$cont_reg_hosQ  = "SELECT * FROM `accept_hospital`"; 
+$cont_reg_hos = mysqli_query($conn,$cont_reg_hosQ);
+$cont_check_reg_hos = mysqli_num_rows($cont_reg_hos);
+
+$count_reg_pat_vaccQ = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`= 'vaccinated'"; 
+$count_reg_pat_vacc =  mysqli_query($conn,$count_reg_pat_vaccQ);
+$count_reg_pat_vacc_check =  mysqli_num_rows($count_reg_pat_vacc);
+
+$count_reg_pat_vacc_dos_2Q = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`= 'vaccinated' and `pateint_dos_2`= 'vaccinated'"; 
+$count_reg_pat_vacc_dos_2 =  mysqli_query($conn,$count_reg_pat_vacc_dos_2Q);
+$count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
 ?>
 
 <!DOCTYPE html>
@@ -207,37 +224,45 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fas fa-user-md"></i>
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-
-              <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
-              <a href="#">Find out more &raquo;</a>
+              <?php
+              
+              echo '<span data-purecounter-start="0" data-purecounter-end="'.$cont_check_reg_pat .'" data-purecounter-duration="1"
+               class="purecounter"></span>
+              ';
+              ?>
+              <p><strong>Total Patients </strong></p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="26" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
-              <a href="#">Find out more &raquo;</a>
+              <?php
+              echo ' <span data-purecounter-start="0" data-purecounter-end="'.$cont_check_reg_hos.'" data-purecounter-duration="1" class="purecounter"></span>';
+              ?>
+             
+              <p><strong>Departments</strong></p>
+            
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
-              <a href="#">Find out more &raquo;</a>
+              <?php
+              echo ' <span data-purecounter-start="0" data-purecounter-end="'.$count_reg_pat_vacc_check.'" data-purecounter-duration="1" class="purecounter"></span>';
+              ?>  <p><strong>compelete 1st dos vaccinated patient</strong></p>
+              
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
             <div class="count-box">
               <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
-              <a href="#">Find out more &raquo;</a>
+              <?php
+              echo ' <span data-purecounter-start="0" data-purecounter-end="'.$count_reg_pat_vacc_dos_2_check.'" data-purecounter-duration="1" class="purecounter"></span>';
+              ?>               <p><strong>fully Vaccinated Patients</strong> </p>
+              
             </div>
           </div>
 

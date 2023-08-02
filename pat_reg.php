@@ -73,7 +73,7 @@ $fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
 
 
 
-$fetch_hospitalQ = "SELECT * FROM `reg_hospital` ";
+$fetch_hospitalQ = "SELECT * FROM `accept_hospital` ";
 $fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
 $hospital_row = mysqli_num_rows($fetch_hospital);
 // =============

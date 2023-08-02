@@ -10,29 +10,29 @@ if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
 // ==============
 
 
-$fetch_PatientQ = "SELECT * FROM `reg_patient`";
-$fetch_Patient = mysqli_query($conn,$fetch_PatientQ);
-$totalPatient = mysqli_num_rows($fetch_Patient);
+$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
+$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
+$totalhospital = mysqli_num_rows($fetch_hospital);
 // ==============
-$fetch_app_PatientQ = "SELECT * FROM `accept_patient`";
-$fetch_app_Patient = mysqli_query($conn,$fetch_app_PatientQ);
-$total_app_Patient = mysqli_num_rows($fetch_app_Patient);
+$fetch_app_hospitalQ = "SELECT * FROM `accept_hospital`";
+$fetch_app_hospital = mysqli_query($conn,$fetch_app_hospitalQ);
+$total_app_hospital = mysqli_num_rows($fetch_app_hospital);
 // ==============
-$fetch_reject_PatientQ = "SELECT * FROM `reject_patient`";
-$fetch_reject_Patient = mysqli_query($conn,$fetch_reject_PatientQ);
-$total_reject_Patient = mysqli_num_rows($fetch_reject_Patient);
+$fetch_reject_hospitalQ = "SELECT * FROM `reject_hospital`";
+$fetch_reject_hospital = mysqli_query($conn,$fetch_reject_hospitalQ);
+$total_reject_hospital_all = mysqli_num_rows($fetch_reject_hospital);
 // =================
-$fetch_approved_PatientQ = "SELECT * FROM `reg_patient` INNER JOIN `accept_patient` ON `reg_patient`.`patient_id` = `accept_patient`.`reg_pateint_id` WHERE `reg_patient`.`patient_status` = 'approved' AND `accept_patient`.`pateint_dos_1` = 'not vaccinated';";
-$fetch_approved_Patient = mysqli_query($conn,$fetch_approved_PatientQ);
-$total_approved_Patient = mysqli_num_rows($fetch_approved_Patient);
+// $fetch_approved_PatientQ = "SELECT * FROM `reg_hospital` INNER JOIN `accept_hospital` ON `reg_hospital`.`hospital_id` = `accept_hospital`.`reg_pateint_id` WHERE `reg_patient`.`patient_status` = 'approved' AND `accept_patient`.`pateint_dos_1` = 'not vaccinated';";
+// $fetch_approved_Patient = mysqli_query($conn,$fetch_approved_PatientQ);
+// $total_approved_Patient = mysqli_num_rows($fetch_approved_Patient);
 // =================
-$fetch_reject_PatientQ = "SELECT * FROM `reg_patient` WHERE `patient_status` ='reject'";
-$fetch_reject_Patient = mysqli_query($conn,$fetch_reject_PatientQ);
-$total_reject_Patient = mysqli_num_rows($fetch_reject_Patient);
+$fetch_reject_hospitalQ = "SELECT * FROM `reg_patient` WHERE `patient_status` ='reject'";
+$fetch_reject_hospital = mysqli_query($conn,$fetch_reject_hospitalQ);
+$total_reject_hospital = mysqli_num_rows($fetch_reject_hospital);
 // =================
-$fetch_pending_PatientQ = "SELECT * FROM `reg_patient` WHERE `patient_status` =''";
-$fetch_pending_Patient = mysqli_query($conn,$fetch_pending_PatientQ);
-$total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
+$fetch_pending_hospitalQ = "SELECT * FROM `reg_hospital` WHERE `hospital_status` =''";
+$fetch_pending_hospital = mysqli_query($conn,$fetch_pending_hospitalQ);
+$total_pending_hospital = mysqli_num_rows($fetch_pending_hospital);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +113,7 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$totalPatient?></h6>
+                      <h6><?=$totalhospital?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -140,14 +140,14 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Pending Patient</h5>
+                  <h5 class="card-title">Pending Hospital</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$total_pending_Patient?></h6>
+                      <h6><?=$total_pending_hospital?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -175,14 +175,14 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Approved Patient</h5>
+                  <h5 class="card-title">Approved Hospital</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$total_approved_Patient?></h6>
+                      <h6><?=$total_app_hospital?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -209,14 +209,14 @@ $total_pending_Patient = mysqli_num_rows($fetch_pending_Patient);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reject Patient</h5>
+                  <h5 class="card-title">Reject Hospital</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?=$total_reject_Patient?></h6>
+                      <h6><?=$total_reject_hospital_all?></h6>
                       <!-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> -->
 
                     </div>
@@ -450,7 +450,6 @@ if($app_patient_data['patient_status'] == 'approved'){
                           <td>'.$reg_patient_data['patient_vacc'].'</td>
                           <td>'.$reg_patient_data['patient_app_day'].'</td>
                           <td>'.$reg_patient_data['patient_select_hos'].'</td>
-                      
                           <td>'.$reg_patient_data['patient_status'].'</td>
                           <td><a  href="admin_accept_pateint.php?patient_ID='.$reg_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-success ">approved</a></td>
                         
@@ -482,52 +481,46 @@ if($app_patient_data['patient_status'] == 'approved'){
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Pending Patient</h5>
+                  <h5 class="card-title">Requesting hospital</h5>
 
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>
                       <tr>
                         <th scope="col">s.no</th>
-                        <th scope="col">patient id</th>
-                        <th scope="col">patient name</th>
-                        <th scope="col">patient email</th>
-                        <th scope="col">patient phone</th>
-                        <th scope="col">patient cnic</th>
-                        <th scope="col">patient age</th>
-                        <th scope="col">patient gender</th>
-                        <th scope="col">patient vaccine</th>
-                        <th scope="col">day</th>
-                        <th scope="col">hospital name</th>
-                        <th scope="col">patient status</th>
-                        <th scope="col">action</th>
-             
+                        <th scope="col">user_id</th>
+                        <th scope="col">hospital_id </th>
+                        <th scope="col">hospital_name</th>
+                        <th scope="col">hospital_email</th>
+                        <th scope="col">hospital_manager_name</th>
+                        <th scope="col">hospital_contact</th>
+                        <th scope="col">hospital_location</th>
+                        <th scope="col">hospital_manager_cnic</th>
+                        <th scope="col">hospital_open_time</th>
+                        <th scope="col">hospital_close_time</th>
+                       
+                        <th scope="col">hospital_status</th>
                       </tr>
                     </thead>
                     <tbody>
-
-                    
                     <?php
-
-                    if($total_pending_Patient  > 0){
-                      while($pending_patient_data = mysqli_fetch_assoc($fetch_pending_Patient)){ 
+                    if($total_pending_hospital  > 0){
+                      while($pending_hospital_data = mysqli_fetch_assoc($fetch_pending_hospital)){ 
                         $i+=1;
-
                           echo '<tr>
                           <td scope="row"><a href="#">'.$i.'</a></td>
-                          <td scope="row"><a href="#">'.$pending_patient_data['patient_id'].'</a></td>
-                          <td>'.$pending_patient_data['patient_name'].'</td>
-                          <td><a  class="text-primary">'.$pending_patient_data['patient_email'].'</a></td>
-                          <td>'.$pending_patient_data['patient_phone'].'</td>
-                          <td>'.$pending_patient_data['patient_cnic'].'</td>
-                          <td>'.$pending_patient_data['patient_age'].'</td>
-                          <td>'.$pending_patient_data['patient_gender'].'</td>
-                          <td>'.$pending_patient_data['patient_vacc'].'</td>
-                          <td>'.$pending_patient_data['patient_app_day'].'</td>
-                          <td>'.$pending_patient_data['patient_select_hos'].'</td>
-                      
+                          <td scope="row"><a href="#">'.$pending_hospital_data['user_id'].'</a></td>
+                          <td scope="row"><a href="#">'.$pending_hospital_data['hospital_id'].'</a></td>
+                          <td>'.$pending_hospital_data['hospital_name'].'</td>
+                          <td><a  class="text-primary">'.$pending_hospital_data['hospital_email'].'</a></td>
+                          <td>'.$pending_hospital_data['hospital_manager_name'].'</td>
+                          <td>'.$pending_hospital_data['hospital_contact'].'</td>
+                          <td>'.$pending_hospital_data['hospital_location'].'</td>
+                          <td>'.$pending_hospital_data['hospital_manager_cnic'].'</td>
+                          <td>'.$pending_hospital_data['hospital_open_time'].'</td>
+                          <td>'.$pending_hospital_data['hospital_close_time'].'</td>
                           <td>pending</td>
-                          <td><a  href="admin_accept_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-success ">approved</a></td>
-                          <td><a  href="admin_reject_pateint.php?patient_ID='.$pending_patient_data['patient_id'].'&pageUrl=admin_pat_detail.php" class="badge bg-danger ">reject</a></td>
+                          <td><a  href="admin_accept_hospital.php?hospital_ID='.$pending_hospital_data['hospital_id'].'&pageUrl=admin_hos_detail.php" class="badge bg-success ">approved</a></td>
+                          <td><a  href="admin_reject_hospital.php?hospital_ID='.$pending_hospital_data['hospital_id'].'&pageUrl=admin_hos_detail.php" class="badge bg-danger ">reject</a></td>
                         </tr>';
                         }
                         

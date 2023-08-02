@@ -23,10 +23,10 @@ $hopital_submit = $_POST['hopital_submit'];
 
 if(isset($hopital_submit)){
 
-  $check_hosQ ="SELECT * FROM `reg_hospital` WHERE `hospital_email` = '$user_email'";
+  $check_hosQ ="SELECT * FROM `reg_hospital` WHERE `hospital_email` = '$user_email' OR `hospital_email` = '$hospital_email'";
   $check_hos = mysqli_query($conn,$check_hosQ);
   $fetch_check_hos = mysqli_fetch_assoc($check_hos);
-  if( $fetch_check_hos['hospital_email'] != $user_email){
+  if( $fetch_check_hos['hospital_email'] != $user_email && $fetch_check_hos['hospital_email'] != $hospital_email ){
   if($hospital_name != '' && $hospital_Manager_name != '' && $hospital_email  != '' && $hospital_phone != '' && $hospital_location != '' && $hopital_Manager_cnic != '' && $hopital_open_time != '' && $hopital_close_time !=''){
 
     $hospital_insertQ = "INSERT INTO `reg_hospital`( `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `user_id`)
@@ -48,7 +48,7 @@ if(isset($hopital_submit)){
 
   }
 }
-if( $fetch_check_hos['hospital_email'] == $user_email){
+if( $fetch_check_hos['hospital_email'] != $user_email || $fetch_check_hos['hospital_email'] != $hospital_email ){
   $already_hos_reg = true;
 
 }
@@ -120,7 +120,7 @@ if( $fetch_check_hos['hospital_email'] == $user_email){
             <?php
             
             if($hospital_register){
-              echo '<div class="sent-message bg-success">Your appointment request has been sent successfully you inform in 12 hours. Thank you! </div>';
+              echo '<div class="sent-message bg-success">Your request has been sent successfully you inform in 24 hours. Thank you! </div>';
             }
             if($already_hos_reg){
               echo '<div class="sent-message bg-success">You already Register you inform in 24 hours. Thank you! </div>';

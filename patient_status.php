@@ -134,7 +134,7 @@ if($totalAcc ==0 && $totalreject == 0 && $totalpending == 0){
               echo '<div class="sent-message bg-success approved_message">
              Approved 
              <div class="row justify-content-center approved_message_a">
-             <a class="btn  w-100 " target="_blank" href="download_user_card.php?download_user_card_id='.$acc_pat_select_data['pateint_id'].'">Download repot card</a>
+             <a class="btn  w-100 " target="_blank" href="download_user_card.php?download_user_card_id='.$acc_pat_select_data['pateint_id'].'">Check repot card</a>
              </div>
               </div> ';
             }
