@@ -30,7 +30,7 @@ $insert_rej_tableQ  = "INSERT INTO `reject_hospital`(`reg_hospital_id`, `hospita
 
 $insert_rej_table  = mysqli_query($conn,$insert_rej_tableQ);
 
-$delete_hospital_From_accept_patQ = "DELETE FROM `accept_hospital` WHERE `reg_hospital_id` = $hospital_ID"; 
+$delete_hospital_From_accept_patQ = "DELETE FROM `accept_hospital` WHERE `reg_hos_id` = $hospital_ID"; 
 $delete_hospital_From_accept_pat = mysqli_query($conn,$delete_hospital_From_accept_patQ );
 // $fetch_rejct_pat_data = mysqli_fetch_assoc($delete_pateint_From_reject_pat);
 

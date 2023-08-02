@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2023 at 01:53 PM
+-- Generation Time: Aug 02, 2023 at 07:03 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -37,18 +37,24 @@ CREATE TABLE `accept_hospital` (
   `hospital_location` varchar(222) NOT NULL,
   `hospital_manager_cnic` varchar(222) NOT NULL,
   `hospital_open_time` varchar(222) NOT NULL,
-  `hospital_close_time` varchar(222) NOT NULL
+  `hospital_close_time` varchar(222) NOT NULL,
+  `hospital_verified` varchar(222) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accept_hospital`
 --
 
-INSERT INTO `accept_hospital` (`hospital_id`, `reg_hos_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`) VALUES
-(1, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54'),
-(2, 6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', ' karachi ', '54545454', '04:04 ', '04:04'),
-(3, 2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', ' karachi ', '565655655665', '03:33 ', '08:01'),
-(4, 1, 'national', 'humaira', 'humaira@gmail.com', '4343434', ' karachi ', '565655655665', '03:33 ', '08:01');
+INSERT INTO `accept_hospital` (`hospital_id`, `reg_hos_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `hospital_verified`) VALUES
+(1, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
+(2, 6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', ' karachi ', '54545454', '04:04 ', '04:04', 'not verified'),
+(4, 1, 'national', 'humaira', 'humaira@gmail.com', '4343434', ' karachi ', '565655655665', '03:33 ', '08:01', 'not verified'),
+(7, 3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', ' lahore', '355353553', '09:09 ', '13:09', 'not verified'),
+(9, 2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', ' karachi ', '565655655665', '03:33 ', '08:01', 'not verified'),
+(12, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
+(14, 8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', ' lahore', '4546565656', '13:00 ', '22:00', 'not verified'),
+(15, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
+(16, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', ' karachi ', '434343', '01:04 ', '01:00', 'not verified');
 
 -- --------------------------------------------------------
 
@@ -114,6 +120,22 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_cnic`, `adm
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hospital_portal`
+--
+
+CREATE TABLE `hospital_portal` (
+  `hos_pot_id` int(11) NOT NULL,
+  `hos_pot_name` varchar(200) NOT NULL,
+  `hos_pot_email` varchar(200) NOT NULL,
+  `hos_pot_password` varchar(255) NOT NULL,
+  `accept_hos_id` varchar(255) NOT NULL,
+  `reg_hospital_id` varchar(222) NOT NULL,
+  `reg_user_id` varchar(222) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reg_hospital`
 --
 
@@ -137,11 +159,12 @@ CREATE TABLE `reg_hospital` (
 
 INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `user_id`, `hospital_status`) VALUES
 (1, 'national', 'humaira', 'humaira@gmail.com', '4343434', 'karachi ', '565655655665', '03:33 ', '08:01', '6 ', 'approved'),
-(2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', 'karachi ', '565655655665', '03:33 ', '08:01', '1 ', 'approved'),
+(2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', 'karachi ', '565655655665', '03:33 ', '08:01', '1 ', 'reject'),
 (3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', 'lahore', '355353553', '09:09 ', '13:09', '7 ', 'reject'),
-(5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00', '11', 'reject'),
+(5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00', '11', 'approved'),
 (6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', 'karachi ', '54545454', '04:04 ', '04:04', '10', 'reject'),
-(7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54', '12', 'approved');
+(7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54', '12', 'approved'),
+(8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', 'lahore', '4546565656', '13:00 ', '22:00', '8', 'approved');
 
 -- --------------------------------------------------------
 
@@ -203,9 +226,20 @@ CREATE TABLE `reject_hospital` (
 --
 
 INSERT INTO `reject_hospital` (`hospital_id`, `reg_hospital_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`) VALUES
-(1, 6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', 'karachi ', '54545454', '04:04 ', '04:04'),
-(2, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00'),
-(3, 3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', 'lahore', '355353553', '09:09 ', '13:09');
+(5, 2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', 'karachi ', '565655655665', '03:33 ', '08:01'),
+(9, 6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', 'karachi ', '54545454', '04:04 ', '04:04'),
+(10, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(11, 12, '', '', '', '', '', '', '', ''),
+(12, 11, '', '', '', '', '', '', '', ''),
+(13, 3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', 'lahore', '355353553', '09:09 ', '13:09'),
+(14, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(15, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(16, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(17, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(18, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(19, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(21, 8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', 'lahore', '4546565656', '13:00 ', '22:00'),
+(22, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00');
 
 -- --------------------------------------------------------
 
@@ -301,6 +335,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `hospital_portal`
+--
+ALTER TABLE `hospital_portal`
+  ADD PRIMARY KEY (`hos_pot_id`);
+
+--
 -- Indexes for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
@@ -344,7 +384,7 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `accept_hospital`
 --
 ALTER TABLE `accept_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `accept_patient`
@@ -359,10 +399,16 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `hospital_portal`
+--
+ALTER TABLE `hospital_portal`
+  MODIFY `hos_pot_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reg_patient`
@@ -374,7 +420,7 @@ ALTER TABLE `reg_patient`
 -- AUTO_INCREMENT for table `reject_hospital`
 --
 ALTER TABLE `reject_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `reject_patient`

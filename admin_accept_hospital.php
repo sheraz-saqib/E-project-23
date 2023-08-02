@@ -25,14 +25,14 @@ $fetch_select_hos_data = mysqli_fetch_assoc($select_hos_data);
  $hospital_open_time   =  $fetch_select_hos_data['hospital_open_time'];
  $hospital_close_time   =  $fetch_select_hos_data['hospital_close_time'];
 
-$insert_acc_tableQ  = "INSERT INTO `accept_hospital`(`reg_hos_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`)
+$insert_acc_tableQ  = "INSERT INTO `accept_hospital`(`reg_hos_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`,`hospital_verified`)
  VALUES 
- ('$hospital_ID','$hospital_name','$hospital_manager_name','$hospital_email','$hospital_contact',' $hospital_location','$hospital_manager_cnic','$hospital_open_time','$hospital_close_time')";
+ ('$hospital_ID','$hospital_name','$hospital_manager_name','$hospital_email','$hospital_contact',' $hospital_location','$hospital_manager_cnic','$hospital_open_time','$hospital_close_time','not verified')";
 
 
 $insert_acc_table  = mysqli_query($conn,$insert_acc_tableQ);
 
-$delete_hospital_From_reject_patQ = "DELETE FROM `reject_hospital` WHERE `reg_hospital_id` = $hospital_ID"; 
+$delete_hospital_From_reject_patQ = "DELETE FROM `reject_hospital` WHERE `reg_hos_id` = $hospital_ID"; 
 $delete_hospital_From_reject_pat = mysqli_query($conn,$delete_hospital_From_reject_patQ );
 // $fetch_rejct_pat_data = mysqli_fetch_assoc($delete_pateint_From_reject_pat);
 

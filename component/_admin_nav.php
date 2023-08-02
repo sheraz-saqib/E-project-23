@@ -352,22 +352,22 @@ color: #4154f1 !important;
             </a>
           </li>
           <li>
-            <a href="admin_app_pat.php">
-            <i class="bi bi-circle"></i><span>Approved And Verified Hospital </span>
+            <a href="admin_app_hos.php">
+            <i class="bi bi-circle"></i><span>Approved Hospital </span>
             </a>
           </li>
           <li>
-            <a href="admin_rej_pat.php">
+            <a href="admin_rej_hos.php">
             <i class="bi bi-circle"></i><span>Reject  Hospital </span>
             </a>
           </li>
           <li>
-            <a href="admin_pending_pat.php">
+            <a href="admin_pending_hos.php">
             <i class="bi bi-circle"></i><span>Pending  Hospital </span>
             </a>
           </li>
           <li>
-            <a href="admin_vaccinated_pat.php">
+            <a href="admin_verified_hos.php">
             <i class="bi bi-circle"></i><span>verified  Hospital </span>
             </a>
           </li>
