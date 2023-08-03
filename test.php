@@ -1,89 +1,44 @@
 <?php
-require 'conn.php';
-session_start();
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
+//Load Composer's autoloader
+require 'vendor/autoload.php';
 
-    // echo  $_SESSION['id'] . "<br>";
-    // echo  $_SESSION['name'] . "<br>";
-    // echo  $_SESSION['cnic']. "<br>";
-    // echo  $_SESSION['email']. "<br>";
-   
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
-    
-     
-?>
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'bhanakop@gmail.com';                     //SMTP username
+    $mail->Password   = 'cbdqqregogtawone';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
+    //Recipients
+    $mail->setFrom('hassanee087@gmail.com', 'Mailer');
+    $mail->addAddress('hassanee087@gmail.com', 'Joe User');     //Add a recipient
+    $mail->addReplyTo('bhanakop@gmail.com', 'Information');
 
-<a href="logout.php">logout</a>
+    //Attachments
+    // $mail->addAttachment('.\assets_admin\img\messages-3.jpg');         //Add attachments
+    // $mail->addAttachment('.\assets_admin\img\new-1.jpg');    //Optional name
 
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'this is test email';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-<script src="node_modules/jspdf/dist/jspdf.umd.js"></script>
-<script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
-
-
-
-<div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form" id="from_pdf">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-          <div class="text-center"><button onclick="htmlToPdf ()">download pdf</button></div>
-
-
-                          <script>
-                            window.jsPDF = window.jspdf.jsPDF;
-
-                            const htmlToPdf = ()=>{
-                              let doc = new jsPDF();
-                              let file = document.querySelector('#from_pdf');
-
-
-                              doc.html(file,{
-                                callback:function(doc){
-                                  doc.save('document-html.pdf')
-                                },
-                                margin:[10,10,10,10],
-                                autoPaging:'text',
-                                x:0,
-                                y:0,
-                                width:190,
-                                windowWidth:675
-                              })
-                            }
-
-
-                          </script>
-
-
-<?php
-
-$pass = "admin@123";
-
-$str_pass = password_hash($pass,PASSWORD_BCRYPT);
-
-echo $str_pass;
-$fetch_userPatientQ = "SELECT user.id,reg_patient.patient_id,user.name,user.email,reg_patient.patient_gender,reg_patient.patient_select_hos,reg_patient.patient_app_day,reg_patient.patient_vacc,reg_patient.patient_status FROM user JOIN reg_patient WHERE user.name = reg_patient.patient_name AND user.email = reg_patient.patient_email;
-";
-$fetch_userPatient = mysqli_query($conn,$fetch_userQ);
-echo var_dump($fetch_userPatient);
-?>
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
