@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2023 at 07:03 PM
+-- Generation Time: Aug 03, 2023 at 09:38 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -85,14 +85,19 @@ CREATE TABLE `accept_patient` (
 --
 
 INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`, `pateint_dos_1`, `pateint_dos_2`, `pateint_dos_1_date`, `pateint_dos_2_date`) VALUES
-(5, 3, ' subhan', 'subhan@gmail.com', '54545454', '565655655665', ' 33', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'not vaccinated', 'not vaccinated', '00-00-00', '00-00-00'),
+(5, 3, ' subhan', 'subhan@gmail.com', '54545454', '565655655665', ' 33', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-05-05'),
 (6, 1, ' sheraz', 'sheraz@gmail.com', '434434', '565655655665', ' 33', 'nationl', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2023-02-22', '2024-05-06'),
 (7, 7, ' maria', 'maria@gmail.com', '33333333', '33333333333', ' 333333333', 'nationl', 'Male', 'Sinovac', 'monday', 'vaccinated', 'vaccinated', '2023-02-22', '2025-05-05'),
-(8, 6, ' maria', 'maria@gmail.com', '222222222222222', '22222222222222', ' 22', 'nationl', 'Femail', 'Sinovac', 'monday', 'not vaccinated', 'not vaccinated', '00-00-00', '00-00-00'),
-(9, 5, ' ali', 'ali@gmail.com', '333333333334', '43333333333334', ' 33', 'nationl', 'Male', 'Sinovac', 'tuesday', 'not vaccinated', 'not vaccinated', '00-00-00', '00-00-00'),
-(10, 8, ' hamza', 'hamza@gmail.com', '45454545', '355353553', ' 22', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'not vaccinated', 'not vaccinated', '00-00-00', '00-00-00'),
-(11, 9, ' irfan', 'irfan@gmail.com', '344343', '23232323', ' 33', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'not vaccinated', '2023-05-05', '00-00-00'),
-(16, 10, ' usama', 'usama@gmial.com', '3443434', '232323232', ' 33', 'nationl', 'Male', 'Sinovac', 'thusday', 'vaccinated', 'vaccinated', '2023-02-05', '2024-09-05');
+(8, 6, ' maria', 'maria@gmail.com', '222222222222222', '22222222222222', ' 22', 'nationl', 'Femail', 'Sinovac', 'monday', 'vaccinated', 'vaccinated', '2023-02-22', '2023-05-05'),
+(9, 5, ' ali', 'ali@gmail.com', '333333333334', '43333333333334', ' 33', 'nationl', 'Male', 'Sinovac', 'tuesday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-08-06'),
+(10, 8, ' hamza', 'hamza@gmail.com', '45454545', '355353553', ' 22', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '2023-05-22', '2025-02-02'),
+(11, 9, ' irfan', 'irfan@gmail.com', '344343', '23232323', ' 33', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-05-05'),
+(16, 10, ' usama', 'usama@gmial.com', '3443434', '232323232', ' 33', 'nationl', 'Male', 'Sinovac', 'thusday', 'vaccinated', 'vaccinated', '2023-02-05', '2024-09-05'),
+(17, 11, ' yunus', 'yunus@gmail.com', '434343434', '4343434343', ' 33', 'Agha Khan', 'Male', '\r\nSinopharm', 'thusday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-05-05'),
+(18, 12, ' dsgsg', 'umair@gamil.com', '345454', '65446', ' 66', 'national', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2023-05-05', '2025-05-05'),
+(19, 13, ' maria', 'assds@gmail.com', '343525435', '5433424355454', ' 44', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2025-05-05', '2025-05-05'),
+(20, 14, ' kadkk', 'ksk@gmail.com', '51646464', '6544664', ' 2', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '0023-02-22', '52020-05-05'),
+(21, 15, ' 43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', ' 44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'not vaccinated', '2023-05-05', '00-00-00');
 
 -- --------------------------------------------------------
 
@@ -200,7 +205,12 @@ INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patie
 (7, 'maria', 'maria@gmail.com', '33333333', '33333333333', '333333333', 'nationl', 'Male', 'Sinovac', 'monday', 'approved'),
 (8, 'hamza', 'hamza@gmail.com', '45454545', '355353553', '22', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
 (9, 'irfan', 'irfan@gmail.com', '344343', '23232323', '33', 'nationl', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
-(10, 'usama', 'usama@gmial.com', '3443434', '232323232', '33', 'nationl', 'Male', 'Sinovac', 'thusday', 'approved');
+(10, 'usama', 'usama@gmial.com', '3443434', '232323232', '33', 'nationl', 'Male', 'Sinovac', 'thusday', 'approved'),
+(11, 'yunus', 'yunus@gmail.com', '434343434', '4343434343', '33', 'Agha Khan', 'Male', '\r\nSinopharm', 'thusday', 'approved'),
+(12, 'dsgsg', 'umair@gamil.com', '345454', '65446', '66', 'national', 'Male', '\r\nSinopharm', 'monday', 'approved'),
+(13, 'maria', 'assds@gmail.com', '343525435', '5433424355454', '44', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'approved'),
+(14, 'kadkk', 'ksk@gmail.com', '51646464', '6544664', '2', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
+(15, '43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', '44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved');
 
 -- --------------------------------------------------------
 
@@ -299,18 +309,19 @@ INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 
 CREATE TABLE `vaccine` (
   `vaccine_id` int(11) NOT NULL,
-  `vaccine_name` varchar(222) NOT NULL
+  `vaccine_name` varchar(222) NOT NULL,
+  `vaccine_qunt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `vaccine`
 --
 
-INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`) VALUES
-(1, '\r\nSinopharm'),
-(2, 'Sinovac'),
-(3, '\r\nCanSino-Bio'),
-(4, 'Sputnik');
+INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`, `vaccine_qunt`) VALUES
+(1, '\r\nSinopharm', 0),
+(2, 'Sinovac', 2551),
+(3, '\r\nCanSino-Bio', 666),
+(4, 'Sputnik', 6988);
 
 --
 -- Indexes for dumped tables
@@ -390,7 +401,7 @@ ALTER TABLE `accept_hospital`
 -- AUTO_INCREMENT for table `accept_patient`
 --
 ALTER TABLE `accept_patient`
-  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -414,7 +425,7 @@ ALTER TABLE `reg_hospital`
 -- AUTO_INCREMENT for table `reg_patient`
 --
 ALTER TABLE `reg_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `reject_hospital`

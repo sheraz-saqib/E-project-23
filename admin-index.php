@@ -25,6 +25,10 @@ $totalPatient = mysqli_num_rows($fetch_Patient);
 $fetch_vaccineQ = "SELECT * FROM `vaccine`";
 $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 $totalvaccine = mysqli_num_rows($fetch_vaccine);
+
+$fetch_hospitalQ = "SELECT * FROM `reg_hospital`";
+$fetch_hospital = mysqli_query($conn,$fetch_hospitalQ);
+$totalhospital = mysqli_num_rows($fetch_hospital);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -444,33 +448,65 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>
                       <tr>
-                        <th scope="col">s.no</th>
-                        <th scope="col">#</th>
-                        <th scope="col">Patient Name</th>
-                        <th scope="col">Pateint Hospital</th>
-                        <th scope="col">Patient Vaccine</th>
-                        <th scope="col">Status</th>
+                      <th scope="col">s.no</th>
+                        <th scope="col">user_id</th>
+                        <th scope="col">hospital_id </th>
+                        <th scope="col">hospital_name</th>
+                        <th scope="col">hospital_email</th>
+                        <th scope="col">hospital_manager_name</th>
+                        <th scope="col">hospital_contact</th>
+                        <th scope="col">hospital_location</th>
+                        <th scope="col">hospital_manager_cnic</th>
+                        <th scope="col">hospital_open_time</th>
+                        <th scope="col">hospital_close_time</th>
+                        <th scope="col">hospital_status</th>
                       </tr>
                     </thead>
                     <tbody>
 
                     <?php
 
-                    if($totalHospital > 0){
-                      // while($hospital_data = mysqli_fetch_assoc($fetch_Hospital )){ 
-                      //   $i+=1;
-                      
-                      //     echo '<tr>
-                      //     <th scope="row"><a href="#">'.$i.'</a></th>
-                      //     <th scope="row"><a href="#">'.$hospital_data['hospital_id'].'</a></th>
-                      //     <td>'.$hospital_data['hospital_name'].'</td>
-                      //     <td>'.$hospital_data[''].'</td>
-                      //     <td><a href="#" class="text-primary">'.$hospital_data['patient_vacc'].'</a></td>
-                      //     <td><span class="badge bg-success">'.$hospital_data['patient_status'].'</span></td>
-                      //   </tr>';
+                    if($totalhospital  > 0){
+                      while($hospital_data = mysqli_fetch_assoc($fetch_hospital)){ 
+                        $i+=1;
+
+                          if($hospital_data['hospital_status'] !=''){
+                            echo '<tr>
+                          <td scope="row"><a href="#">'.$i.'</a></td>
+                          <td scope="row"><a href="#">'.$hospital_data['user_id'].'</a></td>
+                          <td scope="row"><a href="#">'.$hospital_data['hospital_id'].'</a></td>
+                          <td>'.$hospital_data['hospital_name'].'</td>
+                          <td><a  class="text-primary">'.$hospital_data['hospital_email'].'</a></td>
+                          <td>'.$hospital_data['hospital_manager_name'].'</td>
+                          <td>'.$hospital_data['hospital_contact'].'</td>
+                          <td>'.$hospital_data['hospital_location'].'</td>
+                          <td>'.$hospital_data['hospital_manager_cnic'].'</td>
+                          <td>'.$hospital_data['hospital_open_time'].'</td>
+                          <td>'.$hospital_data['hospital_close_time'].'</td>
+                          <td>'.$hospital_data['hospital_status'].'</td>
+                          
+                        </tr>';
+                          }
+                          if($hospital_data['hospital_status'] ==''){
+                            echo '<tr>
+                            <td scope="row"><a href="#">'.$i.'</a></td>
+                            <td scope="row"><a href="#">'.$hospital_data['user_id'].'</a></td>
+                            <td scope="row"><a href="#">'.$hospital_data['hospital_id'].'</a></td>
+                            <td>'.$hospital_data['hospital_name'].'</td>
+                            <td><a  class="text-primary">'.$hospital_data['hospital_email'].'</a></td>
+                            <td>'.$hospital_data['hospital_manager_name'].'</td>
+                            <td>'.$hospital_data['hospital_contact'].'</td>
+                            <td>'.$hospital_data['hospital_location'].'</td>
+                            <td>'.$hospital_data['hospital_manager_cnic'].'</td>
+                            <td>'.$hospital_data['hospital_open_time'].'</td>
+                          <td>'.$hospital_data['hospital_close_time'].'</td>
+                         
+                            <td>pending</td>
+                            
+                          </tr>';
+                          }
+                        }
                         
-                      
-                      //   }
                     }
                     ?>
                     </tbody>
@@ -499,54 +535,36 @@ $totalvaccine = mysqli_num_rows($fetch_vaccine);
                 </div>
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                  <h5 class="card-title">vaccines <span>| Total</span></h5>
 
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
+                        <th scope="col">s.no</th>
+                        <th scope="col">Vaccine ID</th>
+                        <th scope="col">Vaccine Name</th>
+                        <th scope="col">Vaccine Quntities</th>
+                      
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
+                      <?php
+                      if($totalvaccine > 0){
+                        while($vaccine_data = mysqli_fetch_assoc($fetch_vaccine)){
+                          $k+=1;
+                          echo ' <tr>
+                          <td>'.$k.'</td>
+                          <td><a href="#" class="text-primary fw-bold">'.$vaccine_data['vaccine_id'].'</a></td>
+                          <td>'.$vaccine_data['vaccine_name'].'</td>
+                          <td class="fw-bold">'.$vaccine_data['vaccine_qunt'].'</td>
+                        
+                        </tr>';
+                        }
+                      }
+                      
+                      ?>
+                     
+                    
                     </tbody>
                   </table>
 

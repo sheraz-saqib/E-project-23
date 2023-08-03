@@ -20,7 +20,7 @@ $select_pat_data = mysqli_query($conn,$select_pat_dataQ);
 
 $fetch_pat_data = mysqli_fetch_assoc($select_pat_data);
 
-
+$patient_vacc =$fetch_pat_data['patient_vacc'] ;
 
 $pateint_dos_1 = $_POST['pateint_dos_1'];
 $pateint_dos_1_date = $_POST['pateint_dos_1_date'];
@@ -41,30 +41,59 @@ $get_old_dos_2_date = $fetch_pat_data['pateint_dos_2_date'];
 
 if(isset($admin_update_submit)){
 
-    if($pateint_dos_1 !='' && $pateint_dos_1_date !=''){
-        $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_1`='$pateint_dos_1',`pateint_dos_1_date`= '$pateint_dos_1_date'  WHERE `pateint_id` = $patient_ID";
-        $update_pat = mysqli_query($conn,$update_patQ);
-        if($update_pat){
-            header('location:admin_app_pat.php');
-        }
-        if(!$update_pat){
-            $pat_updated_error = true;
-        }
+
+
+
+  $fetch_vaccineQ = "SELECT * FROM `vaccine` WHERE `vaccine_name` = '$patient_vacc'" ;
+  $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
+  $totalvaccine = mysqli_num_rows($fetch_vaccine);
+  $vacc_data = mysqli_fetch_assoc($fetch_vaccine);
+  
+  if( $totalvaccine > 0){
+    $sum_vacc = $vacc_data['vaccine_qunt'];
+    if( $sum_vacc == 0){
+      $sum_vacc =0;
+      $vacc_not_avail = true;
     }
-    if($pateint_dos_2 !='' && $pateint_dos_2_date !=''){
-        $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_2`='$pateint_dos_2',`pateint_dos_2_date`= '$pateint_dos_2_date'  WHERE `pateint_id` = $patient_ID";
-        $update_pat = mysqli_query($conn,$update_patQ);
-        if($update_pat){
-            header('location:admin_app_pat.php');
-        }
-        if(!$update_pat){
-            $pat_updated_error = true;
-        }
+    if($sum_vacc != 0){
+
+      $sum_vacc-=1;
+   $vacc_qunt_updateQ = "UPDATE `vaccine` SET `vaccine_qunt`='$sum_vacc' WHERE `vaccine_name` = '$patient_vacc'";
+   $vacc_qunt_update = mysqli_query($conn,$vacc_qunt_updateQ);
     }
-    if($pateint_dos_1 =='' && $pateint_dos_1_date =='' || $pateint_dos_2 =='' && $pateint_dos_2_date ==''){
-        $pat_updated_error = false;
-        $fill_error = true;
+    
+  }
+
+if(!$vacc_not_avail){
+  if($pateint_dos_1 !='' && $pateint_dos_1_date !=''){
+    $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_1`='$pateint_dos_1',`pateint_dos_1_date`= '$pateint_dos_1_date'  WHERE `pateint_id` = $patient_ID";
+    $update_pat = mysqli_query($conn,$update_patQ);
+    if($update_pat){
+        header('location:admin_app_pat.php');
     }
+    if(!$update_pat){
+        $pat_updated_error = true;
+    }
+}
+if($pateint_dos_2 !='' && $pateint_dos_2_date !=''){
+  $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_2`='$pateint_dos_2',`pateint_dos_2_date`= '$pateint_dos_2_date'  WHERE `pateint_id` = $patient_ID";
+  $update_pat = mysqli_query($conn,$update_patQ);
+  if($update_pat){
+      header('location:admin_app_pat.php');
+  }
+  if(!$update_pat){
+      $pat_updated_error = true;
+  }
+}
+if($pateint_dos_1 =='' && $pateint_dos_1_date =='' || $pateint_dos_2 =='' && $pateint_dos_2_date ==''){
+  $pat_updated_error = false;
+  $fill_error = true;
+}
+}
+
+    
+    
+    
 
 
     
@@ -116,7 +145,18 @@ padding: 0 2rem;
    .mt-0{
     margin-top: -1rem !important;
    }
-  
+   .bg-danger{
+    padding: 1rem;
+    color: white !important;
+    margin: 1rem;
+    margin-left:0;
+    border-radius: .4rem;
+    width: 80% !important;
+   }
+  .message_error{
+    display: flex;
+    justify-content: center;
+  }
   </style>
 </head>
 
@@ -138,17 +178,22 @@ padding: 0 2rem;
 
     <section class="section dashboard ">
       <div class="row from_div">
+        <div class="message_error">
       <?php
             
             if($pat_updated_error ){
-              echo '<div class="sent-message bg-success">Data not updated try again </div>';
+              echo '<div class="error-message bg-danger">Data not updated try again </div>';
             }
             if($fill_error){
               echo '<div class="error-message bg-danger">Please fill out All feilds</div>';
 
             }
+            if($vacc_not_avail){
+              echo '<div class="error-message bg-danger">Vaccine not Available</div>';
+            }
           
             ?>
+          </div>
        <form class="row g-3 needs-validation" method="POST" action="" >
                     <!-- row -->
                 
