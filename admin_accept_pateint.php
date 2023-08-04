@@ -1,7 +1,35 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                      
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+        $mail->Subject = 'Dear User From HS centre';
+
+?>
+
+
+<?php
 
 session_start();
 require 'conn.php';
+// require 'php_email.php';
 if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
     header('location:login.php');
 }
@@ -42,10 +70,32 @@ $delete_pateint_From_reject_pat = mysqli_query($conn,$delete_pateint_From_reject
 
 // if($fetch_select_pat_data[''])
 
+        $mail->Body = '
+       <h2>Dear '.$patient_name.'</h2> 
 
+Congratulations! You have been "'. $patient_status.'" for the COVID-19 vaccine. Please schedule your vaccination appointment at your earliest convenience.
+
+<ul>
+    <li>Admin:"HS Centre"</li>
+    <li>Name:'.$patient_name.';</li>
+    <li>Email:"'. $patient_email.'";</li>
+    <li>Hospital:'.$patient_select_hos.';</li>
+    <li>Day:'.$patient_app_day.';</li>
+    <li>Gender:'.$patient_gender.';</li>
+    <li>Cnic:'.$patient_cnic.';</li>
+    <li>Phone:'.$patient_phone.';</li>
+    <li>Status:'. $patient_status.';</li>
+  </ul>
+';
+
+$mail->send();
+} 
+catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 if($insert_acc_table){
+    
     header('location:'.$page_url .'');
 }
-
 
 ?>

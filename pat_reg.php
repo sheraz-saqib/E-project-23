@@ -1,4 +1,28 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                    
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+        $mail->Subject = 'Dear User From HS centre';
+
+?>
 <?php
 
 session_start();
@@ -18,10 +42,6 @@ $pat_hospital_name = $_POST['pat_hospital_name'];
 $pat_vaccine_name = $_POST['pat_vaccine_name'];
 $pat_submit = $_POST['pat_submit'];
 
-
-
-
-
 if(isset($pat_submit)){
 
   $check_patQ ="SELECT * FROM `reg_patient` WHERE `patient_email` = '$user_email'";
@@ -33,7 +53,22 @@ if(isset($pat_submit)){
       $pat_insertQ = "INSERT INTO `reg_patient`(`patient_name`, `patient_email`, `patient_phone`, `patient_cnic`, `patient_age`, `patient_select_hos`, `patient_gender`, `patient_vacc`, `patient_app_day`) VALUES ('$pat_name','$pat_email','$pat_phone','$pat_cnic','$pat_age','$pat_hospital_name','$pat_gender','$pat_vaccine_name','$pat_day_name')";
   
       $pat_insert = mysqli_query($conn ,$pat_insertQ);
-       
+
+      $mail->Body = '
+      <h2>Dear '.$pat_name.'</h2> 
+      Your request has been sent successfully you inform in 12 hours. Thank you! 
+      <ul>
+      <li>Name:'.$pat_name.';</li>
+      <li>Email:"'. $user_email.'";</li>
+      <li>Hospital:'.$pat_hospital_name.';</li>
+      <li>Day:'.$pat_day_name.';</li>
+      <li>Gender:'.$pat_gender.';</li>
+      <li>Cnic:'.$pat_cnic.';</li>
+      <li>Phone:'.$pat_phone.';</li>
+      <li>Vaccine:'. $pat_vaccine_name.';</li>
+      </ul>
+  
+      ';
       if($pat_insert){
        
         $pat_register= true;
@@ -84,7 +119,11 @@ $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 $vaccine_row = mysqli_num_rows($fetch_vaccine);
 
 
-
+$mail->send();
+} 
+catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
 
 

@@ -1,6 +1,30 @@
 
 
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                   
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+        $mail->Subject = 'Dear User From HS centre';
+
+?>
 <?php
 
 session_start();
@@ -69,6 +93,11 @@ if(!$vacc_not_avail){
     $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_1`='$pateint_dos_1',`pateint_dos_1_date`= '$pateint_dos_1_date'  WHERE `pateint_id` = $patient_ID";
     $update_pat = mysqli_query($conn,$update_patQ);
     if($update_pat){
+      $mail->Body = '
+      <h2>Dear '.$fetch_pat_data['patient_name'].'</h2> 
+
+      Congrats on finishing your first dose of Covid-19 vaccine. Reach out for any queries. Keep up the good work!
+';
         header('location:admin_app_pat.php');
     }
     if(!$update_pat){
@@ -79,6 +108,13 @@ if($pateint_dos_2 !='' && $pateint_dos_2_date !=''){
   $update_patQ = "UPDATE `accept_patient` SET `pateint_dos_2`='$pateint_dos_2',`pateint_dos_2_date`= '$pateint_dos_2_date'  WHERE `pateint_id` = $patient_ID";
   $update_pat = mysqli_query($conn,$update_patQ);
   if($update_pat){
+    $mail->Body = '
+    <h2>Dear '.$fetch_pat_data['patient_name'].'</h2> 
+    Great news! You ve completed your vaccination doses. You are now fully vaccinated for . For any post-vaccination advice, contact us.
+
+    Stay healthy,
+    '.$fetch_pat_data['patient_name'].'
+';
       header('location:admin_app_pat.php');
   }
   if(!$update_pat){
@@ -99,7 +135,11 @@ if($pateint_dos_1 =='' && $pateint_dos_1_date =='' || $pateint_dos_2 =='' && $pa
     
 }
 
-
+$mail->send();
+} 
+catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
 
 ?>

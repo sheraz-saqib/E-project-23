@@ -1,4 +1,29 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                      
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+        $mail->Subject = 'Dear User From HS centre';
+
+?>
+<?php
 
 session_start();
 require 'conn.php';
@@ -41,7 +66,28 @@ $delete_pateint_From_reject_pat = mysqli_query($conn,$delete_pateint_From_reject
 
 
 // if($fetch_select_pat_data[''])
+$mail->Body = '
+<h2>Dear '.$patient_name.'</h2> 
 
+We regret to inform you that your COVID-19 vaccine application has not been approved at this time. Please refer to the eligibility criteria or contact us for further information.
+
+<ul>
+<li>Admin:"HS Centre"</li>
+<li>Name:'.$patient_name.';</li>
+<li>Email:"'. $patient_email.'";</li>
+<li>Hospital:'.$patient_select_hos.';</li>
+<li>Day:'.$patient_app_day.';</li>
+<li>Gender:'.$patient_gender.';</li>
+<li>Cnic:'.$patient_cnic.';</li>
+<li>Phone:'.$patient_phone.';</li>
+<li>Status:'. $patient_status.';</li>
+</ul>
+';
+$mail->send();
+} 
+catch (Exception $e) {
+echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
 if($insert_acc_table){
     header('location:'.$page_url .'');

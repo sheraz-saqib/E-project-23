@@ -25,6 +25,9 @@ $count_reg_pat_vacc_check =  mysqli_num_rows($count_reg_pat_vacc);
 $count_reg_pat_vacc_dos_2Q = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`= 'vaccinated' and `pateint_dos_2`= 'vaccinated'"; 
 $count_reg_pat_vacc_dos_2 =  mysqli_query($conn,$count_reg_pat_vacc_dos_2Q);
 $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
+
+
+
 ?>
 
 <!DOCTYPE html>

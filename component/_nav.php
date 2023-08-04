@@ -96,6 +96,7 @@ font-size: 1rem;
 {
 font-size: .8rem !important;
 
+
 }
 .vaccine-card ul{
   margin-left: -1rem;
@@ -136,8 +137,6 @@ color: #4154f1 !important;
 .notifications {
   margin-top: .5rem !important;
   margin-left: -3rem !important;
-  width: 25rem !important;
-  width: 200% !important;
 }
  .notifications .notification-item {
   display: flex;
@@ -350,3 +349,6 @@ color: #4154f1 !important;
 
     </div>
   </header>
+
+
+  
