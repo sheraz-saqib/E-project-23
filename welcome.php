@@ -49,7 +49,30 @@ $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
   .icon-box:hover{
     color: white !important;
   }
-
+  .icon{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+   height: 7rem;
+  }
+  .icon i{
+    background-color:  #4154f1;
+    padding: 2rem;
+    border-radius: 50%;
+    color: white !important;
+  }
+.col-md-6:hover .icon i{
+background-color: white;
+color:#4154f1 !important ;
+}
+.hospital-icon i{
+  padding: 2.2rem  2rem;
+}
+.hospital_titile{
+  display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 </style>
 
 </head>
@@ -150,12 +173,7 @@ $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
                <div class="icon"><i class="fa-solid fa-syringe"></i></div>
                <h4 class="title">'.$vaccine['vaccine_name'].'</h4>
                <p class="description">
-                 <h5 class="title"><i class="fa-solid fa-hospital"></i> hospitals</h5>
-                 <ul class="vacc_ul">
-                   <li>hospital</li>
-                   <li>hospital</li>
-                   <li>hospital</li>
-                 </ul>
+    
                </p>
                <a href="pat_reg.php?vaccine_name='.$vaccine['vaccine_name'].'"> <div class="vacc-reg-btn ">register</div></a>
              </div>
@@ -320,21 +338,53 @@ $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
       </div>
     </section><!-- End Services Section -->
 
-  
-
-    <!-- ======= Departments Section ======= -->
-    <section id="departments" class="departments">
+    <section  class="featured-services" id="vaccine">
+      <div class="section-title" >
+        <h2>Departments</h2>
+       
+      </div>
       <div class="container" data-aos="fade-up">
+      
 
-        <div class="section-title">
-          <h2>Departments</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="row" >
+            <!-- card -->
+        <!-- card -->
+        <!-- card -->
+     
+        <?php
+         
+         while($hospital_data = mysqli_fetch_assoc($cont_reg_hos)){
+            echo '
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mt-4" >
+           
+             <div class="icon-box vaccine-card" data-aos="fade-up" data-aos-delay="100" style="width: 20rem;">
+              
+               <div class="icon hospital-icon"><i class="fa-solid fa-hospital"></i></div>
+               <h4 class="title hospital_titile">'.$hospital_data['hospital_name'].'</h4>
+             </div>
+   
+           </div>
+          ';
+          
+
+       
+
+
+         }
+         
+         
+         ?>
+     
+         
+
         </div>
 
-     
-
       </div>
-    </section><!-- End Departments Section -->
+   
+    </section><!-- End Featured Services Section -->
+
+  
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">

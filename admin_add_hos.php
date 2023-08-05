@@ -1,4 +1,28 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                    
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+     
+
+?>
 
 
 <?php
@@ -54,7 +78,19 @@ if(isset($hopital_submit)){
         $hospital_insert = mysqli_query($conn ,$hospital_insertQ);
          
         if($hospital_insert){
-         
+          $mail->Subject = 'Hospital Approved Welcome to Our HS Centre!';
+          $mail->Body = '
+          <h2>Dear '.$hospital_Manager_name.'</h2> 
+          Your request for Hospital has been sent successfully you inform in 24 hours. Thank you! 
+          <ul>
+          <li>Manager Name:'.$hospital_Manager_name.';</li>
+          <li>Email:"'. $hospital_email.'";</li>
+          <li>Hospital Name:'.$hospital_name.';</li>
+          <li>Cnic:'.$hopital_Manager_cnic.';</li>
+          <li>Phone:'.$hospital_phone .';</li>
+          </ul>
+          
+          ';
           $hospital_register= true;
           $hospital_register_error = false;
           $hospital_exist = false;
@@ -85,7 +121,11 @@ if( $fetch_check_hos['hospital_email'] != $user_email || $fetch_check_hos['hospi
 
 }
 
-
+$mail->send();
+          } 
+          catch (Exception $e) {
+              echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+          }
 
 ?>
 

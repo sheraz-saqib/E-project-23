@@ -35,6 +35,11 @@ $fetch_approved_pateint_status_data = mysqli_fetch_assoc($fetch_approved_pateint
     <script src="node_modules/jspdf/dist/jspdf.umd.js"></script>
 <script src="node_modules/html2canvas/dist/html2canvas.min.js"></script>
 <?php require '.\repot_card\style_css.php'?>
+<style>
+    .report_container{
+        border-radius: 1rem;
+    }
+</style>
 </head>
 <body>
     <nav class="report_nav">
@@ -141,5 +146,12 @@ $fetch_approved_pateint_status_data = mysqli_fetch_assoc($fetch_approved_pateint
             }
 
 
+          </script>
+          <script type="text/javascript" src="vanilla-tile.js"></script>
+          <script>
+            VanillaTilt.init(document.querySelector(".report_container"), {
+		max: 25,
+		speed: 400
+	});
           </script>
 </html>

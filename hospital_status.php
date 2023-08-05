@@ -31,9 +31,11 @@ $pending_hos_select = mysqli_query($conn,$pending_hos_selectQ);
 $totalpending = mysqli_num_rows($pending_hos_select);
 if($totalAcc == 1){
   $hos_status_approved = true;
+  $totalpending = 0;
 }
 if($totalreject == 1){
   $hos_status_reject = true;
+  $hos_status_approved = false;
 }
 if($totalpending == 1){
   $hos_status_pending = true;
@@ -132,7 +134,7 @@ if($totalAcc ==0 && $totalreject == 0 && $totalpending == 0){
               echo '<div class="sent-message bg-success approved_message">
              Approved 
              <div class="row justify-content-center approved_message_a">
-             <a class="btn  w-100 " target="_blank" href="download_user_card.php?download_user_card_id='.$acc_pat_select_data['pateint_id'].'">Download repot card</a>
+             <a class="btn  w-100 " href="#">Get verified</a>
              </div>
               </div> ';
             }

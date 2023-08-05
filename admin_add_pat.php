@@ -1,4 +1,28 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                    
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+        $mail->Subject = 'Dear User From HS centre';
+
+?>
 
 
 <?php
@@ -40,7 +64,21 @@ if(isset($pat_submit)){
       $pat_insert = mysqli_query($conn ,$pat_insertQ);
        
       if($pat_insert){
-       
+        $mail->Body = '
+        <h2>Dear '.$pat_name.'</h2> 
+        Your request has been sent successfully you inform in 12 hours. Thank you! 
+        <ul>
+        <li>Name:'.$pat_name.';</li>
+        <li>Email:"'. $pat_email.'";</li>
+        <li>Hospital:'.$pat_hospital_name.';</li>
+        <li>Day:'.$pat_day_name.';</li>
+        <li>Gender:'.$pat_gender.';</li>
+        <li>Cnic:'.$pat_cnic.';</li>
+        <li>Phone:'.$pat_phone.';</li>
+        <li>Vaccine:'. $pat_vaccine_name.';</li>
+        </ul>
+    
+        ';
         $pat_register= true;
         $pat_register_error = false;
        
@@ -88,7 +126,11 @@ $fetch_vaccineQ = "SELECT * FROM `vaccine` ";
 $fetch_vaccine = mysqli_query($conn,$fetch_vaccineQ);
 $vaccine_row = mysqli_num_rows($fetch_vaccine);
 
-
+$mail->send();
+} 
+catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
 
 

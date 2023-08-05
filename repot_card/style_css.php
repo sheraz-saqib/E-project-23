@@ -31,16 +31,23 @@ body{
     text-transform: uppercase;
 color:var(--primary_color);
 user-select: none;
+
 }
 .report_top_section{
     width: inherit;
     height: 65%;
     background-color:#FEFAD5;
+    border-radius: .5rem !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 }
 .report_bottom_section{
     width: inherit;
     height: 35%;
     background-color:#ffffff;
+    border-radius: .5rem !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 .repot_top_head{
     display: flex;

@@ -1,4 +1,29 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;                    
+    $mail->isSMTP();                                          
+    $mail->Host       = 'smtp.gmail.com';                     
+    $mail->SMTPAuth   = true;                                 
+    $mail->Username   = 'bhanakop@gmail.com';                 
+    $mail->Password   = 'cbdqqregogtawone';                   
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;          
+    $mail->Port       = 465;                                  
+    //Content
+    $mail->isHTML(true);    
+        $mail->setFrom('bhanakop@gmail.com', 'HS centre');
+        $mail->addAddress('hassanee087@gmail.com', 'User');       //Set email format to HTML
+        $mail->addReplyTo('bhanakop@gmail.com', 'Information');
+     
+
+?>
+<?php
 
 session_start();
 require 'conn.php';
@@ -39,11 +64,29 @@ $delete_hospital_From_reject_pat = mysqli_query($conn,$delete_hospital_From_reje
 
 
 // if($fetch_select_pat_data[''])
+$mail->Subject = 'Hospital Approved Welcome to Our HS Centre!';
+$mail->Body = '
+<h2>Dear '.$hospital_manager_name.'</h2> 
+Congratulations! We are thrilled to inform you that your hospitals application has been approved. We look forward to a successful partnership in providing quality healthcare services.
+<ul>
+<li>Manager Name:'.$hospital_manager_name.';</li>
+<li>Email:"'. $hospital_email.'";</li>
+<li>Hospital Name:'.$hospital_name.';</li>
+<li>Cnic:'.$hospital_manager_cnic.';</li>
+<li>Phone:'.$hospital_contact .';</li>
+</ul>
+
+';
+
+
+$mail->send();
+} 
+catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 
 
 if($insert_acc_table){
     header('location:'.$page_url .'');
 }
-
-
 ?>

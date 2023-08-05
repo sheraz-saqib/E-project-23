@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2023 at 09:38 AM
+-- Generation Time: Aug 05, 2023 at 09:37 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -46,15 +46,11 @@ CREATE TABLE `accept_hospital` (
 --
 
 INSERT INTO `accept_hospital` (`hospital_id`, `reg_hos_id`, `hospital_name`, `hospital_manager_name`, `hospital_email`, `hospital_contact`, `hospital_location`, `hospital_manager_cnic`, `hospital_open_time`, `hospital_close_time`, `hospital_verified`) VALUES
-(1, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
 (2, 6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', ' karachi ', '54545454', '04:04 ', '04:04', 'not verified'),
 (4, 1, 'national', 'humaira', 'humaira@gmail.com', '4343434', ' karachi ', '565655655665', '03:33 ', '08:01', 'not verified'),
 (7, 3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', ' lahore', '355353553', '09:09 ', '13:09', 'not verified'),
 (9, 2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', ' karachi ', '565655655665', '03:33 ', '08:01', 'not verified'),
-(12, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
-(14, 8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', ' lahore', '4546565656', '13:00 ', '22:00', 'not verified'),
-(15, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', ' karachi ', '43434343', '03:33 ', '04:54', 'not verified'),
-(16, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', ' karachi ', '434343', '01:04 ', '01:00', 'not verified');
+(14, 8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', ' lahore', '4546565656', '13:00 ', '22:00', 'not verified');
 
 -- --------------------------------------------------------
 
@@ -97,7 +93,9 @@ INSERT INTO `accept_patient` (`pateint_id`, `reg_pateint_id`, `patient_name`, `p
 (18, 12, ' dsgsg', 'umair@gamil.com', '345454', '65446', ' 66', 'national', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2023-05-05', '2025-05-05'),
 (19, 13, ' maria', 'assds@gmail.com', '343525435', '5433424355454', ' 44', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2025-05-05', '2025-05-05'),
 (20, 14, ' kadkk', 'ksk@gmail.com', '51646464', '6544664', ' 2', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '0023-02-22', '52020-05-05'),
-(21, 15, ' 43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', ' 44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'not vaccinated', '2023-05-05', '00-00-00');
+(21, 15, ' 43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', ' 44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-05-05'),
+(41, 16, ' umair', 'checkEmail@gmail.com', '3444535454', '34244345', ' 23', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'vaccinated', 'vaccinated', '2023-05-05', '2023-05-05'),
+(42, 20, ' wajid', 'wajid@gmail.com', '5465464456', '546546645', ' 22', 'jinnah', 'Male', 'Pak Vacc', 'tuesday', 'vaccinated', 'not vaccinated', '2023-05-05', '00-00-00');
 
 -- --------------------------------------------------------
 
@@ -166,10 +164,11 @@ INSERT INTO `reg_hospital` (`hospital_id`, `hospital_name`, `hospital_manager_na
 (1, 'national', 'humaira', 'humaira@gmail.com', '4343434', 'karachi ', '565655655665', '03:33 ', '08:01', '6 ', 'approved'),
 (2, 'jinnah', 'sheraz', 'sheraz@gmail.com', '434343', 'karachi ', '565655655665', '03:33 ', '08:01', '1 ', 'reject'),
 (3, 'Agha Khan', 'hamza', 'hamza@gmail.com', '343434343', 'lahore', '355353553', '09:09 ', '13:09', '7 ', 'reject'),
-(5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00', '11', 'approved'),
+(5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00', '11', 'reject'),
 (6, 'jinnah', 'umair', 'jinnah@gmail.com', '4454545454545', 'karachi ', '54545454', '04:04 ', '04:04', '10', 'reject'),
-(7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54', '12', 'approved'),
-(8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', 'lahore', '4546565656', '13:00 ', '22:00', '8', 'approved');
+(7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54', '12', 'reject'),
+(8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', 'lahore', '4546565656', '13:00 ', '22:00', '8', 'approved'),
+(9, 'HOD ', 'hassan ', 'hassan3344@gmail.com', '5456656', 'karachi ', '565655655665', '01:00 ', '01:00', '16 ', '');
 
 -- --------------------------------------------------------
 
@@ -210,7 +209,13 @@ INSERT INTO `reg_patient` (`patient_id`, `patient_name`, `patient_email`, `patie
 (12, 'dsgsg', 'umair@gamil.com', '345454', '65446', '66', 'national', 'Male', '\r\nSinopharm', 'monday', 'approved'),
 (13, 'maria', 'assds@gmail.com', '343525435', '5433424355454', '44', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'approved'),
 (14, 'kadkk', 'ksk@gmail.com', '51646464', '6544664', '2', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
-(15, '43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', '44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved');
+(15, '43434', 'bhandsd3akop@gmial.com', '343544545', '54354654545', '44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', 'approved'),
+(16, 'umair', 'checkEmail@gmail.com', '3444535454', '34244345', '23', 'jinnah', 'Male', '\r\nSinopharm', 'monday', 'approved'),
+(17, 'hassan ', 'hassanOp@gmail.com', '6446546546', '546544546', '22', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', ''),
+(18, 'rafey', 'rafey@gmail.com', '343253453543', '565655655665', '33', 'national', 'Male', 'Sinovac', 'monday', ''),
+(19, 'rafey2', 'rafey2@gmail.com', '4545454455', '5454654654646', '44', 'jinnah', 'Male', '\r\nSinopharm', 'tuesday', ''),
+(20, 'wajid', 'wajid@gmail.com', '5465464456', '546546645', '22', 'jinnah', 'Male', 'Pak Vacc', 'tuesday', 'approved'),
+(21, 'ahmed', 'ahmed@gmail.com', '546546546', '54645546', '11', 'jinnah', 'Male', 'Sinopharm', 'monday', '');
 
 -- --------------------------------------------------------
 
@@ -249,7 +254,10 @@ INSERT INTO `reject_hospital` (`hospital_id`, `reg_hospital_id`, `hospital_name`
 (18, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
 (19, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
 (21, 8, 'Pak hospital ', 'Bilal', 'pakHospital@gmail.com', '34455454545', 'lahore', '4546565656', '13:00 ', '22:00'),
-(22, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00');
+(22, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00'),
+(23, 5, 'nmc', 'irfan', 'nmc@gmail.com', '4343434', 'karachi ', '434343', '01:04 ', '01:00'),
+(24, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54'),
+(25, 7, 'Agha Khan 2 ', 'USAMA', 'aghaKhan2@gmail.com', '343434343', 'karachi ', '43434343', '03:33 ', '04:54');
 
 -- --------------------------------------------------------
 
@@ -299,7 +307,11 @@ INSERT INTO `user` (`id`, `name`, `email`, `cnic`, `password`, `time`) VALUES
 (9, 'bhanak', 'bhank@gmail.com', '2372738237287', '$2y$10$5GTk8tHK2KfbbRe.4HfiQesVu3O7NvyZbqu8Od73xGCDO9ZXPvHo.', '2023-07-31 00:21:08'),
 (10, 'bhanak', 'bhanak@gmial.com', '565655655665', '$2y$10$FpcxNzeqtzAz2Zf5wmfLD.k7ft2ESKLj6TZgupvTB3coK2iCg3Bj.', '2023-07-31 00:21:26'),
 (11, 'irfan', 'irfan@gmail.com', '23232323', '$2y$10$9fLVKVR9mpQvyVuB6l5BKeXbuBcQi2DBzX08/GmH2DV6gpJJ0tsj6', '2023-08-01 09:55:14'),
-(12, 'usama', 'usama@gmial.com', '232323232', '$2y$10$UNX1PH1u.ll9gnW7x5teMO.LYgWMwpY6gu66xidjIdIRFGY9w.S5K', '2023-08-01 23:43:23');
+(12, 'usama', 'usama@gmial.com', '232323232', '$2y$10$UNX1PH1u.ll9gnW7x5teMO.LYgWMwpY6gu66xidjIdIRFGY9w.S5K', '2023-08-01 23:43:23'),
+(13, 'hassan ', 'hassanOp@gmail.com', '546544546', '$2y$10$ITk3TIRGjmmRgMMBgdhPR.pJ2BdA0BuLbzo1t4eh6kCprFq9JLDeC', '2023-08-04 05:48:12'),
+(14, 'rafey', 'rafey@gmail.com', '565655655665', '$2y$10$2XXcClFVx93FCfsT1fBtFuhFqKYTMu7GtYeV2puow4K7W6NB1KVva', '2023-08-04 05:50:54'),
+(15, 'rafey2', 'rafey2@gmail.com', '5454654654646', '$2y$10$HBY0to.5jhhiZrETxDLfGOlydM6adJKkt0kKFc7NPjHev7SgymqQ6', '2023-08-04 05:54:00'),
+(16, 'hassan ', 'hassan3344@gmail.com', '565655655665', '$2y$10$xajci21bHHnJCLLEyNeV3e2tYj6NA/MDZN2CLFFWBUIezoOsVRh5W', '2023-08-05 00:05:01');
 
 -- --------------------------------------------------------
 
@@ -318,10 +330,10 @@ CREATE TABLE `vaccine` (
 --
 
 INSERT INTO `vaccine` (`vaccine_id`, `vaccine_name`, `vaccine_qunt`) VALUES
-(1, '\r\nSinopharm', 0),
-(2, 'Sinovac', 2551),
+(1, 'Sinopharm', 70),
+(2, 'Sinovac', 220),
 (3, '\r\nCanSino-Bio', 666),
-(4, 'Sputnik', 6988);
+(4, 'Sputnik vaccine', 6988);
 
 --
 -- Indexes for dumped tables
@@ -395,13 +407,13 @@ ALTER TABLE `vaccine`
 -- AUTO_INCREMENT for table `accept_hospital`
 --
 ALTER TABLE `accept_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `accept_patient`
 --
 ALTER TABLE `accept_patient`
-  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `pateint_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -419,37 +431,37 @@ ALTER TABLE `hospital_portal`
 -- AUTO_INCREMENT for table `reg_hospital`
 --
 ALTER TABLE `reg_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `reg_patient`
 --
 ALTER TABLE `reg_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `reject_hospital`
 --
 ALTER TABLE `reject_hospital`
-  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `hospital_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `reject_patient`
 --
 ALTER TABLE `reject_patient`
-  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `vaccine`
 --
 ALTER TABLE `vaccine`
-  MODIFY `vaccine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `vaccine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
