@@ -234,6 +234,7 @@ catch (Exception $e) {
                 <option value="">Select Day</option>
                 <option  value="monday">monday</option>
                 <option value="tuesday">tuesday</option>
+                <option value="wednesday">wednesday</option>
                 <option value="thusday">thusday</option>
                 <option value="friday">friday</option>
                 <option value="saturday">saturday</option>

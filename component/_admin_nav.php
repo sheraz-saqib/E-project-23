@@ -4,6 +4,9 @@ require 'conn.php';
 if(!$_SESSION['admin_name'] &&  $_SESSION['admin_name'] !=true ){
     header('location:login.php');
 }
+$fetch_app_PatientQ = "SELECT * FROM `accept_patient` WHERE `pateint_dos_1`='not vaccinated' AND `patient_app_day` = '$day' AND `pateint_dos_2`='not vaccinated' AND `patient_app_day` = '$day' OR `pateint_dos_1`='vaccinated' AND `patient_app_day` = '$day' AND `pateint_dos_2`='not vaccinated' AND `patient_app_day` = '$day' ";
+$fetch_app_Patient = mysqli_query($conn,$fetch_app_PatientQ);
+$total_app_Patient = mysqli_num_rows($fetch_app_Patient);
 ?>
  
  <style>
@@ -44,7 +47,13 @@ color: #4154f1 !important;
 .bg-danger{
   background-color:  rgb(175, 17, 51) !important;
 }
-
+.num_today_app {
+  background-color:  #4154f1;
+  padding: 0 .2rem;
+  border-radius: 50%;
+  font-size: .6rem;
+  color: white;
+}
  </style>
  <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -256,7 +265,12 @@ color: #4154f1 !important;
           </li>
         </ul>
       </li><!-- End Components Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="admin-today_pat.php">
+        <i class="fa-solid fa-calendar-week"></i>
+          <span>Today Appointment</span> <span class="num_today_app  ms-auto"><?=$total_app_Patient?></span>
+        </a>
+      </li><!-- End Profile Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="admin-profile.php">
         <i class="fa-solid fa-user"></i>
