@@ -231,7 +231,7 @@ color: #4154f1 !important;
           <li><a class="nav-link scrollto " href="welcome.php">Home</a></li>
           <li><a class="nav-link scrollto" href="welcome.php#vaccine">vaccines</a></li>
           <li><a class="nav-link scrollto" href="welcome.php#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="welcome.php#departments">Departments</a></li>
+          <li><a class="nav-link scrollto" href="welcome.php#hospital">hospital</a></li>
           <li><a class="nav-link scrollto"data-bs-toggle="modal" data-bs-target="#statusModal" class="appointment-btn scrollto" >status</a></li>
        
         

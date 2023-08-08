@@ -8,7 +8,6 @@ if(!$_SESSION['name'] && $_SESSION['name'] !=true ){
 $download_user_card_id = $_GET['download_user_card_id'];
 
 
-echo $download_user_card_id;
 
 $fetch_approved_pateint_status_selectQ = "SELECT * FROM `accept_patient` WHERE `pateint_id`= $download_user_card_id"; 
 $fetch_approved_pateint_status_select = mysqli_query($conn,$fetch_approved_pateint_status_selectQ);
@@ -38,6 +37,12 @@ $fetch_approved_pateint_status_data = mysqli_fetch_assoc($fetch_approved_pateint
 <style>
     .report_container{
         border-radius: 1rem;
+    }
+   .repot_bb {
+        color: #000 !important;
+    }
+    tbody td{
+        color: #000;
     }
 </style>
 </head>

@@ -28,8 +28,8 @@ $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
 
 
 
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +43,7 @@ $count_reg_pat_vacc_dos_2_check =  mysqli_num_rows($count_reg_pat_vacc_dos_2);
 
 <?php require './component/_links.php';?>
 <style>
+
   .row{
     text-transform: capitalize;
   }
@@ -72,6 +73,12 @@ color:#4154f1 !important ;
   display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+.hospital_card{
+  background-color: rgb(243, 243, 243) !important;
+}
+.vaccine-card{
+  background-color: rgb(243, 243, 243) !important;
 }
 </style>
 
@@ -262,7 +269,7 @@ color:#4154f1 !important ;
               echo ' <span data-purecounter-start="0" data-purecounter-end="'.$cont_check_reg_hos.'" data-purecounter-duration="1" class="purecounter"></span>';
               ?>
              
-              <p><strong>Departments</strong></p>
+              <p><strong>Hospitals</strong></p>
             
             </div>
           </div>
@@ -338,15 +345,15 @@ color:#4154f1 !important ;
       </div>
     </section><!-- End Services Section -->
 
-    <section  class="featured-services" id="vaccine">
+    <section  class="featured-services" id="hospital">
       <div class="section-title" >
-        <h2>Departments</h2>
+        <h2>Hospitals</h2>
        
       </div>
       <div class="container" data-aos="fade-up">
       
 
-        <div class="row" >
+        <div class="row " >
             <!-- card -->
         <!-- card -->
         <!-- card -->
@@ -356,12 +363,19 @@ color:#4154f1 !important ;
          while($hospital_data = mysqli_fetch_assoc($cont_reg_hos)){
             echo '
 
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mt-4" >
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 mt-4 " >
            
-             <div class="icon-box vaccine-card" data-aos="fade-up" data-aos-delay="100" style="width: 20rem;">
+             <div class="icon-box vaccine-card hospital_card" data-aos="fade-up" data-aos-delay="100" style="width: 20rem;">
               
                <div class="icon hospital-icon"><i class="fa-solid fa-hospital"></i></div>
                <h4 class="title hospital_titile">'.$hospital_data['hospital_name'].'</h4>
+               <ul>
+               <li><a class="nav-link scrollto " >Location :'.$hospital_data['hospital_location'].' </a></li>
+               <li><a class="nav-link scrollto " >Phone : '.$hospital_data['hospital_contact'].'</a></li>
+               <li><a class="nav-link scrollto " >Email : '.$hospital_data['hospital_email'].'</a></li>
+              
+             
+               </ul>
              </div>
    
            </div>

@@ -122,7 +122,7 @@ $total_app_hospital = mysqli_num_rows($fetch_app_hospital);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Approved Patient</h5>
+                  <h5 class="card-title">Approved hospital</h5>
 
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>

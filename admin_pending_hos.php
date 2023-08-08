@@ -122,7 +122,7 @@ $total_pending_hospital = mysqli_num_rows($fetch_pending_hospital);
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Pending Patient</h5>
+                  <h5 class="card-title">Pending hospital</h5>
 
                   <table class="table table-borderless datatable" id="dowload_pdf">
                     <thead>

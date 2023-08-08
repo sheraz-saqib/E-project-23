@@ -10,7 +10,13 @@ $pass = $_POST['pass'];
 $submit = $_POST['submit'];
 
 
-
+session_start();
+if(isset($_SESSION['name'])){
+    header('location:welcome.php');
+}
+if(isset($_SESSION['admin_name'])){
+  header('location:admin-index.php');
+}
 
 
 if(isset($submit)){
